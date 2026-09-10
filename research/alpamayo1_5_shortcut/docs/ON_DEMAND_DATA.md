@@ -91,5 +91,5 @@ samples with:
 
 Adopt it for training only if the warm-cache path is correct and input loading
 does not materially starve the GPU. The GitLab issue template at
-`.gitlab/issue_templates/On-demand PhysicalAI-AV data benchmark.md` captures
+`.github/ISSUE_TEMPLATE/on-demand-physicalai-data.md` captures
 these acceptance criteria.

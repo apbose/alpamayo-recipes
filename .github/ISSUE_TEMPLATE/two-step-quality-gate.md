@@ -1,3 +1,11 @@
+---
+name: Two-step quality gate follow-up
+about: Track work required before evaluating one-step shortcut inference
+title: "[Shortcut] Improve the two-step quality gate"
+labels: enhancement
+assignees: ''
+---
+
 ## Goal
 
 Improve two-step Alpamayo 1.5 shortcut quality before evaluating one-step.

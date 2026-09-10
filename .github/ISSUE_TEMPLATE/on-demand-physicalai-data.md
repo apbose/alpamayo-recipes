@@ -1,3 +1,11 @@
+---
+name: On-demand PhysicalAI-AV data benchmark
+about: Benchmark an HF-backed dataset path before using it for Stage-2 training
+title: "[Data] Benchmark on-demand PhysicalAI-AV loading"
+labels: enhancement, data
+assignees: ''
+---
+
 ## Goal
 
 Determine whether Hugging Face on-demand PhysicalAI-AV access can feed
