@@ -7,3 +7,27 @@ outputs/*
 *.egg-info
 output_stage*
 *.egg-info
+
+# Local training/evaluation artifacts. These are intentionally excluded from
+# the research fork; only compact, reviewed summaries belong in Git.
+**/outputs/
+**/.hydra/
+**/wandb/
+**/runs/
+**/checkpoints/
+**/checkpoint-*/
+*.safetensors
+optimizer.pt
+optimizer.bin
+scheduler.pt
+rng_state*.pth
+trainer_state.json
+
+# Local authentication and machine configuration.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*
+*stored_tokens*

@@ -1,0 +1,102 @@
+[
+  {
+    "clip_id": "1ae17e2a-bc07-4e57-a04b-e9d5a372cd1e",
+    "t0": 29708785000,
+    "clip_start_timestamp": 29703000080,
+    "t0_relative": 5784920,
+    "nav_text": "Turn left in 11m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 11.2,
+    "cot": "Yield to the cross-traffic vehicle since it is crossing ahead of the right turn path."
+  },
+  {
+    "clip_id": "f2205e0b-b16f-491d-a211-e65db71d4f1c",
+    "t0": 6871312000,
+    "clip_start_timestamp": 6861312000,
+    "t0_relative": 10000000,
+    "nav_text": "Turn left in 13m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 13.1,
+    "cot": "Turn right at the intersection since the right-turn traffic light is green."
+  },
+  {
+    "clip_id": "709fe679-4f3e-4938-8767-23886741c6bc",
+    "t0": 6410190000,
+    "clip_start_timestamp": 6399190000,
+    "t0_relative": 11000000,
+    "nav_text": "Turn left in 6m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 6.1,
+    "cot": "Turn right at the intersection since the right-turn traffic light is green."
+  },
+  {
+    "clip_id": "ea7bbd31-b7a5-4972-8dbd-7089e6b53de4",
+    "t0": 3266495140000,
+    "clip_start_timestamp": 3266491140000,
+    "t0_relative": 4000000,
+    "nav_text": "Turn right in 30m",
+    "nav_maneuver": "TURN_RIGHT",
+    "distance_m": 29.8,
+    "cot": "Keep distance to the lead vehicle because it is slowing to turn left ahead."
+  },
+  {
+    "clip_id": "1ae17e2a-bc07-4e57-a04b-e9d5a372cd1e",
+    "t0": 29709185000,
+    "clip_start_timestamp": 29703000080,
+    "t0_relative": 6184920,
+    "nav_text": "Turn left in 10m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 10.2,
+    "cot": "Yield to the cross-traffic vehicle because it is crossing the intersection ahead"
+  },
+  {
+    "clip_id": "681c26a7-168b-400d-bcf4-c3a807ca5f8b",
+    "t0": 6082074165000,
+    "clip_start_timestamp": 6082065165000,
+    "t0_relative": 9000000,
+    "nav_text": "Turn right in 16m",
+    "nav_maneuver": "TURN_RIGHT",
+    "distance_m": 15.7,
+    "cot": "Accelerate to proceed through the intersection since the straight traffic light turns green."
+  },
+  {
+    "clip_id": "b4a2c25d-7f1c-4446-856a-a1c862af9c16",
+    "t0": 47533736000,
+    "clip_start_timestamp": 47521736000,
+    "t0_relative": 12000000,
+    "nav_text": "Turn left in 13m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 13.0,
+    "cot": "Accelerate to proceed through the intersection since the straight traffic light is green."
+  },
+  {
+    "clip_id": "c9c045a3-ebe9-4569-9ce3-a44068cf2e3b",
+    "t0": 6079738436000,
+    "clip_start_timestamp": 6079736436000,
+    "t0_relative": 2000000,
+    "nav_text": "Turn left in 18m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 17.8,
+    "cot": "Turn left at the intersection since the traffic light is green."
+  },
+  {
+    "clip_id": "99baefc2-e9c3-4e84-bea9-71608e48d580",
+    "t0": 17514682000,
+    "clip_start_timestamp": 17507682000,
+    "t0_relative": 7000000,
+    "nav_text": "Turn left in 7m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 7.2,
+    "cot": "Turn right at the intersection to follow the route."
+  },
+  {
+    "clip_id": "bd65ae5a-7c50-4d33-a953-bd382c108d04",
+    "t0": 1674237661326000,
+    "clip_start_timestamp": 1674237649326000,
+    "t0_relative": 12000000,
+    "nav_text": "Turn left in 10m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 9.7,
+    "cot": "Yield to the cross-traffic because a truck is crossing the intersection ahead."
+  }
+]

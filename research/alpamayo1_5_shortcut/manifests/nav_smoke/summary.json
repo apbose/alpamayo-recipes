@@ -1,0 +1,48 @@
+{
+  "annotation_rows": {
+    "test": 3,
+    "train": 10,
+    "val": 7
+  },
+  "chunks": {
+    "test": [
+      317,
+      2277,
+      2634
+    ],
+    "train": [
+      420,
+      727,
+      728,
+      1519,
+      1657,
+      2368,
+      2372,
+      2447,
+      2868
+    ],
+    "val": [
+      214,
+      224,
+      276,
+      968,
+      982,
+      1984,
+      2599
+    ]
+  },
+  "overlap_counts": {
+    "train_test": 0,
+    "train_val": 0,
+    "val_test": 0
+  },
+  "policy": "Use PhysicalAI clip_index official split; keep every row from a clip together",
+  "source_annotations": "https://github.com/NVlabs/alpamayo1.5/blob/main/notebooks/nav_demo_samples.json",
+  "source_annotations_sha256": "3c0f277f0d65cda15fcfa38b2654971182a5eefb854d85ab94a3ee7e538fac25",
+  "source_clip_index": "nvidia/PhysicalAI-Autonomous-Vehicles:clip_index.parquet",
+  "unique_clips": {
+    "test": 3,
+    "train": 9,
+    "val": 7
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "claims_excluded": [
+    "official NVIDIA benchmark",
+    "full PhysicalAI-AV training",
+    "navigation-conditioned scale result",
+    "closed-loop safety",
+    "one-step success",
+    "5.16x end-to-end speedup"
+  ],
+  "data": {
+    "audited_clips": 1877,
+    "audited_windows": 22524,
+    "local_chunks": 19,
+    "local_size_approx_gb": 100,
+    "mode": "route_less",
+    "training_clips": 891,
+    "training_windows": 10692,
+    "validation_clips": 32,
+    "validation_manifest_sha256": "0d70d2422e7dcc10800f8d16ba642af49d8113d627882436a7a46b3f0fae0d31",
+    "validation_windows": 32
+  },
+  "evaluation": {
+    "attention_backend": "eager",
+    "gpu": "NVIDIA B300 SXM6 AC",
+    "latency_unit": "milliseconds",
+    "metrics_unit": "meters",
+    "num_trajectory_candidates": 6,
+    "released": {
+      "10": {
+        "ADE": 2.115910441149026,
+        "action_expert_ms": 402.74995446770845,
+        "corner_distance": 1.1567186350002885,
+        "end_to_end_ms": 10711.415029561977,
+        "minADE": 1.1765956594608724
+      },
+      "2": {
+        "ADE": 1.961370016913861,
+        "action_expert_ms": 78.14028740631329,
+        "corner_distance": 1.5286071235314012,
+        "end_to_end_ms": 10381.723319999764,
+        "minADE": 1.503154521342367
+      },
+      "4": {
+        "ADE": 1.9757879581302404,
+        "action_expert_ms": 159.23253456230668,
+        "corner_distance": 1.2625921862199903,
+        "end_to_end_ms": 10443.429811062742,
+        "minADE": 1.2679039724171162
+      },
+      "8": {
+        "ADE": 2.080281778704375,
+        "action_expert_ms": 321.6073180001331,
+        "corner_distance": 1.173779373522848,
+        "end_to_end_ms": 10625.590107156768,
+        "minADE": 1.1844467099290341
+      }
+    },
+    "seed_reset_per_solver_count": 42,
+    "trained_shortcut": {
+      "10": {
+        "ADE": 1.4117388966260478,
+        "action_expert_ms": 404.0182378744248,
+        "corner_distance": 0.8116601133078802,
+        "end_to_end_ms": 10711.367762687587,
+        "minADE": 0.7817828950937837
+      },
+      "2": {
+        "ADE": 1.422850567731075,
+        "action_expert_ms": 78.25685337456889,
+        "corner_distance": 0.923124081993592,
+        "end_to_end_ms": 10402.059295252002,
+        "minADE": 0.8917410819994984
+      },
+      "4": {
+        "ADE": 1.3654748408007436,
+        "action_expert_ms": 159.5578396872952,
+        "corner_distance": 0.840844629710773,
+        "end_to_end_ms": 10449.007787124629,
+        "minADE": 0.8127567020128481
+      },
+      "8": {
+        "ADE": 1.4007860146230087,
+        "action_expert_ms": 322.1767361874299,
+        "corner_distance": 0.820816299848957,
+        "end_to_end_ms": 10636.622739812992,
+        "minADE": 0.7975295125797857
+      }
+    },
+    "warmup_samples_per_solver_count": 1
+  },
+  "schema_version": 1,
+  "status": "two_step_gate_closed",
+  "training": {
+    "action_expert_trainable": true,
+    "checkpoint_validation_passed": true,
+    "epochs": 1,
+    "first_100": {
+      "flow_loss": 0.76616108,
+      "shortcut_loss": 0.05334833,
+      "weighted_loss": 0.67705948625
+    },
+    "flow_step_size": 0.125,
+    "last_100": {
+      "flow_loss": 0.42567624,
+      "shortcut_loss": 0.02146816,
+      "weighted_loss": 0.37515023
+    },
+    "optimizer_updates": 10692,
+    "per_device_batch_size": 1,
+    "shortcut_loss_weight": 0.125,
+    "shortcut_step_sizes": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "step_size_counts": {
+      "0.25": 3564,
+      "0.5": 3564,
+      "1.0": 3564
+    },
+    "teacher": "online_stopped_gradient",
+    "vlm_frozen": true
+  },
+  "two_step_gate": {
+    "decision": "do_not_pursue_one_step",
+    "efficiency_passed": true,
+    "max_quality_regression": 0.1,
+    "min_action_expert_speedup": 4.0,
+    "overall_passed": false,
+    "quality_passed": false,
+    "safety_available": false,
+    "safety_passed": false,
+    "versus_trained_10_step": {
+      "ADE_relative_change": 0.007870910925230774,
+      "action_expert_speedup": 5.162720202160831,
+      "corner_distance_relative_change": 0.13732838026430289,
+      "minADE_relative_change": 0.1406505407009755
+    }
+  },
+  "upstream": {
+    "experiment_base_commit": "6172113",
+    "model": "nvidia/Alpamayo-1.5-10B",
+    "repository": "https://github.com/NVlabs/alpamayo-recipes",
+    "sharing_branch_base_commit": "670b551"
+  }
+}

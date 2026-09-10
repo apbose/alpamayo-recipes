@@ -1,0 +1,72 @@
+[
+  {
+    "clip_id": "70d71413-d377-4836-ae6a-72f3b3bb5c49",
+    "t0": 53883612000,
+    "clip_start_timestamp": 53875612000,
+    "t0_relative": 8000000,
+    "nav_text": "Turn left in 15m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 15.1,
+    "cot": "Turn right at the intersection since cross traffic clears"
+  },
+  {
+    "clip_id": "8455d8a6-3c18-473b-90fd-a89038684c6f",
+    "t0": 36599313899,
+    "clip_start_timestamp": 36589313899,
+    "t0_relative": 10000000,
+    "nav_text": "Turn left in 4m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 3.8,
+    "cot": "Turn right at the intersection since the traffic light turns green."
+  },
+  {
+    "clip_id": "e7471b86-88f5-40a4-9d99-a005ff13db15",
+    "t0": 1651598522064000,
+    "clip_start_timestamp": 1651598511064000,
+    "t0_relative": 11000000,
+    "nav_text": "Turn left in 5m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 5.2,
+    "cot": "Turn right at the intersection since the traffic light is green."
+  },
+  {
+    "clip_id": "f4fc523c-4dd8-4728-b35d-e8aed5399028",
+    "t0": 3543354400000,
+    "clip_start_timestamp": 3543343400000,
+    "t0_relative": 11000000,
+    "nav_text": "Turn left in 7m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 7.3,
+    "cot": "Turn right at the intersection since the right-turn traffic light is green."
+  },
+  {
+    "clip_id": "6fb1a5f2-fbbd-40fb-9bfa-bc3ada06e503",
+    "t0": 6578043000,
+    "clip_start_timestamp": 6568043000,
+    "t0_relative": 10000000,
+    "nav_text": "Turn left in 11m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 11.1,
+    "cot": "Accelerate to proceed through the intersection since the straight traffic light turns green."
+  },
+  {
+    "clip_id": "b7dd3c46-ca94-4ffa-a8cf-3a13350c8aba",
+    "t0": 6094889000,
+    "clip_start_timestamp": 6089889000,
+    "t0_relative": 5000000,
+    "nav_text": "Turn left in 5m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 4.9,
+    "cot": "Turn right at the intersection since the intersection is clear."
+  },
+  {
+    "clip_id": "7ec7451c-a58a-49bc-a3b3-70330a314434",
+    "t0": 1668471418165654,
+    "clip_start_timestamp": 1668471410165654,
+    "t0_relative": 8000000,
+    "nav_text": "Turn left in 5m",
+    "nav_maneuver": "TURN_LEFT",
+    "distance_m": 4.6,
+    "cot": "Accelerate to proceed through the intersection since the straight traffic light is green."
+  }
+]

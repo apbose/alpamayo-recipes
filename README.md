@@ -1,5 +1,11 @@
 # NVIDIA Alpamayo Developer Hub
 
+> **Research-fork note:** this branch contains an unofficial Alpamayo 1.5
+> Stage-2 Shortcut Models pilot. Start with
+> [`research/alpamayo1_5_shortcut/README.md`](research/alpamayo1_5_shortcut/README.md).
+> The upstream NVIDIA code and documentation remain the baseline; the shortcut
+> result is an open-loop research experiment and is not a vehicle-safety claim.
+
 **Open platform for reasoning-based autonomous driving.** Vision Language Action models, closed-loop simulation, reinforcement learning, reasoning-based auto-labeling, and open driving datasets for transparent driving.
 
 <div align="center">

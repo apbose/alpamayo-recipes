@@ -1,0 +1,28 @@
+_target_: alpamayo1_5_sft.models.shortcut_alpamayo_r1.ShortcutTrainableAlpamayoR1.from_pretrained
+pretrained_model_name_or_path: nvidia/Alpamayo-1.5-10B
+dtype: auto
+cotrain_vlm: false
+stage1_vlm_checkpoint_path: null
+
+# d -> 0 flow anchor is approximated with the smallest dyadic interval used
+# by the shortcut hierarchy. Larger intervals are added by self-consistency.
+shortcut_flow_step_size: 0.125
+shortcut_step_sizes: [0.25, 0.5, 1.0]
+
+# Cycle consecutive samples through every level. The sampler cursor is a
+# persistent model buffer, so saved checkpoints resume at the next level.
+shortcut_level_sampling: balanced_cycle
+
+
+# The reference shortcut implementation assigns one eighth of each batch to
+# bootstrap examples. Batch size one cannot split examples, so both branches
+# run on every sample and are combined with this equivalent 1/8 weighting.
+shortcut_loss_weight: 0.125
+shortcut_target_clip: 4.0
+
+# Initial implementation: current online expert with stopped gradients.
+# Keep explicit so a later EMA-teacher experiment cannot be confused with it.
+shortcut_teacher_mode: online
+
+step_size_fourier_feats: 20
+step_size_hidden_size: 256

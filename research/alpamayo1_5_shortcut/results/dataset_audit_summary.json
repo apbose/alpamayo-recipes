@@ -1,0 +1,77 @@
+{
+  "all_rows_passed": true,
+  "audit_complete": true,
+  "clip_overlap_counts": {
+    "train_test": 0,
+    "train_val": 0,
+    "val_test": 0
+  },
+  "clips_by_split": {
+    "test": 298,
+    "train": 891,
+    "val": 688
+  },
+  "completed_rows": 22524,
+  "expected_contract": {
+    "camera_indices": [
+      0,
+      1,
+      2,
+      6
+    ],
+    "future_steps": 64,
+    "history_steps": 16,
+    "image_shape": [
+      4,
+      4,
+      3,
+      1080,
+      1920
+    ],
+    "trajectory_hz": 10
+  },
+  "failed_rows": 0,
+  "local_chunks": [
+    214,
+    224,
+    276,
+    317,
+    420,
+    727,
+    728,
+    968,
+    982,
+    1519,
+    1657,
+    1984,
+    2277,
+    2368,
+    2372,
+    2447,
+    2599,
+    2634,
+    2868
+  ],
+  "local_valid_clips": 1877,
+  "navigation_text_included": false,
+  "rows_by_split": {
+    "test": 3576,
+    "train": 10692,
+    "val": 8256
+  },
+  "schema_version": 1,
+  "t0_relative_values_us": [
+    2000000,
+    3000000,
+    4000000,
+    5000000,
+    6000000,
+    7000000,
+    8000000,
+    9000000,
+    10000000,
+    11000000,
+    12000000,
+    13000000
+  ]
+}
