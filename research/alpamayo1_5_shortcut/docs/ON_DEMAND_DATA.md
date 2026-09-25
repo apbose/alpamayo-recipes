@@ -41,13 +41,14 @@ read selected clip members and decode frames
 This is on-demand file access, not the Hugging Face `datasets` library's
 `IterableDataset` training abstraction.
 
-## Why our current A1.5 training is local
+## Original local-only baseline
 
 NVIDIA's Alpamayo 1.5 Stage-2 recipe uses
 `alpamayo.data.pai_utils.PhysicalAIAVDatasetLocalInterface`. Our
 `PAITrajectoryDataset` was built on that same local interface. Therefore the
-current shortcut branch requires the selected camera/calibration/ego-motion
-chunk files on disk.
+original shortcut pilot required the selected camera/calibration/ego-motion
+chunk files on disk. Local access remains the default; this branch now also
+supports `access_mode=hf_stream` with `maybe_stream=True`.
 
 The Alpamayo 2 inference loader also defaults to seven cameras, whereas this
 Alpamayo 1.5 Stage-2 recipe uses four. It is a useful reference implementation,
@@ -55,8 +56,8 @@ not a drop-in training dataset for this experiment.
 
 ## Can we train on demand?
 
-Technically, yes, after adding an HF-backed A1.5 dataset class or a compatible
-interface switch. Whether it is practical must be measured. Randomized,
+Yes: `PAITrajectoryDataset` now accepts the explicit HF-backed interface switch,
+and the 5,295-clip training experiments completed using it. Randomized,
 multi-worker training repeatedly seeks inside large packed archives; network
 latency, retries, rate limits, worker contention, and cache behavior can leave
 the GPU idle. Multiple windows from the same clip/chunk make persistent local
@@ -75,11 +76,19 @@ local is sensible because every chunk is reused many times. For scaling beyond
 those chunks, an on-demand persistent cache is worth implementing and
 benchmarking before downloading the complete corpus.
 
-## Proposed separate issue
+## Measured follow-up
 
-Implement an HF-backed route-less dataset behind an explicit configuration
-flag, without replacing the proven local loader. Benchmark at least 128 fixed
-samples with:
+The optional HF-backed interface has now passed exact local/remote parity on a
+shared sample and raw shape/finite-value validation on a previously uncached
+sample. An explicit 301.765 GB source-shard manifest covers 5,295 new training
+clips; see [HF_STREAMING_300GB.md](HF_STREAMING_300GB.md). The full training
+path remains a bounded experiment because streaming throughput, not disk
+capacity, is the principal risk.
+
+## Remaining throughput study
+
+The interface switch and small-sample parity/throughput checks are implemented.
+For a larger systems study, benchmark at least 128 fixed samples with:
 
 - cold cache and warm cache;
 - 1, 2, and 4 data-loader workers;
@@ -90,6 +99,6 @@ samples with:
 - a pinned PhysicalAI-AV revision for reproducibility.
 
 Adopt it for training only if the warm-cache path is correct and input loading
-does not materially starve the GPU. The GitLab issue template at
+does not materially starve the GPU. The GitHub issue template at
 `.github/ISSUE_TEMPLATE/on-demand-physicalai-data.md` captures
 these acceptance criteria.

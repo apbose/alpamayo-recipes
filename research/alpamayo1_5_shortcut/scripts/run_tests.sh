@@ -18,4 +18,8 @@ cd "$RECIPE_DIR"
 "$PYTHON_BIN" -m pytest -q \
   tests/test_shortcut_modules.py \
   tests/test_shortcut_model_config.py \
-  tests/test_pai_trajectory.py
+  tests/test_pai_trajectory.py \
+  tests/test_paper_shortcut.py \
+  tests/test_paper_empirical_ablation.py
+
+"$PYTHON_BIN" "$SCRIPT_DIR/test_fill_missing_evaluations.py"

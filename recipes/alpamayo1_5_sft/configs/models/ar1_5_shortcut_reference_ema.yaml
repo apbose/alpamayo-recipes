@@ -1,0 +1,13 @@
+defaults:
+  - ar1_5_shortcut_reference
+  - _self_
+
+# Matched EMA ablation: preserve the completed run's 1-in-8 branch allocation
+# and change only how the two stopped-gradient half-step targets are produced.
+shortcut_teacher_mode: ema
+shortcut_ema_decay: 0.999
+shortcut_ema_dtype: float32
+
+# The paper also evaluates EMA parameters. This affects inference only; the
+# full-step student remains the optimized model during training.
+shortcut_inference_weights: ema

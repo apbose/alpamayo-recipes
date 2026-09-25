@@ -1,5 +1,11 @@
 # Method
 
+This document starts with the historical v1 pilot and then its follow-ups.
+For the complete experiment inventory and the separate full-hierarchy
+paper-target EMA port, see [the ablation ledger](ABLATION_LEDGER_2026-09-20.md).
+The older `reference_partition` name does not mean an exact reproduction of
+the paper's full target-construction algorithm.
+
 ## Stage-2 baseline
 
 The released Alpamayo 1.5 Stage-2 path freezes the VLM and trains the Action
@@ -131,3 +137,32 @@ was the current online expert in evaluation/no-gradient mode, not an EMA copy.
   withheld after the two-step gate failed.
 - The main experiment omitted navigation conditioning because genuine route
   text was unavailable at scale.
+
+
+## Optional reference-partition estimator
+
+The follow-up configuration
+`configs/models/ar1_5_shortcut_reference.yaml` leaves the v1 estimator as the
+default and changes only sample allocation. A checkpoint-persistent cursor
+assigns one of every eight global samples to shortcut self-consistency and the
+other seven to flow matching. With eight DDP ranks and local batch size one,
+rank 0 receives the shortcut example and ranks 1–7 receive flow examples in
+each optimizer step; DDP averages their gradients.
+
+This reduces Action-Expert forward calls from 32 per eight examples in v1
+(every example computes two teacher calls, one shortcut student, and one flow
+student) to 10 per eight examples (three for the one shortcut example and one
+for each of seven flow examples). Both modes reuse one frozen-VLM KV cache per
+sample. This allocation matches the reference estimator, but the current
+teacher remains online/stopped-gradient rather than EMA.
+
+## EMA-teacher follow-up
+
+The statement above describes the completed online-teacher checkpoint. An
+opt-in matched follow-up now maintains an FP32 EMA copy of the Action Expert,
+uses it for stopped-gradient half-step targets, updates it after each optimizer
+step with decay `0.999`, and uses EMA action modules at inference. It preserves
+the existing one-in-eight allocation and `M=8` dyadic ladder so EMA can be
+isolated; it does not silently relabel that experiment as the paper's 25%
+bootstrap, `M=128` setup. See
+[EMA_TEACHER_EXPERIMENT_2026-09-15.md](EMA_TEACHER_EXPERIMENT_2026-09-15.md).

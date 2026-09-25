@@ -1,0 +1,7 @@
+defaults:
+  - sft_stage2_trajectory_shortcut_reference_ema
+  - /models/ar1_5_shortcut_paper_ema@model
+  - _self_
+
+# Local evaluation; training uses the dedicated global-target-batch driver.
+task_name: alpamayo15_paper_target_ema

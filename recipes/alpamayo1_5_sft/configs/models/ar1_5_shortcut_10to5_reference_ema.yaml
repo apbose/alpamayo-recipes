@@ -1,0 +1,22 @@
+defaults:
+  - ar1_5_shortcut_reference_ema
+  - _self_
+
+# Targeted 10-to-5 distillation. The EMA teacher composes two d=0.1
+# predictions; the student learns one D=0.2 prediction.
+shortcut_flow_step_size: 0.1
+shortcut_step_sizes: [0.2]
+
+# 0.2 exactly partitions [0, 1] into five solver calls but is non-dyadic.
+# Keep this exception local to this experiment.
+shortcut_require_dyadic_steps: false
+
+# Match the 75% empirical-flow / 25% bootstrap allocation reported in the
+# Shortcut Models paper: on an eight-rank global batch this is 6 flow + 2
+# shortcut samples per optimizer update.
+shortcut_loss_estimator: reference_partition
+shortcut_bootstrap_every: 4
+shortcut_loss_weight: 0.25
+
+shortcut_teacher_mode: ema
+shortcut_inference_weights: ema

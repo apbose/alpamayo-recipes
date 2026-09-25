@@ -8,6 +8,7 @@ stage1_vlm_checkpoint_path: null
 # by the shortcut hierarchy. Larger intervals are added by self-consistency.
 shortcut_flow_step_size: 0.125
 shortcut_step_sizes: [0.25, 0.5, 1.0]
+shortcut_require_dyadic_steps: true
 
 # Cycle consecutive samples through every level. The sampler cursor is a
 # persistent model buffer, so saved checkpoints resume at the next level.
@@ -23,6 +24,11 @@ shortcut_target_clip: 4.0
 # Initial implementation: current online expert with stopped gradients.
 # Keep explicit so a later EMA-teacher experiment cannot be confused with it.
 shortcut_teacher_mode: online
+
+# v1 behavior: each sample evaluates both objectives. The separate reference
+# model config changes this to a 1-in-8 global-batch partition.
+shortcut_loss_estimator: per_sample_weighted
+shortcut_bootstrap_every: 8
 
 step_size_fourier_feats: 20
 step_size_hidden_size: 256

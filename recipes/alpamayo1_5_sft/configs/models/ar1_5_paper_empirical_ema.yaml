@@ -1,0 +1,8 @@
+defaults:
+  - ar1_5_shortcut_paper_ema
+  - _self_
+
+# Loss-target-only ablation: preserve the full hierarchy/source/noise/time
+# assignment and EMA, but regress to empirical velocity in ALL target slots.
+# This is not NVIDIA's adapter-free vanilla flow model.
+paper_supervision: empirical_velocity

@@ -5,17 +5,17 @@
 from __future__ import annotations
 
 import copy
+from collections.abc import Sequence
 from dataclasses import dataclass
 from numbers import Real
-from typing import Any, Sequence
+from typing import Any
 
 import torch
-from torch import nn
-
 from alpamayo_r1.models.action_in_proj import (
     FourierEncoderV2,
     PerWaypointActionInProjV2,
 )
+from torch import nn
 
 
 @dataclass(frozen=True)
@@ -36,28 +36,142 @@ class ShortcutTrainingData:
     def midpoint_timesteps(self) -> torch.Tensor:
         return self.timesteps + self.half_step_sizes
 
+@torch.no_grad()
+def update_ema_module_(
+    ema_module: nn.Module,
+    online_module: nn.Module,
+    *,
+    decay: float,
+) -> None:
+    """Update one EMA module from its online counterpart in place.
 
-def validate_shortcut_step_sizes(step_sizes: Sequence[float]) -> tuple[float, ...]:
+    EMA parameters may intentionally be float32 while online parameters are
+    bfloat16. Converting each source tensor to the destination dtype before the
+    interpolation keeps the running average numerically useful at decay values
+    such as 0.999. Non-floating buffers are copied exactly.
+    """
+    if not 0.0 <= decay < 1.0:
+        raise ValueError(f"EMA decay must be in [0, 1), got {decay}")
+
+    ema_parameters = dict(ema_module.named_parameters())
+    online_parameters = dict(online_module.named_parameters())
+    if ema_parameters.keys() != online_parameters.keys():
+        raise ValueError("EMA and online module parameter names do not match")
+
+    update_weight = 1.0 - decay
+    for name, ema_parameter in ema_parameters.items():
+        online_parameter = online_parameters[name].detach().to(
+            device=ema_parameter.device,
+            dtype=ema_parameter.dtype,
+        )
+        ema_parameter.lerp_(online_parameter, update_weight)
+
+    ema_buffers = dict(ema_module.named_buffers())
+    online_buffers = dict(online_module.named_buffers())
+    if ema_buffers.keys() != online_buffers.keys():
+        raise ValueError("EMA and online module buffer names do not match")
+
+    for name, ema_buffer in ema_buffers.items():
+        online_buffer = online_buffers[name].detach().to(
+            device=ema_buffer.device,
+            dtype=ema_buffer.dtype,
+        )
+        if ema_buffer.is_floating_point():
+            ema_buffer.lerp_(online_buffer, update_weight)
+        else:
+            ema_buffer.copy_(online_buffer)
+
+
+
+def validate_shortcut_step_sizes(
+    step_sizes: Sequence[float],
+    *,
+    require_dyadic: bool = True,
+) -> tuple[float, ...]:
+    """Validate solver intervals that exactly partition the unit flow path.
+
+    The original experiment uses a dyadic hierarchy. Targeted experiments such
+    as 10-to-5 distillation use ``d=0.2`` and may opt out of the power-of-two
+    restriction while retaining the exact-partition requirement.
+    """
     result = tuple(float(step_size) for step_size in step_sizes)
     if not result:
         raise ValueError("shortcut step_sizes must not be empty")
 
     for step_size in result:
         if not 0.0 < step_size <= 1.0:
-            raise ValueError(
-                f"every shortcut step_size must be in (0, 1], got {step_size}"
-            )
+            raise ValueError(f"every shortcut step_size must be in (0, 1], got {step_size}")
         sections = round(1.0 / step_size)
         if sections <= 0 or abs(sections * step_size - 1.0) > 1e-6:
-            raise ValueError(
-                "shortcut step_sizes must partition [0, 1] exactly; "
-                f"got {step_size}"
-            )
-        if sections & (sections - 1):
-            raise ValueError(
-                f"shortcut step_sizes must be dyadic, got {step_size}"
-            )
+            raise ValueError(f"shortcut step_sizes must partition [0, 1] exactly; got {step_size}")
+        if require_dyadic and sections & (sections - 1):
+            raise ValueError(f"shortcut step_sizes must be dyadic, got {step_size}")
     return result
+
+
+class ReferenceShortcutBranchSampler(nn.Module):
+    """Allocate one bootstrap sample for every ``bootstrap_every`` samples.
+
+    The original Shortcut Models implementation partitions a physical batch.
+    This sampler applies the same allocation over the global DDP batch (or over
+    consecutive microbatches when gradient accumulation is used). Its cursor is
+    checkpoint-persistent so a resumed run preserves the exact ratio.
+    """
+
+    def __init__(self, bootstrap_every: int = 8, start_index: int = 0) -> None:
+        super().__init__()
+        if bootstrap_every <= 1:
+            raise ValueError("bootstrap_every must be greater than one")
+        if not 0 <= start_index < bootstrap_every:
+            raise ValueError("start_index must be in [0, bootstrap_every)")
+        self.bootstrap_every = int(bootstrap_every)
+        self.register_buffer(
+            "cursor",
+            torch.tensor(start_index, dtype=torch.long),
+            persistent=True,
+        )
+
+    def reset(self, start_index: int = 0) -> None:
+        """Reset the next global sample position."""
+        if not 0 <= start_index < self.bootstrap_every:
+            raise ValueError("start_index must be in [0, bootstrap_every)")
+        self.cursor.fill_(start_index)
+
+    @torch.no_grad()
+    def forward(
+        self,
+        batch_size: int,
+        *,
+        device: torch.device,
+        rank: int | None = None,
+        world_size: int | None = None,
+    ) -> torch.Tensor:
+        """Return a Boolean bootstrap mask and advance by the global batch."""
+        if batch_size <= 0:
+            raise ValueError("batch_size must be positive")
+        if (rank is None) != (world_size is None):
+            raise ValueError("rank and world_size must be provided together")
+        if rank is None:
+            if torch.distributed.is_available() and torch.distributed.is_initialized():
+                rank = torch.distributed.get_rank()
+                world_size = torch.distributed.get_world_size()
+            else:
+                rank = 0
+                world_size = 1
+        assert world_size is not None
+        if world_size <= 0:
+            raise ValueError("world_size must be positive")
+        if not 0 <= rank < world_size:
+            raise ValueError("rank must be in [0, world_size)")
+
+        current = int(self.cursor.item())
+        global_positions = (
+            torch.arange(batch_size, device=device, dtype=torch.long) + current + rank * batch_size
+        )
+        bootstrap_mask = global_positions.remainder(self.bootstrap_every).eq(0)
+        next_cursor = (current + world_size * batch_size) % self.bootstrap_every
+        self.cursor.fill_(next_cursor)
+        return bootstrap_mask
 
 
 class BalancedShortcutLevelSampler(nn.Module):
@@ -132,6 +246,7 @@ def construct_shortcut_training_data(
     level_indices: torch.Tensor | None = None,
     time_indices: torch.Tensor | None = None,
     generator: torch.Generator | None = None,
+    require_dyadic: bool = True,
 ) -> ShortcutTrainingData:
     """Sample aligned (x_t, t, d) values for shortcut consistency.
 
@@ -144,7 +259,10 @@ def construct_shortcut_training_data(
     """
     if x.ndim < 2 or x.shape[0] <= 0:
         raise ValueError("x must have a non-empty batch dimension")
-    levels = validate_shortcut_step_sizes(step_sizes)
+    levels = validate_shortcut_step_sizes(
+        step_sizes,
+        require_dyadic=require_dyadic,
+    )
     batch_size = x.shape[0]
     device = x.device
 
@@ -351,8 +469,7 @@ class StepSizeConditionedActionInProjV2(PerWaypointActionInProjV2):
                 result = first[:, 0]
         else:
             raise TypeError(
-                "step_size must be a real scalar, tensor, or None; "
-                f"got {type(step_size).__name__}"
+                f"step_size must be a real scalar, tensor, or None; got {type(step_size).__name__}"
             )
 
         if not bool(torch.isfinite(result).all()):

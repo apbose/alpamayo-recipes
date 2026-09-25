@@ -23,8 +23,11 @@ from omegaconf import DictConfig, OmegaConf
 from alpamayo_r1.common import logging
 from alpamayo.common import misc
 
-from alpamayo1_5_sft.trainer import ReasoningVLA_Trainer
-from alpamayo1_5_sft.trainer import TrainingArguments
+from alpamayo1_5_sft.trainer import (
+    ReasoningVLA_Trainer,
+    ShortcutEMATeacherCallback,
+    TrainingArguments,
+)
 from alpamayo1_5_sft.performance.apply_optimizations import (
     apply_model_optimizations,
     apply_runtime_optimizations,
@@ -77,6 +80,9 @@ def train(cfg: DictConfig) -> None:
     for cb_name, cb_cfg in cfg.callbacks.items():
         logger.info(f"Initializing callback {cb_name}")
         callbacks.append(hyu.instantiate(cb_cfg, _convert_="partial"))
+    if getattr(model, "shortcut_teacher_mode", None) == "ema":
+        logger.info("Enabling post-optimizer Shortcut EMA teacher updates")
+        callbacks.append(ShortcutEMATeacherCallback())
 
     trainer = ReasoningVLA_Trainer(
         model=model,

@@ -24,13 +24,13 @@ from typing import Any
 import hydra.utils as hyu
 import numpy as np
 import torch
+from alpamayo1_5_sft.trainer import ReasoningVLA_Trainer, TrainingArguments
 from hydra import compose, initialize_config_module
 from omegaconf import OmegaConf
 from tqdm.auto import tqdm
 
 from alpamayo.common import distributed
 from alpamayo.metrics.metric_api import DistanceMetrics
-from alpamayo1_5_sft.trainer import ReasoningVLA_Trainer, TrainingArguments
 
 
 def parse_args() -> argparse.Namespace:
@@ -47,6 +47,10 @@ def parse_args() -> argparse.Namespace:
             "sft_stage2_nav",
             "sft_stage2_nav_shortcut",
             "sft_stage2_trajectory_shortcut",
+            "sft_stage2_trajectory_shortcut_reference_ema",
+            "sft_stage2_trajectory_shortcut_10to5_reference_ema",
+            "sft_stage2_trajectory_shortcut_paper_ema",
+            "sft_stage2_trajectory_paper_empirical_ema",
         ),
         default="sft_stage2_trajectory_shortcut",
         help="Use the shortcut config when loading a trained delta-t checkpoint.",
@@ -60,15 +64,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--manifest-dir",
         type=Path,
-        default=(
-            Path(__file__).resolve().parents[1]
-            / "manifests/route_less_19chunks"
-        ),
+        default=(Path(__file__).resolve().parents[1] / "manifests/route_less_19chunks"),
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
         default=Path(__file__).resolve().parents[1] / "outputs/benchmark",
+    )
+    parser.add_argument(
+        "--eval-split",
+        choices=("val", "test"),
+        default="val",
+        help="Manifest split to present through the recipe's evaluation dataset.",
     )
     parser.add_argument(
         "--attention-backend",
@@ -79,6 +86,43 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-traj-samples", type=int, default=6)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--warmup-samples", type=int, default=1)
+    parser.add_argument(
+        "--zero-step-size-adapter",
+        action="store_true",
+        help=(
+            "Zero the trained step-size adapter after loading. This is an "
+            "inference-only ablation; it never modifies the checkpoint on disk."
+        ),
+    )
+    parser.add_argument(
+        "--step-size-adapter-scale",
+        type=float,
+        default=1.0,
+        help=(
+            "Multiply the trained adapter's final projection by this non-negative "
+            "factor after loading. The checkpoint on disk is never modified."
+        ),
+    )
+    parser.add_argument(
+        "--shortcut-inference-weights",
+        choices=("student", "ema"),
+        default=None,
+        help=(
+            "Override which action modules an EMA shortcut checkpoint exposes "
+            "to the inherited sampler. Omit to use the model config."
+        ),
+    )
+    parser.add_argument(
+        "--expected-ema-updates",
+        type=int,
+        default=None,
+        help="Fail unless a reloaded EMA checkpoint has this update count.",
+    )
+    parser.add_argument(
+        "--verify-checkpoint-shortcut-config",
+        action="store_true",
+        help="Reject a recipe that overrides the trained checkpoint's shortcut grid/objective.",
+    )
     return parser.parse_args()
 
 
@@ -105,6 +149,27 @@ def percentile(values: list[float], quantile: float) -> float:
     if lower == upper:
         return ordered[lower]
     return ordered[lower] * (upper - position) + ordered[upper] * (position - lower)
+
+
+def add_ten_step_comparisons(step_results: dict) -> None:
+    """Only compare timings when ten steps were measured in this same run.
+
+    Missing-cell evaluations may deliberately request just five or two steps.
+    Do not invent a baseline or import timings from another host/run.
+    """
+    baseline = step_results.get("10")
+    for result in step_results.values():
+        result["comparison_to_10_step"] = None if baseline is None else {
+            "end_to_end_speedup": (
+                baseline["latency_ms"]["end_to_end_model"]["mean"]
+                / result["latency_ms"]["end_to_end_model"]["mean"]
+            ),
+            "action_expert_speedup": (
+                baseline["latency_ms"]["action_expert_diffusion"]["mean"]
+                / result["latency_ms"]["action_expert_diffusion"]["mean"]
+            ),
+            "min_ade_delta": result["metrics"]["min_ade"] - baseline["metrics"]["min_ade"],
+        }
 
 
 def latency_stats(values: list[float]) -> dict[str, float]:
@@ -150,9 +215,7 @@ def verify_attention_backends(
         "action_expert",
     )
     unexpected = {
-        name: backends[name]
-        for name in required
-        if backends[name] != expected_backend
+        name: backends[name] for name in required if backends[name] != expected_backend
     }
     if unexpected:
         raise RuntimeError(
@@ -166,18 +229,86 @@ def verify_attention_backends(
     return backends
 
 
+def verify_shortcut_ema_runtime(
+    model: torch.nn.Module,
+    expected_updates: int | None = None,
+    expected_inference_weights: str | None = None,
+) -> dict[str, Any]:
+    """Record and validate the active student/EMA inference state."""
+    teacher_mode = getattr(model, "shortcut_teacher_mode", None)
+    runtime = {
+        "teacher_mode": teacher_mode,
+        "inference_weights": getattr(model, "shortcut_inference_weights", None),
+        "configured_dtype": getattr(model, "shortcut_ema_dtype", None),
+        "decay": getattr(model, "shortcut_ema_decay", None),
+        "updates": None,
+        "parameter_dtypes": [],
+    }
+    if teacher_mode != "ema":
+        if expected_updates is not None or expected_inference_weights == "ema":
+            raise RuntimeError(
+                "EMA checkpoint runtime was required, but the model loaded with "
+                f"teacher_mode={teacher_mode!r} and "
+                f"inference_weights={runtime['inference_weights']!r}"
+            )
+        return runtime
+
+    ema_modules = (
+        model.ema_action_in_proj,
+        model.ema_expert,
+        model.ema_action_out_proj,
+    )
+    runtime["parameter_dtypes"] = sorted(
+        {
+            str(parameter.dtype)
+            for module in ema_modules
+            for parameter in module.parameters()
+        }
+    )
+    runtime["updates"] = int(model.shortcut_ema_updates.item())
+    if expected_updates is not None and runtime["updates"] != expected_updates:
+        raise RuntimeError(
+            f"Expected {expected_updates} EMA updates, loaded {runtime['updates']}"
+        )
+    if runtime["configured_dtype"] == "float32" and runtime["parameter_dtypes"] != [
+        "torch.float32"
+    ]:
+        raise RuntimeError(
+            "EMA checkpoint requested float32 but loaded parameter dtypes are "
+            f"{runtime['parameter_dtypes']}"
+        )
+    if runtime["inference_weights"] not in {"student", "ema"}:
+        raise RuntimeError(
+            "EMA benchmark loaded with invalid inference weights: "
+            f"{runtime['inference_weights']!r}"
+        )
+    if (
+        expected_inference_weights is not None
+        and runtime["inference_weights"] != expected_inference_weights
+    ):
+        raise RuntimeError(
+            f"Expected inference weights {expected_inference_weights!r}, loaded "
+            f"{runtime['inference_weights']!r}"
+        )
+    print(
+        f"Verified shortcut EMA runtime: {json.dumps(runtime, sort_keys=True)}",
+        flush=True,
+    )
+    return runtime
+
+
 def format_chunks(chunks: list[int]) -> str:
     return "[" + ",".join(str(chunk) for chunk in chunks) + "]"
 
 
 def build_config(args: argparse.Namespace, split_summary: dict[str, Any]):
     train_chunks = format_chunks(split_summary["chunks"]["train"])
-    val_chunks = format_chunks(split_summary["chunks"]["val"])
+    eval_chunks = format_chunks(split_summary["chunks"][args.eval_split])
     manifest_prefix = (
-        "" if args.config_name == "sft_stage2_trajectory_shortcut" else "nav_"
+        "" if args.config_name.startswith("sft_stage2_trajectory") else "nav_"
     )
     train_manifest = args.manifest_dir / f"{manifest_prefix}train.json"
-    val_manifest = args.manifest_dir / f"{manifest_prefix}val.json"
+    eval_manifest = args.manifest_dir / f"{manifest_prefix}{args.eval_split}.json"
     overrides = [
         f"model.pretrained_model_name_or_path={args.checkpoint}",
         f"+model.attn_implementation={args.attention_backend}",
@@ -185,12 +316,18 @@ def build_config(args: argparse.Namespace, split_summary: dict[str, Any]):
         f"data.train_dataset.annotations_path={train_manifest}",
         f"data.train_dataset.chunk_ids={train_chunks}",
         f"data.val_dataset.local_dir={args.dataset}",
-        f"data.val_dataset.annotations_path={val_manifest}",
-        f"data.val_dataset.chunk_ids={val_chunks}",
+        f"data.val_dataset.annotations_path={eval_manifest}",
+        f"data.val_dataset.chunk_ids={eval_chunks}",
         "trainer.per_device_eval_batch_size=1",
         "trainer.dataloader_num_workers=0",
+        "trainer.dataloader_persistent_workers=false",
+        "trainer.dataloader_prefetch_factor=null",
         f"paths.output_dir={args.output_dir / 'trainer_output'}",
     ]
+    if args.shortcut_inference_weights is not None:
+        overrides.append(
+            f"model.shortcut_inference_weights={args.shortcut_inference_weights}"
+        )
     with initialize_config_module(
         version_base=None, config_module="alpamayo1_5_sft.configs"
     ):
@@ -218,36 +355,90 @@ def sample_model(
 
 def benchmark() -> None:
     args = parse_args()
+    if not math.isfinite(args.step_size_adapter_scale):
+        raise ValueError("step-size adapter scale must be finite")
+    if args.step_size_adapter_scale < 0.0:
+        raise ValueError("step-size adapter scale must be non-negative")
+    if args.zero_step_size_adapter and args.step_size_adapter_scale != 1.0:
+        raise ValueError(
+            "Use either --zero-step-size-adapter or --step-size-adapter-scale, not both"
+        )
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     split_summary_path = args.manifest_dir / "summary.json"
     manifest_prefix = (
-        "" if args.config_name == "sft_stage2_trajectory_shortcut" else "nav_"
+        "" if args.config_name.startswith("sft_stage2_trajectory") else "nav_"
     )
-    val_manifest_path = args.manifest_dir / f"{manifest_prefix}val.json"
+    eval_manifest_path = args.manifest_dir / f"{manifest_prefix}{args.eval_split}.json"
     split_summary = json.loads(split_summary_path.read_text())
-    val_manifest = json.loads(val_manifest_path.read_text())
+    eval_manifest = json.loads(eval_manifest_path.read_text())
 
-    if len(val_manifest) != split_summary["annotation_rows"]["val"]:
-        raise ValueError("Validation manifest count disagrees with split summary")
-    if len({row["clip_id"] for row in val_manifest}) != len(val_manifest):
-        raise ValueError("Validation manifest is not unique by clip")
+    if len(eval_manifest) != split_summary["annotation_rows"][args.eval_split]:
+        raise ValueError("Evaluation manifest count disagrees with split summary")
+    if len({row["clip_id"] for row in eval_manifest}) != len(eval_manifest):
+        raise ValueError("Evaluation manifest is not unique by clip")
 
     cfg = build_config(args, split_summary)
-    (args.output_dir / "composed_config.yaml").write_text(OmegaConf.to_yaml(cfg, resolve=True))
+    (args.output_dir / "composed_config.yaml").write_text(
+        OmegaConf.to_yaml(cfg, resolve=True)
+    )
 
     distributed.initialize_distributed_simple()
     if torch.distributed.get_world_size() != 1:
-        raise ValueError("This benchmark intentionally requires exactly one process/GPU")
+        raise ValueError(
+            "This benchmark intentionally requires exactly one process/GPU"
+        )
 
     model = hyu.instantiate(cfg.model, _convert_="partial")
+    shortcut_grid = {
+        key: getattr(model, key, None)
+        for key in (
+            "shortcut_flow_step_size", "shortcut_step_sizes",
+            "shortcut_require_dyadic_steps", "shortcut_loss_estimator",
+            "shortcut_bootstrap_every", "shortcut_loss_weight", "shortcut_teacher_mode",
+        )
+    }
+    shortcut_grid = json.loads(json.dumps(shortcut_grid))
+    if args.verify_checkpoint_shortcut_config:
+        saved_config = json.loads((args.checkpoint / "config.json").read_text())
+        mismatches = {
+            key: {"saved": saved_config.get(key), "loaded": value}
+            for key, value in shortcut_grid.items()
+            if key not in saved_config or saved_config[key] != value
+        }
+        if mismatches:
+            raise ValueError(f"Evaluation recipe changed checkpoint settings: {mismatches}")
+        print(f"Verified checkpoint shortcut settings: {shortcut_grid}", flush=True)
+    if args.zero_step_size_adapter:
+        reset_adapter = getattr(model.action_in_proj, "reset_step_size_adapter", None)
+        if reset_adapter is None:
+            raise TypeError("The loaded model has no resettable step-size adapter")
+        reset_adapter()
+        print(
+            "Zeroed the step-size adapter for this inference-only ablation", flush=True
+        )
+    elif args.step_size_adapter_scale != 1.0:
+        adapter = getattr(model.action_in_proj, "step_size_adapter", None)
+        if adapter is None or not isinstance(adapter[-1], torch.nn.Linear):
+            raise TypeError("The loaded model has no scalable step-size adapter")
+        with torch.no_grad():
+            adapter[-1].weight.mul_(args.step_size_adapter_scale)
+            if adapter[-1].bias is not None:
+                adapter[-1].bias.mul_(args.step_size_adapter_scale)
+        print(
+            f"Scaled the step-size adapter by {args.step_size_adapter_scale:g} "
+            "for this inference-only ablation",
+            flush=True,
+        )
     eval_dataset = hyu.instantiate(
         cfg.data.val_dataset, _convert_="partial", model_config=model.config
     )
     collate_fn = hyu.instantiate(
         cfg.data.collate_fn, _convert_="partial", model_config=model.config
     )
-    training_args = TrainingArguments(**OmegaConf.to_container(cfg.trainer, resolve=True))
+    training_args = TrainingArguments(
+        **OmegaConf.to_container(cfg.trainer, resolve=True)
+    )
     trainer = ReasoningVLA_Trainer(
         model=model,
         args=training_args,
@@ -258,6 +449,11 @@ def benchmark() -> None:
     model = trainer.accelerator.unwrap_model(model)
     model.eval()
     attention_backends = verify_attention_backends(model, args.attention_backend)
+    shortcut_runtime = verify_shortcut_ema_runtime(
+        model,
+        expected_updates=args.expected_ema_updates,
+        expected_inference_weights=args.shortcut_inference_weights,
+    )
 
     diffusion_timings_ms: list[float] = []
     original_diffusion_sample = model.diffusion.sample
@@ -279,16 +475,25 @@ def benchmark() -> None:
             "recipe_config": args.config_name,
             "checkpoint_config_sha256": sha256(args.checkpoint / "config.json"),
             "dataset": str(args.dataset),
-            "validation_manifest": str(val_manifest_path),
-            "validation_manifest_sha256": sha256(val_manifest_path),
-            "validation_samples": len(val_manifest),
-            "validation_unique_clips": len({row["clip_id"] for row in val_manifest}),
+            "evaluation_split": args.eval_split,
+            "validation_manifest": str(eval_manifest_path),
+            "validation_manifest_sha256": sha256(eval_manifest_path),
+            "validation_samples": len(eval_manifest),
+            "validation_unique_clips": len({row["clip_id"] for row in eval_manifest}),
             "inference_steps": args.steps,
             "num_traj_samples": args.num_traj_samples,
             "seed_reset_for_each_step_count": args.seed,
             "warmup_samples_per_step_count": args.warmup_samples,
+            "zero_step_size_adapter": args.zero_step_size_adapter,
+            "step_size_adapter_scale": (
+                0.0 if args.zero_step_size_adapter else args.step_size_adapter_scale
+            ),
             "attention_backend": args.attention_backend,
             "resolved_attention_backends": attention_backends,
+            "shortcut_runtime": shortcut_runtime,
+            "shortcut_grid": shortcut_grid,
+            "requested_shortcut_inference_weights": args.shortcut_inference_weights,
+            "expected_ema_updates": args.expected_ema_updates,
             "torch_version": torch.__version__,
             "torch_cuda_version": torch.version.cuda,
             "gpu": torch.cuda.get_device_name(0),
@@ -343,7 +548,9 @@ def benchmark() -> None:
             end_to_end_ms = (time.perf_counter() - started) * 1000.0
 
             if len(diffusion_timings_ms) != timing_count_before + 1:
-                raise RuntimeError("Expected exactly one diffusion sampler call per batch")
+                raise RuntimeError(
+                    "Expected exactly one diffusion sampler call per batch"
+                )
             if not torch.isfinite(pred_xyz).all() or not torch.isfinite(pred_rot).all():
                 raise RuntimeError(f"Non-finite prediction at sample {sample_index}")
 
@@ -386,22 +593,7 @@ def benchmark() -> None:
         write_json(args.output_dir / "benchmark_results.json", results)
         print(json.dumps({str(inference_steps): step_result}, indent=2), flush=True)
 
-    baseline = results["results"]["10"]
-    baseline_e2e = baseline["latency_ms"]["end_to_end_model"]["mean"]
-    baseline_expert = baseline["latency_ms"]["action_expert_diffusion"]["mean"]
-    baseline_min_ade = baseline["metrics"]["min_ade"]
-    for inference_steps in args.steps:
-        result = results["results"][str(inference_steps)]
-        result["comparison_to_10_step"] = {
-            "end_to_end_speedup": (
-                baseline_e2e / result["latency_ms"]["end_to_end_model"]["mean"]
-            ),
-            "action_expert_speedup": (
-                baseline_expert
-                / result["latency_ms"]["action_expert_diffusion"]["mean"]
-            ),
-            "min_ade_delta": result["metrics"]["min_ade"] - baseline_min_ade,
-        }
+    add_ten_step_comparisons(results["results"])
 
     write_json(args.output_dir / "benchmark_results.json", results)
 
@@ -422,7 +614,7 @@ def benchmark() -> None:
         )
         for inference_steps in args.steps:
             result = results["results"][str(inference_steps)]
-            comparison = result["comparison_to_10_step"]
+            comparison = result["comparison_to_10_step"] or {}
             writer.writerow(
                 [
                     inference_steps,
@@ -431,9 +623,9 @@ def benchmark() -> None:
                     result["metrics"]["corner_distance"],
                     result["latency_ms"]["end_to_end_model"]["mean"],
                     result["latency_ms"]["action_expert_diffusion"]["mean"],
-                    comparison["end_to_end_speedup"],
-                    comparison["action_expert_speedup"],
-                    comparison["min_ade_delta"],
+                    comparison.get("end_to_end_speedup"),
+                    comparison.get("action_expert_speedup"),
+                    comparison.get("min_ade_delta"),
                 ]
             )
 

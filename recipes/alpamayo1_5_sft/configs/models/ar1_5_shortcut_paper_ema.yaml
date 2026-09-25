@@ -1,0 +1,15 @@
+defaults:
+  - ar1_5_shortcut_reference_ema
+  - _self_
+
+_target_: alpamayo1_5_sft.models.paper_shortcut_alpamayo.PaperEMAShortcutAlpamayo.from_pretrained
+paper_target_batch_size: 64
+shortcut_flow_step_size: 0.0078125
+shortcut_step_sizes: [0.015625, 0.03125, 0.0625, 0.125, 0.25, 0.5, 1.0]
+shortcut_require_dyadic_steps: true
+shortcut_bootstrap_every: 4
+shortcut_loss_weight: 0.25
+shortcut_teacher_mode: ema
+shortcut_inference_weights: ema
+step_size_fourier_feats: 256
+step_size_hidden_size: 2048

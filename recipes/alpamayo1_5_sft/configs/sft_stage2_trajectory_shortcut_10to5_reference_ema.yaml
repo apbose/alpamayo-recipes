@@ -1,0 +1,10 @@
+defaults:
+  - sft_stage2_trajectory_shortcut_reference_ema
+  - /models/ar1_5_shortcut_10to5_reference_ema@model
+  - _self_
+
+# Local-data evaluation counterpart of the HF 10-to-5 training experiment.
+paths:
+  output_dir: output_stage2_trajectory_shortcut_10to5_reference_ema
+
+task_name: alpamayo_1_5_shortcut_stage2_trajectory_10to5_reference_ema

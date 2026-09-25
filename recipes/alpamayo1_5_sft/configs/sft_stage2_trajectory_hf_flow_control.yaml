@@ -1,0 +1,56 @@
+defaults:
+  - sft_base
+  - /models/ar1_5_expert@model
+  - _self_
+
+# Matched flow-only control for the 300 GB shortcut experiment. It uses the
+# same route-less streamed rows, optimizer schedule, global batch, and frozen
+# VLM, but NVIDIA's unmodified Stage-2 flow-matching Action Expert objective.
+data:
+  train_dataset:
+    _target_: alpamayo.data.pai_trajectory.PAITrajectoryDataset
+    _recursive_: false
+    access_mode: hf_stream
+    local_dir: null
+    use_default_keyframe: false
+    hf_revision: 33f9bf447ed3bcb7d545ce13f4226f824214fafb
+    hf_cache_dir: ???
+    annotations_path: ???
+    chunk_ids: null
+    vla_preprocess_args:
+      generation_mode: false
+  val_dataset:
+    _target_: alpamayo.data.pai_trajectory.PAITrajectoryDataset
+    _recursive_: false
+    access_mode: hf_stream
+    local_dir: null
+    use_default_keyframe: false
+    hf_revision: 33f9bf447ed3bcb7d545ce13f4226f824214fafb
+    hf_cache_dir: ???
+    annotations_path: ???
+    chunk_ids: null
+    vla_preprocess_args:
+      generation_mode: true
+
+paths:
+  output_dir: output_stage2_trajectory_hf_flow_control
+
+trainer:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 1
+  gradient_checkpointing: false
+  deepspeed: null
+  ddp_find_unused_parameters: false
+  dataloader_num_workers: 0
+  dataloader_persistent_workers: false
+  dataloader_prefetch_factor: null
+
+performance:
+  zip_cache: false
+  collate_cache: false
+
+evaluate:
+  eval_ckpt: null
+
+task_name: alpamayo_1_5_stage2_trajectory_hf_flow_control

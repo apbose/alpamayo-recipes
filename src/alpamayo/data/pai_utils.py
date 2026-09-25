@@ -13,27 +13,102 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Local interface for loading PAI data from a local directory."""
+"""Local and optional Hugging Face on-demand PhysicalAI-AV interfaces."""
 
-import os
-import json
 import io
+import json
+import os
 import pathlib
 import zipfile
-from typing import Any, Iterable
-import pandas as pd
-import numpy as np
+from collections.abc import Iterable
+from typing import Any
 
+import numpy as np
+import pandas as pd
+from alpamayo_r1.common import logging
 from physical_ai_av import egomotion, video
 from physical_ai_av.dataset import Features
-
-from alpamayo_r1.common import logging
+from physical_ai_av.dataset import (
+    PhysicalAIAVDatasetInterface as OfficialPhysicalAIAVDatasetInterface,
+)
 
 logger = logging.RankedLogger(__name__, rank_zero_only=False)
 logger.setLevel("INFO")
 
 # PAI clips are a fixed 20s relative timeline (µs); use this instead of per-row ``end_timestamp``.
 CLIP_RELATIVE_DURATION_US = 20_000_000
+
+
+def _normalize_chunk_ids(chunk_ids: Any) -> list[int] | None:
+    """Normalize the chunk selector shared by local and Hugging Face access."""
+    if chunk_ids is None:
+        return None
+    if isinstance(chunk_ids, str) and "-" in chunk_ids:
+        chunk_start, chunk_end = (int(value) for value in chunk_ids.split("-", 1))
+        return list(range(chunk_start, chunk_end))
+    if isinstance(chunk_ids, int):
+        return [chunk_ids]
+    if isinstance(chunk_ids, (list, tuple, Iterable)):
+        return [int(chunk_id) for chunk_id in chunk_ids]
+    raise TypeError(f"Invalid chunk_ids: {chunk_ids!r} ({type(chunk_ids).__name__})")
+
+
+class PhysicalAIAVDatasetHFInterface(OfficialPhysicalAIAVDatasetInterface):
+    """Official HF-backed PAI interface with the local recipe's small API shim.
+
+    Feature payloads missing from the Hugging Face cache are range-read from
+    NVIDIA's packed archives when callers pass ``maybe_stream=True``. Metadata
+    is cached by ``physical_ai_av``. This class adds only the chunk filtering
+    and route-less attributes expected by :class:`PAIDataset`.
+    """
+
+    def __init__(
+        self,
+        *,
+        chunk_ids: Any = None,
+        revision: str | None = None,
+        token: str | bool | None = None,
+        cache_dir: str | pathlib.Path | None = None,
+        confirm_download_threshold_gb: float = 10.0,
+    ) -> None:
+        super().__init__(
+            revision=revision,
+            token=token,
+            cache_dir=cache_dir,
+            confirm_download_threshold_gb=confirm_download_threshold_gb,
+        )
+        self.chunk_ids = _normalize_chunk_ids(chunk_ids)
+        self.reasoning_db = None
+        logger.info(
+            "Loading PhysicalAI-AV through Hugging Face with revision=%s, "
+            "chunk_ids=%s, cache_dir=%s",
+            revision,
+            self.chunk_ids,
+            cache_dir,
+        )
+
+    def get_all_clip_ids(self) -> list[str]:
+        """Return official clip IDs, optionally filtered by chunk."""
+        clip_index = self.clip_index
+        if "clip_is_valid" in clip_index.columns:
+            clip_index = clip_index.loc[clip_index["clip_is_valid"]]
+        if self.chunk_ids is not None:
+            clip_index = clip_index.loc[clip_index["chunk"].isin(self.chunk_ids)]
+        return [str(clip_id) for clip_id in clip_index.index]
+
+    def get_clip_key_frame(
+        self, clip_id: str, sample_index_in_clip: int = 0
+    ) -> np.int64:
+        """Reject implicit keyframes: remote route-less manifests provide ``t0``."""
+        del clip_id, sample_index_in_clip
+        raise KeyError(
+            "The HF-backed interface has no navigation/reasoning keyframes; "
+            "use an explicit (clip_id, t0_relative) trajectory manifest"
+        )
+
+    def get_reasoning_data(self, clip_id: str, keyframe_timestamp: int) -> None:
+        """This route-less HF integration does not load reasoning annotations."""
+        del clip_id, keyframe_timestamp
 
 
 class PhysicalAIAVDatasetLocalInterface:
@@ -61,19 +136,8 @@ class PhysicalAIAVDatasetLocalInterface:
                       If None, all available chunks will be loaded.
         """
         self.local_dir = local_dir
-        self.chunk_ids = None
-        if chunk_ids is not None:
-            if isinstance(chunk_ids, str) and "-" in chunk_ids:
-                chunk_start = int(chunk_ids.split("-")[0])
-                chunk_end = int(chunk_ids.split("-")[1])
-                self.chunk_ids = list(range(chunk_start, chunk_end))
-            elif isinstance(chunk_ids, (list, tuple, Iterable)):
-                self.chunk_ids = list(chunk_ids)
-            elif isinstance(chunk_ids, int):
-                self.chunk_ids = [chunk_ids]
-            else:
-                logger.error(f"Invalid chunk_ids: {chunk_ids} {type(chunk_ids)}")
-        else:
+        self.chunk_ids = _normalize_chunk_ids(chunk_ids)
+        if self.chunk_ids is None:
             logger.info("Loading all chunks")
 
         logger.info(f"Loading from {local_dir} with chunk_ids: {self.chunk_ids}")
@@ -89,7 +153,9 @@ class PhysicalAIAVDatasetLocalInterface:
         )
         self.features = Features(features_df)
 
-        self.clip_index = pd.read_parquet(os.path.join(self.local_dir, clip_index_metadata))
+        self.clip_index = pd.read_parquet(
+            os.path.join(self.local_dir, clip_index_metadata)
+        )
         self.reasoning_db = None
         if reasoning_metadata is not None:
             reasoning_metadata_path = (
@@ -111,7 +177,10 @@ class PhysicalAIAVDatasetLocalInterface:
         )
         self.chunk_sensor_presence = (
             pd.concat(
-                [self.clip_index[["chunk"]], self.sensor_presence.select_dtypes(include=bool)],
+                [
+                    self.clip_index[["chunk"]],
+                    self.sensor_presence.select_dtypes(include=bool),
+                ],
                 axis=1,
             )
             .groupby("chunk")
@@ -132,7 +201,9 @@ class PhysicalAIAVDatasetLocalInterface:
             cid = str(clip_id)
             ts_list: list[int] = []
             cot_list: list[str] = []
-            if events_cell is None or (np.isscalar(events_cell) and pd.isna(events_cell)):
+            if events_cell is None or (
+                np.isscalar(events_cell) and pd.isna(events_cell)
+            ):
                 out[cid] = {"event_t0s": np.array([], dtype=np.int64), "cot": []}
                 continue
             if isinstance(events_cell, str):
@@ -198,7 +269,9 @@ class PhysicalAIAVDatasetLocalInterface:
         filtered = self.clip_index.apply(filter_events, axis=1)
         self.clip_index["event_t0s"] = filtered["event_t0s"]
         self.clip_index["cot"] = filtered["cot"]
-        non_empty = self.clip_index["event_t0s"].apply(lambda x: x is not None and len(x) > 0)
+        non_empty = self.clip_index["event_t0s"].apply(
+            lambda x: x is not None and len(x) > 0
+        )
         removed = (~non_empty).sum()
         self.clip_index = self.clip_index.loc[non_empty]
 
@@ -212,7 +285,9 @@ class PhysicalAIAVDatasetLocalInterface:
     def get_all_clip_ids(self):
         """Return all clip ids, filtered by ``self.chunk_ids`` if set."""
         if self.chunk_ids is not None:
-            return self.clip_index.loc[self.clip_index["chunk"].isin(self.chunk_ids)].index.tolist()
+            return self.clip_index.loc[
+                self.clip_index["chunk"].isin(self.chunk_ids)
+            ].index.tolist()
         else:
             return self.clip_index.index.tolist()
 
@@ -220,7 +295,9 @@ class PhysicalAIAVDatasetLocalInterface:
         """Returns the chunk index for `clip_id`."""
         return self.clip_index.at[clip_id, "chunk"]
 
-    def get_clip_key_frame(self, clip_id: str, sample_index_in_clip: int = 0) -> np.int64:
+    def get_clip_key_frame(
+        self, clip_id: str, sample_index_in_clip: int = 0
+    ) -> np.int64:
         """Keyframe time (us) from filtered ``event_t0s`` on ``clip_index``."""
         if "event_t0s" in self.clip_index.columns:
             et0s = self.clip_index.at[clip_id, "event_t0s"]
@@ -231,9 +308,13 @@ class PhysicalAIAVDatasetLocalInterface:
             arr = self.reasoning_db[clip_id]["event_t0s"]
             t0 = arr[sample_index_in_clip]
             return np.asarray(t0, dtype=np.int64)
-        raise KeyError(f"No event_t0s for {clip_id} (missing clip_index column and reasoning row)")
+        raise KeyError(
+            f"No event_t0s for {clip_id} (missing clip_index column and reasoning row)"
+        )
 
-    def get_reasoning_data(self, clip_id: str, keyframe_timestamp: int) -> dict[str, Any]:
+    def get_reasoning_data(
+        self, clip_id: str, keyframe_timestamp: int
+    ) -> dict[str, Any]:
         """Get the reasoning data for a given clip_id and keyframe_timestamp."""
         if self.reasoning_db is not None and clip_id in self.reasoning_db:
             arr = self.reasoning_db[clip_id]["event_t0s"]
@@ -246,7 +327,9 @@ class PhysicalAIAVDatasetLocalInterface:
         else:
             return None
 
-    def get_clip_feature(self, clip_id: str, feature: str, maybe_stream: bool = False) -> Any:
+    def get_clip_feature(
+        self, clip_id: str, feature: str, maybe_stream: bool = False
+    ) -> Any:
         """Load a feature for ``clip_id`` from the on-disk parquet/zip chunk file.
 
         Returns ``None`` if the feature is not present in ``features_df``.
@@ -266,7 +349,9 @@ class PhysicalAIAVDatasetLocalInterface:
             if chunk_filename.endswith(".parquet"):
                 return pd.read_parquet(f).loc[clip_id]
             elif chunk_filename.endswith(".zip"):
-                clip_files_in_zip = self.features.get_clip_files_in_zip(clip_id, feature)
+                clip_files_in_zip = self.features.get_clip_files_in_zip(
+                    clip_id, feature
+                )
                 with zipfile.ZipFile(f, "r") as zf:
                     if feature == "egomotion":
                         egomotion_df = pd.read_parquet(
@@ -279,7 +364,9 @@ class PhysicalAIAVDatasetLocalInterface:
                         return video.SeekVideoReader(
                             video_data=io.BytesIO(zf.read(clip_files_in_zip["video"])),
                             timestamps=pd.read_parquet(
-                                io.BytesIO(zf.read(clip_files_in_zip["frame_timestamps"]))
+                                io.BytesIO(
+                                    zf.read(clip_files_in_zip["frame_timestamps"])
+                                )
                             )["timestamp"].to_numpy(),
                         )
                     else:

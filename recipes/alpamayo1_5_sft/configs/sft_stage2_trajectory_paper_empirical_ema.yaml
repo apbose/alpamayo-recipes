@@ -1,0 +1,6 @@
+defaults:
+  - sft_stage2_trajectory_shortcut_reference_ema
+  - /models/ar1_5_paper_empirical_ema@model
+  - _self_
+
+task_name: alpamayo15_paper_empirical_target_ema

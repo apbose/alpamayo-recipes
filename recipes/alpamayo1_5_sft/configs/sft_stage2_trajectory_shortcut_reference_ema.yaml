@@ -1,0 +1,40 @@
+defaults:
+  - sft_base
+  - /models/ar1_5_shortcut_reference_ema@model
+  - _self_
+
+# Local-data evaluation counterpart of the HF on-demand EMA training recipe.
+# It preserves the EMA model settings while using the existing fixed,
+# clip-disjoint route-less manifests and locally cached feature archives.
+data:
+  train_dataset:
+    _target_: alpamayo.data.pai_trajectory.PAITrajectoryDataset
+    _recursive_: false
+    local_dir: ???
+    annotations_path: ???
+    chunk_ids: [214, 224, 276, 317, 420, 727, 728, 968, 982,
+                1519, 1657, 1984, 2277, 2368, 2372, 2447, 2599, 2634, 2868]
+    vla_preprocess_args:
+      generation_mode: false
+  val_dataset:
+    _target_: alpamayo.data.pai_trajectory.PAITrajectoryDataset
+    _recursive_: false
+    local_dir: ???
+    annotations_path: ???
+    chunk_ids: [214, 224, 276, 317, 420, 727, 728, 968, 982,
+                1519, 1657, 1984, 2277, 2368, 2372, 2447, 2599, 2634, 2868]
+    vla_preprocess_args:
+      generation_mode: true
+
+paths:
+  output_dir: output_stage2_trajectory_shortcut_reference_ema
+
+trainer:
+  gradient_checkpointing: false
+  deepspeed: null
+  ddp_find_unused_parameters: false
+
+evaluate:
+  eval_ckpt: null
+
+task_name: alpamayo_1_5_shortcut_stage2_trajectory_reference_ema

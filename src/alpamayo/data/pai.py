@@ -16,11 +16,15 @@
 from typing import Any
 
 import torch
-from alpamayo.data.pai_utils import PhysicalAIAVDatasetLocalInterface
 from alpamayo_r1.load_physical_aiavdataset import load_physical_aiavdataset
 from hydra.utils import instantiate
 from omegaconf import OmegaConf
 from torch.utils.data import Dataset
+
+from alpamayo.data.pai_utils import (
+    PhysicalAIAVDatasetHFInterface,
+    PhysicalAIAVDatasetLocalInterface,
+)
 
 
 class PAIDataset(Dataset):
@@ -30,7 +34,7 @@ class PAIDataset(Dataset):
 
     def __init__(
         self,
-        local_dir: str,
+        local_dir: str | None = None,
         chunk_ids: list[int] | None = None,
         include_extr_intr: bool = False,
         reshape_tensors_for_rl: bool = False,
@@ -43,11 +47,15 @@ class PAIDataset(Dataset):
         num_future_steps: int = 64,
         time_step: float = 0.1,
         reasoning_metadata: str | None = None,
+        access_mode: str = "local",
+        hf_revision: str | None = None,
+        hf_token: str | bool | None = None,
+        hf_cache_dir: str | None = None,
     ):
         """Initialize dataset.
 
         Args:
-            local_dir: Path to the local directory containing the PAI dataset.
+            local_dir: Path to the local PAI dataset when ``access_mode=local``.
             chunk_ids: List of chunk IDs to load, or a range string (e.g. "0-9").
                       If None, all available chunks will be loaded.
             include_extr_intr: Whether to include extrinsics, intrinsics,
@@ -67,14 +75,44 @@ class PAIDataset(Dataset):
             time_step: Seconds per step between trajectory samples.
             reasoning_metadata: Filename under ``local_dir`` for the reasoning parquet, in PAI
                 dataset it is "reasoning/ood_reasoning.parquet". If None, no reasoning data will be loaded.
+            access_mode: ``local`` for downloaded chunks or ``hf_stream`` for
+                on-demand reads from NVIDIA's Hugging Face dataset.
+            hf_revision: Optional immutable PhysicalAI-AV dataset revision.
+            hf_token: Hugging Face token or token-selection flag. ``None`` uses
+                the normal Hugging Face authentication lookup.
+            hf_cache_dir: Cache directory for Hugging Face metadata and any
+                explicitly downloaded files.
         """
-        self.avdi = PhysicalAIAVDatasetLocalInterface(
-            local_dir=local_dir,
-            chunk_ids=chunk_ids,
-            features_metadata=features_metadata,
-            clip_index_metadata=clip_index_metadata,
-            reasoning_metadata=reasoning_metadata,
-        )
+        if access_mode == "local":
+            if local_dir is None:
+                raise ValueError("local_dir is required when access_mode='local'")
+            self.avdi = PhysicalAIAVDatasetLocalInterface(
+                local_dir=local_dir,
+                chunk_ids=chunk_ids,
+                features_metadata=features_metadata,
+                clip_index_metadata=clip_index_metadata,
+                reasoning_metadata=reasoning_metadata,
+            )
+            self.maybe_stream = False
+        elif access_mode == "hf_stream":
+            if reasoning_metadata is not None:
+                raise ValueError(
+                    "reasoning_metadata is not supported by this route-less "
+                    "hf_stream integration; it does not load reasoning annotations"
+                )
+            self.avdi = PhysicalAIAVDatasetHFInterface(
+                chunk_ids=chunk_ids,
+                revision=hf_revision,
+                token=hf_token,
+                cache_dir=hf_cache_dir,
+            )
+            self.maybe_stream = True
+        else:
+            raise ValueError(
+                "access_mode must be either 'local' or 'hf_stream', got "
+                f"{access_mode!r}"
+            )
+        self.access_mode = access_mode
         self.clip_ids = self.avdi.get_all_clip_ids()
         self.include_extr_intr = include_extr_intr
         self.use_default_keyframe = use_default_keyframe
@@ -88,7 +126,9 @@ class PAIDataset(Dataset):
         if model_config is not None and isinstance(model_config, dict):
             model_config = OmegaConf.create(model_config)
         if vla_preprocess_args is not None:
-            self.vla_preprocess_func = instantiate(vla_preprocess_args, model_config=model_config)
+            self.vla_preprocess_func = instantiate(
+                vla_preprocess_args, model_config=model_config
+            )
 
     def __len__(self) -> int:
         """Return the number of clips in the dataset."""
@@ -114,20 +154,31 @@ class PAIDataset(Dataset):
             num_history_steps=self.num_history_steps,
             num_future_steps=self.num_future_steps,
             time_step=self.time_step,
+            maybe_stream=self.maybe_stream,
         )
 
         # squeeze ego motion shape
-        for key in sample_data.keys():
+        for key in sample_data:
             if key.startswith("ego_"):
                 sample_data[key] = sample_data[key].squeeze(0)
 
         if self.include_extr_intr:
-            sample_data["extr"] = self.avdi.get_clip_feature(clip_id, "sensor_extrinsics")
-            sample_data["intr"] = self.avdi.get_clip_feature(clip_id, "camera_intrinsics")
+            sample_data["extr"] = self.avdi.get_clip_feature(
+                clip_id, "sensor_extrinsics", maybe_stream=self.maybe_stream
+            )
+            sample_data["intr"] = self.avdi.get_clip_feature(
+                clip_id, "camera_intrinsics", maybe_stream=self.maybe_stream
+            )
 
-            vehicle_dimensions = self.avdi.get_clip_feature(clip_id, "vehicle_dimensions")
+            vehicle_dimensions = self.avdi.get_clip_feature(
+                clip_id, "vehicle_dimensions", maybe_stream=self.maybe_stream
+            )
             sample_data["ego_lwh"] = torch.tensor(
-                [vehicle_dimensions.length, vehicle_dimensions.width, vehicle_dimensions.height]
+                [
+                    vehicle_dimensions.length,
+                    vehicle_dimensions.width,
+                    vehicle_dimensions.height,
+                ]
             )
             sample_data["ego_length_offset"] = torch.tensor(
                 vehicle_dimensions.rear_axle_to_bbox_center / vehicle_dimensions.length
@@ -141,9 +192,9 @@ class PAIDataset(Dataset):
 
             n_cam, n_frame = image_frames.shape[0], image_frames.shape[1]
             # [N, G, C, H, W]
-            image_frames = image_frames.reshape(n_cam * n_frame, *image_frames.shape[2:]).unsqueeze(
-                1
-            )
+            image_frames = image_frames.reshape(
+                n_cam * n_frame, *image_frames.shape[2:]
+            ).unsqueeze(1)
             camera_indices = camera_indices.repeat_interleave(n_frame)
             absolute_timestamps = absolute_timestamps.reshape(-1)
             relative_timestamps = relative_timestamps.reshape(-1)

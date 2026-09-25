@@ -6,16 +6,17 @@ from __future__ import annotations
 
 import pytest
 import torch
-from transformers.cache_utils import DynamicCache
-
 from alpamayo1_5_sft.models.shortcut_modules import (
     BalancedShortcutLevelSampler,
+    ReferenceShortcutBranchSampler,
     StepSizeConditionedActionInProjV2,
     construct_shortcut_training_data,
     fork_kv_cache,
     shortcut_midpoint,
+    update_ema_module_,
     shortcut_velocity_target,
 )
+from transformers.cache_utils import DynamicCache
 
 
 def make_projection() -> StepSizeConditionedActionInProjV2:
@@ -99,6 +100,40 @@ def test_rejects_step_size_that_changes_within_trajectory() -> None:
         projection(x, timesteps, step_size=step_size)
 
 
+def test_ema_module_update_uses_full_precision_destination() -> None:
+    online = torch.nn.Linear(2, 1, bias=False, dtype=torch.bfloat16)
+    ema = torch.nn.Linear(2, 1, bias=False, dtype=torch.float32)
+    with torch.no_grad():
+        online.weight.fill_(4.0)
+        ema.weight.zero_()
+
+    update_ema_module_(ema, online, decay=0.75)
+
+    assert ema.weight.dtype == torch.float32
+    torch.testing.assert_close(ema.weight, torch.ones_like(ema.weight))
+
+
+def test_ema_module_decay_zero_copies_parameters_and_buffers() -> None:
+    class ModuleWithBuffer(torch.nn.Module):
+        def __init__(self, value: float, counter: int) -> None:
+            super().__init__()
+            self.weight = torch.nn.Parameter(torch.tensor([value]))
+            self.register_buffer("counter", torch.tensor(counter))
+
+    online = ModuleWithBuffer(3.0, 7)
+    ema = ModuleWithBuffer(-1.0, 0)
+
+    update_ema_module_(ema, online, decay=0.0)
+
+    torch.testing.assert_close(ema.weight, online.weight)
+    torch.testing.assert_close(ema.counter, online.counter)
+
+
+def test_ema_module_rejects_invalid_decay() -> None:
+    module = torch.nn.Linear(1, 1)
+    with pytest.raises(ValueError, match="EMA decay"):
+        update_ema_module_(module, module, decay=1.0)
+
 def test_shortcut_samples_are_aligned_and_stay_inside_flow_path() -> None:
     x = torch.tensor(
         [
@@ -180,13 +215,37 @@ def test_shortcut_sampling_rejects_non_dyadic_intervals() -> None:
         )
 
 
+def test_shortcut_sampling_supports_opt_in_ten_to_five_interval() -> None:
+    x = torch.tensor([[[2.0, -2.0]], [[4.0, 8.0]]])
+    data = construct_shortcut_training_data(
+        x,
+        step_sizes=(0.2,),
+        noise=torch.zeros_like(x),
+        level_indices=torch.zeros(2, dtype=torch.long),
+        time_indices=torch.tensor([0, 4]),
+        require_dyadic=False,
+    )
+
+    torch.testing.assert_close(
+        data.timesteps,
+        torch.tensor([0.0, 0.8]).reshape(2, 1, 1),
+    )
+    torch.testing.assert_close(
+        data.step_sizes,
+        torch.full((2, 1, 1), 0.2),
+    )
+    torch.testing.assert_close(
+        data.half_step_sizes,
+        torch.full((2, 1, 1), 0.1),
+    )
+    assert bool((data.timesteps + data.step_sizes <= 1.0).all())
+
+
+
 def test_balanced_sampler_cycles_every_level_with_batch_size_one() -> None:
     sampler = BalancedShortcutLevelSampler(num_levels=3)
 
-    observed = [
-        int(sampler(1, device=torch.device("cpu"))[0])
-        for _ in range(7)
-    ]
+    observed = [int(sampler(1, device=torch.device("cpu"))[0]) for _ in range(7)]
 
     assert observed == [0, 1, 2, 0, 1, 2, 0]
     assert int(sampler.cursor) == 1
@@ -228,10 +287,7 @@ def test_balanced_sampler_partitions_distributed_global_batch() -> None:
 def test_balanced_sampler_resumes_from_state_dict_cursor() -> None:
     original = BalancedShortcutLevelSampler(num_levels=3)
     original(5, device=torch.device("cpu"))
-    saved_state = {
-        key: value.clone()
-        for key, value in original.state_dict().items()
-    }
+    saved_state = {key: value.clone() for key, value in original.state_dict().items()}
 
     restored = BalancedShortcutLevelSampler(num_levels=3)
     restored.load_state_dict(saved_state)
@@ -246,3 +302,51 @@ def test_balanced_sampler_rejects_partial_distributed_arguments() -> None:
     sampler = BalancedShortcutLevelSampler(num_levels=3)
     with pytest.raises(ValueError, match="provided together"):
         sampler(1, device=torch.device("cpu"), rank=0)
+
+
+def test_reference_branch_sampler_allocates_one_in_eight_sequentially() -> None:
+    sampler = ReferenceShortcutBranchSampler(bootstrap_every=8)
+
+    observed = [bool(sampler(1, device=torch.device("cpu"))[0]) for _ in range(17)]
+
+    assert observed == [True, False, False, False, False, False, False, False] * 2 + [True]
+    assert int(sampler.cursor) == 1
+
+
+def test_reference_branch_sampler_partitions_eight_rank_global_batch() -> None:
+    samplers = [ReferenceShortcutBranchSampler(bootstrap_every=8) for _ in range(8)]
+
+    masks = [
+        sampler(1, device=torch.device("cpu"), rank=rank, world_size=8)
+        for rank, sampler in enumerate(samplers)
+    ]
+
+    assert [bool(mask[0]) for mask in masks] == [True] + [False] * 7
+    assert all(int(sampler.cursor) == 0 for sampler in samplers)
+
+
+def test_reference_branch_sampler_allocates_two_of_eight_for_paper_ratio() -> None:
+    samplers = [ReferenceShortcutBranchSampler(bootstrap_every=4) for _ in range(8)]
+
+    masks = [
+        sampler(1, device=torch.device("cpu"), rank=rank, world_size=8)
+        for rank, sampler in enumerate(samplers)
+    ]
+
+    assert [bool(mask[0]) for mask in masks] == [
+        True, False, False, False, True, False, False, False
+    ]
+    assert all(int(sampler.cursor) == 0 for sampler in samplers)
+
+
+def test_reference_branch_sampler_resumes_cursor() -> None:
+    original = ReferenceShortcutBranchSampler(bootstrap_every=8)
+    original(3, device=torch.device("cpu"))
+    restored = ReferenceShortcutBranchSampler(bootstrap_every=8)
+    restored.load_state_dict({key: value.clone() for key, value in original.state_dict().items()})
+
+    expected = original(4, device=torch.device("cpu"))
+    actual = restored(4, device=torch.device("cpu"))
+
+    assert actual.tolist() == expected.tolist() == [False, False, False, False]
+    assert int(restored.cursor) == int(original.cursor) == 7

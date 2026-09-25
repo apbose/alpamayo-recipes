@@ -9,9 +9,9 @@ import logging
 from pathlib import Path
 from typing import Any
 
-from alpamayo.data.pai import PAIDataset
 from alpamayo_r1.load_physical_aiavdataset import load_physical_aiavdataset
 
+from alpamayo.data.pai import PAIDataset
 
 logger = logging.getLogger(__name__)
 REQUIRED_FIELDS = frozenset({"clip_id", "t0_relative"})
@@ -108,6 +108,7 @@ class PAITrajectoryDataset(PAIDataset):
             num_history_steps=self.num_history_steps,
             num_future_steps=self.num_future_steps,
             time_step=self.time_step,
+            maybe_stream=self.maybe_stream,
         )
 
         for key in list(sample_data):

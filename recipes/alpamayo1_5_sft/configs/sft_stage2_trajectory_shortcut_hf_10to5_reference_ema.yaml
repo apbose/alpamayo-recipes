@@ -1,0 +1,58 @@
+defaults:
+  - sft_base
+  - /models/ar1_5_shortcut_10to5_reference_ema@model
+  - _self_
+
+# Route-less Stage-2 training over the fixed 5,295-clip PhysicalAI-AV
+# manifest. Missing feature archives are range-read on demand from Hugging
+# Face at the immutable revision below.
+data:
+  train_dataset:
+    _target_: alpamayo.data.pai_trajectory.PAITrajectoryDataset
+    _recursive_: false
+    access_mode: hf_stream
+    local_dir: null
+    use_default_keyframe: false
+    hf_revision: 33f9bf447ed3bcb7d545ce13f4226f824214fafb
+    hf_cache_dir: ???
+    annotations_path: ???
+    chunk_ids: null
+    vla_preprocess_args:
+      generation_mode: false
+  val_dataset:
+    _target_: alpamayo.data.pai_trajectory.PAITrajectoryDataset
+    _recursive_: false
+    access_mode: hf_stream
+    local_dir: null
+    use_default_keyframe: false
+    hf_revision: 33f9bf447ed3bcb7d545ce13f4226f824214fafb
+    hf_cache_dir: ???
+    annotations_path: ???
+    chunk_ids: null
+    vla_preprocess_args:
+      generation_mode: true
+
+paths:
+  output_dir: output_stage2_trajectory_shortcut_hf_10to5_reference_ema
+
+trainer:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 1
+  gradient_checkpointing: false
+  deepspeed: null
+  ddp_find_unused_parameters: false
+  dataloader_num_workers: 0
+  dataloader_persistent_workers: false
+  dataloader_prefetch_factor: null
+  # Match the paper's AdamW regularization instead of the HF default 0.0.
+  weight_decay: 0.1
+
+performance:
+  zip_cache: false
+  collate_cache: false
+
+evaluate:
+  eval_ckpt: null
+
+task_name: alpamayo_1_5_shortcut_stage2_trajectory_hf_10to5_reference_ema

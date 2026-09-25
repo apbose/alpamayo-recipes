@@ -1,0 +1,68 @@
+{
+  "annotation_rows": {
+    "test": 128,
+    "train": 10692,
+    "val": 128
+  },
+  "available_rows_all_timestamps": {
+    "test": 3576,
+    "train": 10692,
+    "val": 8256
+  },
+  "available_rows_one_per_clip": {
+    "test": 298,
+    "train": 891,
+    "val": 688
+  },
+  "chunks": {
+    "test": [
+      317,
+      2277,
+      2634
+    ],
+    "train": [
+      420,
+      727,
+      728,
+      1519,
+      1657,
+      2368,
+      2372,
+      2447,
+      2868
+    ],
+    "val": [
+      214,
+      224,
+      276,
+      968,
+      982,
+      1984,
+      2599
+    ]
+  },
+  "generated_at_utc": "2026-09-14T05:17:41.522450+00:00",
+  "nav_text_rows": 0,
+  "navigation_conditioning": false,
+  "overlap_counts": {
+    "train_test": 0,
+    "train_val": 0,
+    "val_test": 0
+  },
+  "pilot_t0_relative": 7000000,
+  "policy": "Train on all 12 audited timestamps per official train clip; use one timestamp from deterministic chunk-stratified validation/test clips",
+  "schema_version": 1,
+  "selection_seed": 42,
+  "source_audit_dir": "/home/abose_sw/alphamayo/results/physical_ai_av_local_trajectory_audit_1877x12",
+  "source_manifest_sha256": {
+    "test": "e4328477366934ee88302e0edaa51ba647916208c20fb2cd33f12f008d40075b",
+    "train": "1f7ec3ec075228414a711f9210c4f49dbc6f5ba1dbb212f4740db99b42d20736",
+    "val": "bdcbd93bea549a4d43dc61135c69e47f9b0eb7ea2fc04598801ddd3b5eda201d"
+  },
+  "task": "route-less Stage-2 trajectory shortcut",
+  "unique_clips": {
+    "test": 128,
+    "train": 891,
+    "val": 128
+  }
+}

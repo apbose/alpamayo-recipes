@@ -17,7 +17,7 @@ from typing import Optional
 from dataclasses import dataclass, field
 
 import torch
-from transformers import Trainer
+from transformers import Trainer, TrainerCallback, TrainerControl, TrainerState
 from transformers.utils import is_sagemaker_mp_enabled
 from transformers import TrainingArguments as HFTrainingArguments
 
@@ -50,6 +50,31 @@ class TrainingArguments(HFTrainingArguments):
             )
         },
     )
+
+class ShortcutEMATeacherCallback(TrainerCallback):
+    """Advance a shortcut model's EMA teacher after each optimizer update."""
+
+    def on_optimizer_step(
+        self,
+        args: HFTrainingArguments,
+        state: TrainerState,
+        control: TrainerControl,
+        **kwargs,
+    ) -> TrainerControl:
+        del args, state
+        model = kwargs.get("model")
+        while hasattr(model, "module") and model.module is not model:
+            model = model.module
+        update = getattr(model, "update_shortcut_ema_teacher", None)
+        if not callable(update):
+            raise RuntimeError(
+                "ShortcutEMATeacherCallback requires "
+                "update_shortcut_ema_teacher()"
+            )
+        update()
+        return control
+
+
 
 
 class ReasoningVLA_Trainer(Trainer):

@@ -1,0 +1,9 @@
+defaults:
+  - ar1_5_shortcut
+  - _self_
+
+# Memory-safe equivalent of the original Shortcut Models batch allocation:
+# one bootstrap/self-consistency sample and seven flow samples per global batch.
+shortcut_loss_estimator: reference_partition
+shortcut_bootstrap_every: 8
+shortcut_loss_weight: 0.125
