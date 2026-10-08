@@ -1,0 +1,28 @@
+{
+  "manifest": "../manifests/gold644_native/gold644.json",
+  "cohort_audit": "../manifests/gold644_native/overlap_audit.json",
+  "hf_cache": "/path/to/hf-physical-ai-cache",
+  "processor_assets": "/path/to/Qwen3-VL-2B-Instruct",
+  "models": [
+    {
+      "name": "A6",
+      "kind": "A6",
+      "checkpoint": "/path/to/Alpamayo-1.5-10B",
+      "cosmos_assets": "/path/to/Cosmos-Reason2-8B-assets",
+      "action_checkpoint": "/path/to/A6/training/checkpoint-249"
+    },
+    {
+      "name": "A8",
+      "kind": "A8",
+      "checkpoint": "/path/to/Alpamayo-1.5-10B",
+      "cosmos_assets": "/path/to/Cosmos-Reason2-8B-assets",
+      "action_checkpoint": "/path/to/A8/training/checkpoint-249"
+    },
+    {
+      "name": "R0",
+      "kind": "R0",
+      "checkpoint": "/path/to/Alpamayo-1.5-10B",
+      "cosmos_assets": "/path/to/Cosmos-Reason2-8B-assets"
+    }
+  ]
+}

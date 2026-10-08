@@ -1,0 +1,139 @@
+{
+  "decision": "do_not_pursue_one_step",
+  "efficiency": {
+    "action_expert_speedup_vs_trained_10_step": 5.137605261163853,
+    "minimum_required": 4.0,
+    "passed": true
+  },
+  "evidence_scope": "128-clip-open-loop-pilot",
+  "generated_at_utc": "2026-09-15T16:48:19.564270+00:00",
+  "inputs": {
+    "released_baseline": "/path/to/workspace/results/alpamayo15_hf300gb_flow_control_followups_20260914_r1/released_128/benchmark_results.json",
+    "trained_candidate": "/path/to/workspace/results/alpamayo15_hf300gb_reference_ema_followups_20260915_r1/ema_weights_128/benchmark_results.json"
+  },
+  "overall_gate_passed": false,
+  "protocol": {
+    "checks": [
+      {
+        "baseline": "d7dc21959b746dacdfee2f559550b329783d4664db88d3cacb5590323fec9e62",
+        "candidate": "d7dc21959b746dacdfee2f559550b329783d4664db88d3cacb5590323fec9e62",
+        "name": "validation_manifest_sha256",
+        "passed": true
+      },
+      {
+        "baseline": 128,
+        "candidate": 128,
+        "name": "validation_samples",
+        "passed": true
+      },
+      {
+        "baseline": 128,
+        "candidate": 128,
+        "name": "validation_unique_clips",
+        "passed": true
+      },
+      {
+        "baseline": 6,
+        "candidate": 6,
+        "name": "num_traj_samples",
+        "passed": true
+      },
+      {
+        "baseline": 42,
+        "candidate": 42,
+        "name": "seed",
+        "passed": true
+      },
+      {
+        "baseline": "eager",
+        "candidate": "eager",
+        "name": "attention_backend",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "quality": {
+    "metrics": {
+      "ade": {
+        "candidate_two_step": 2.0395325599238276,
+        "checks": [
+          {
+            "candidate": 2.0395325599238276,
+            "maximum_allowed": 2.678644991409965,
+            "passed": true,
+            "reference": "trained_10_step",
+            "reference_value": 2.4351318103726953,
+            "relative_change": -0.16245496394230974
+          },
+          {
+            "candidate": 2.0395325599238276,
+            "maximum_allowed": 2.988650976127247,
+            "passed": true,
+            "reference": "released_10_step",
+            "reference_value": 2.7169554328429513,
+            "relative_change": -0.24933161020248537
+          }
+        ],
+        "passed": true
+      },
+      "corner_distance": {
+        "candidate_two_step": 1.472156950047065,
+        "checks": [
+          {
+            "candidate": 1.472156950047065,
+            "maximum_allowed": 1.3130022997705966,
+            "passed": false,
+            "reference": "trained_10_step",
+            "reference_value": 1.1936384543369059,
+            "relative_change": 0.23333572632333024
+          },
+          {
+            "candidate": 1.472156950047065,
+            "maximum_allowed": 1.436453941330183,
+            "passed": false,
+            "reference": "released_10_step",
+            "reference_value": 1.3058672193910752,
+            "relative_change": 0.12734045865209068
+          }
+        ],
+        "passed": false
+      },
+      "min_ade": {
+        "candidate_two_step": 1.4411435473812162,
+        "checks": [
+          {
+            "candidate": 1.4411435473812162,
+            "maximum_allowed": 1.3279639128169949,
+            "passed": false,
+            "reference": "trained_10_step",
+            "reference_value": 1.2072399207427225,
+            "relative_change": 0.1937507388710197
+          },
+          {
+            "candidate": 1.4411435473812162,
+            "maximum_allowed": 1.4680705720918923,
+            "passed": true,
+            "reference": "released_10_step",
+            "reference_value": 1.3346096109926293,
+            "relative_change": 0.0798240440583604
+          }
+        ],
+        "passed": false
+      }
+    },
+    "passed": false
+  },
+  "safety": {
+    "available": false,
+    "passed": false,
+    "reason": "NVIDIA's public Stage-2 recipe reports displacement distance only; it has no collision, off-road, or traffic-rule evaluator. Finite outputs are necessary but are not safety evidence.",
+    "required_next": "Evaluate the two-step checkpoint in a safety-capable closed-loop simulator or an annotated collision/off-road benchmark.",
+    "status": "not_evaluated"
+  },
+  "schema_version": 1,
+  "thresholds_predeclared": {
+    "maximum_relative_quality_regression": 0.1,
+    "minimum_action_expert_speedup_vs_10_step": 4.0
+  }
+}

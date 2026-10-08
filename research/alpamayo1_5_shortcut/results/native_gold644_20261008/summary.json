@@ -1,0 +1,130 @@
+{
+  "status": "complete",
+  "source_run": "shortcut_native_gold644_20261008_r2",
+  "manifest_sha256": "5242053734a9659b1e1f81d294665f2a8841998ab7ac8b46f99321cae1edde74",
+  "native_commit": "7a8f1c781a826f09be53e1e211f26e947ec18019",
+  "metrics": {
+    "R0_10step": {
+      "full644": {
+        "clips": 644,
+        "min_ade_m": 0.8282020703754938,
+        "model_ms": 1759.0531871305166,
+        "expert_ms": 373.4252890355839
+      },
+      "shared_heldout497": {
+        "clips": 497,
+        "min_ade_m": 0.8604889181273909,
+        "model_ms": 1782.6560651771194,
+        "expert_ms": 372.76421990193114
+      }
+    },
+    "R0_5step": {
+      "full644": {
+        "clips": 644,
+        "min_ade_m": 0.8731680623283147,
+        "model_ms": 1599.69213658498,
+        "expert_ms": 187.50441493158755,
+        "change_vs_own10_percent": 5.429350343501804
+      },
+      "shared_heldout497": {
+        "clips": 497,
+        "min_ade_m": 0.894795276698707,
+        "model_ms": 1620.8427793013614,
+        "expert_ms": 188.06181243343852,
+        "change_vs_own10_percent": 3.98684490277621
+      }
+    },
+    "A6_10step": {
+      "full644": {
+        "clips": 644,
+        "min_ade_m": 0.8385764025882037,
+        "model_ms": 1743.1957942717643,
+        "expert_ms": 383.6339852469308,
+        "change_vs_released_same_step_percent": 1.2526329725312424
+      },
+      "shared_heldout497": {
+        "clips": 497,
+        "min_ade_m": 0.8708706304657702,
+        "model_ms": 1766.247427503258,
+        "expert_ms": 383.80122968032805,
+        "change_vs_released_same_step_percent": 1.2064899523601236
+      }
+    },
+    "A6_5step": {
+      "full644": {
+        "clips": 644,
+        "min_ade_m": 0.8805187892776868,
+        "model_ms": 1630.685780030984,
+        "expert_ms": 194.94756809969127,
+        "change_vs_own10_percent": 5.0016178084705265,
+        "change_vs_released_same_step_percent": 0.841845604129321
+      },
+      "shared_heldout497": {
+        "clips": 497,
+        "min_ade_m": 0.9042888367403359,
+        "model_ms": 1654.514313193054,
+        "expert_ms": 194.67903321417765,
+        "change_vs_own10_percent": 3.8373330211735945,
+        "change_vs_released_same_step_percent": 1.0609756543032756
+      }
+    },
+    "A8_10step": {
+      "full644": {
+        "clips": 644,
+        "min_ade_m": 0.8374422339408699,
+        "model_ms": 1778.6582000155463,
+        "expert_ms": 386.27349398595203,
+        "change_vs_released_same_step_percent": 1.115689503310091
+      },
+      "shared_heldout497": {
+        "clips": 497,
+        "min_ade_m": 0.871256647832969,
+        "model_ms": 1802.8276715229356,
+        "expert_ms": 385.9755800427565,
+        "change_vs_released_same_step_percent": 1.2513501892634338
+      }
+    },
+    "A8_5step": {
+      "full644": {
+        "clips": 644,
+        "min_ade_m": 0.8792361997187959,
+        "model_ms": 1607.3439161975432,
+        "expert_ms": 194.53430154456856,
+        "change_vs_own10_percent": 4.990668500351392,
+        "change_vs_released_same_step_percent": 0.6949564067082914
+      },
+      "shared_heldout497": {
+        "clips": 497,
+        "min_ade_m": 0.9033467177801974,
+        "model_ms": 1638.70553738866,
+        "expert_ms": 194.74146800357812,
+        "change_vs_own10_percent": 3.683193698096243,
+        "change_vs_released_same_step_percent": 0.9556868821481102
+      }
+    }
+  },
+  "protocol": {
+    "clips": 644,
+    "candidates": 6,
+    "steps": [
+      10,
+      5
+    ],
+    "camera_labels": true,
+    "frame_labels": true,
+    "generated_reasoning": true,
+    "precision": "FP16",
+    "vlm_attention": "flash_attention_2",
+    "expert_attention": "sdpa",
+    "seed_per_clip": 42,
+    "ground_truth_future_in_model_input": false
+  },
+  "caveats": [
+    "A8 full644 is diagnostic: 112 gold clips used for fine-tuning; shared497 excludes both A6/A8 fine-tuning pools.",
+    "Original released-model pretraining overlap unknown.",
+    "A6/A8 training used trajectory-only conditioning; evaluation uses native generated reasoning.",
+    "d=0.1 and d=0.2 are not explicit dyadic training values.",
+    "No collision/off-road safety results.",
+    "Mean differences alone are not a statistical significance test."
+  ]
+}

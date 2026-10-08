@@ -1,0 +1,101 @@
+{
+  "adapter_parameter_stats": {
+    "action_in_proj.step_size_adapter.0.bias": {
+      "finite": true,
+      "l2_norm": 0.02585669979453087,
+      "nonzero": 256,
+      "shape": [
+        256
+      ]
+    },
+    "action_in_proj.step_size_adapter.0.weight": {
+      "finite": true,
+      "l2_norm": 1.4616090059280396,
+      "nonzero": 5120,
+      "shape": [
+        256,
+        20
+      ]
+    },
+    "action_in_proj.step_size_adapter.2.bias": {
+      "finite": true,
+      "l2_norm": 0.055763762444257736,
+      "nonzero": 2048,
+      "shape": [
+        2048
+      ]
+    },
+    "action_in_proj.step_size_adapter.2.weight": {
+      "finite": true,
+      "l2_norm": 1.826468825340271,
+      "nonzero": 524288,
+      "shape": [
+        2048,
+        256
+      ]
+    }
+  },
+  "checkpoint": "/path/to/alpamayo-assets/runs/alpamayo15_hf300gb_reference_ema_5295clips_1epoch_20260915_r1/trainer_output/checkpoint-662",
+  "checks": {
+    "adapter_output_layer_updated": true,
+    "adapter_tensors_finite": true,
+    "adapter_tensors_present": true,
+    "all_model_shards_present": true,
+    "balanced_level_cycle": true,
+    "bootstrap_every_eight": true,
+    "global_step": true,
+    "one_epoch_sample_accounting": true,
+    "rank_zero_has_no_flow_loss": true,
+    "rank_zero_only_shortcut": true,
+    "rank_zero_shortcut_log_count": true,
+    "reference_estimator": true,
+    "required_files_present": true,
+    "saved_branch_cursor": true,
+    "saved_level_cursor": true,
+    "shortcut_losses_finite": true,
+    "weight_index_complete": true
+  },
+  "config": {
+    "shortcut_bootstrap_every": 8,
+    "shortcut_flow_step_size": 0.125,
+    "shortcut_loss_estimator": "reference_partition",
+    "shortcut_step_sizes": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "shortcut_teacher_mode": "ema"
+  },
+  "expected_branch_allocation": {
+    "flow": 4634,
+    "shortcut": 662,
+    "shortcut_fraction": 0.125
+  },
+  "generated_at_utc": "2026-09-15T13:58:14.258550+00:00",
+  "global_samples_after_distributed_padding": 5296,
+  "global_step": 662,
+  "missing_required_files": [],
+  "passed": true,
+  "rank_zero_shortcut_logs": 662,
+  "rng_files": [
+    "rng_state_0.pth",
+    "rng_state_1.pth",
+    "rng_state_2.pth",
+    "rng_state_3.pth",
+    "rng_state_4.pth",
+    "rng_state_5.pth",
+    "rng_state_6.pth",
+    "rng_state_7.pth"
+  ],
+  "saved_branch_cursor": 0,
+  "saved_level_cursor": 2,
+  "schema_version": 1,
+  "shortcut_loss_mean": 0.3310416888217523,
+  "shortcut_step_counts": {
+    "0.25": 221,
+    "0.50": 221,
+    "1.00": 220
+  },
+  "training_rows": 5295,
+  "world_size": 8
+}

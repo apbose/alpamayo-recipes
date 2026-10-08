@@ -1,6 +1,8 @@
 # Alpamayo 1.5 shortcut experiments: ablation ledger
 
-Updated: 2026-09-25. Lower displacement error is better. All driving experiments
+> **Protocol update:** Historical ablation ledger. Earlier Stage-2 trajectory-only/eager results are not NVIDIA native-inference reproductions. For the corrected 644/497-clip R0/A6/A8 comparison and conditioning caveats, see [the current README](../README.md#current-results-corrected-native-gold-evaluation-2026-10-08).
+
+Updated: 2026-09-28. Lower displacement error is better. All driving experiments
 below freeze the VLM and train the Action Expert/projections. They use route-less
 inputs: no fabricated navigation or human/generated CoC supervision.
 
@@ -17,10 +19,10 @@ windows, six candidates, seed 42 and eager attention as the historical table.
 A4/A5/A6 use EMA weights; A2/A3 use student weights. A7 remains untrained.
 
 The **automatically updated expanded table** is
-[/home/abose_sw/alphamayo/docs/ALPAMAYO15_MISSING_EVAL_2026-09-24.md](/home/abose_sw/alphamayo/docs/ALPAMAYO15_MISSING_EVAL_2026-09-24.md).
+[the completed 128-clip results](RESULTS_128CLIP_2026-09-25.md).
 The historical tables below are retained as provenance and are not a live dashboard.
 
-- Suite: `/home/abose_sw/alphamayo/results/alpamayo15_missing_eval_128clips_20260924_r1`.
+- Suite: `/path/to/workspace/results/alpamayo15_missing_eval_128clips_20260924_r1`.
 - Runner: `research/alpamayo1_5_shortcut/scripts/fill_missing_evaluations.py`.
 - One process per checkpoint on physical GPUs 0/1/2/5/3 respectively.
 - No benchmark wall-clock timeout; `--resume` skips completed solver settings.
@@ -38,6 +40,20 @@ quality results. A7 did not start. This new missing-cell suite is independent
 of that failed training queue and does not implicitly restart A7.
 
 ## Experiment inventory
+
+New setup: [A8 — fresh streaming data in three A6 phases](A8_FRESH_DATA_A6_2026-09-25.md).
+Training completed September 25 at 15:36 UTC (249 updates; about 11 h 38 min).
+Final EMA evaluation completed at 10/5/4 steps: minADE 1.2355/1.2475/1.2789 m.
+The original run stopped on SIGHUP before completing two steps. A detached
+two-step-only resume launched September 28 at 22:44 UTC after correcting the
+HF processor-cache path (the 22:40 attempt failed before inference); no retraining or
+repetition of completed solver counts. The live A8-versus-A6 comparison is
+[the A8 experiment note](A8_FRESH_DATA_A6_2026-09-25.md).
+New timing is kept separate from the prior host's measurements.
+Three disjoint 5,295-clip sets; 249 total
+updates at the unchanged A6 loss/batch/EMA settings. Zero overlap against all
+986 existing held-out clips. Actual target-bearing coverage is 11,925 unique
+clips because A6's reference source-reuse layout is preserved.
 
 | ID | Experiment | Training data | Updates / global target batch | Loss allocation | Teacher / evaluated weights | Step-size training |
 |---|---|---|---|---|---|---|
@@ -97,8 +113,8 @@ Sources:
 
 - [A2/A3 flow-control report](../results/alpamayo15_hf300gb_flow_control_followups_20260914_r1/REPORT.md)
 - [A4 EMA report](../results/alpamayo15_hf300gb_reference_ema_followups_20260915_r1/REPORT.md)
-- A5: `/home/abose_sw/alphamayo/results/alpamayo15_10to5_eval_128clips_20260920_r1/REPORT.md`
-- A6: `/home/scratch.abose_sw/alpamayo-assets/runs/alpamayo15_paper_ema_5295clips_b64_20260920_r1/ema_eval_128/benchmark_results.json`
+- A5: `/path/to/workspace/results/alpamayo15_10to5_eval_128clips_20260920_r1/REPORT.md`
+- A6: `/path/to/alpamayo-assets/runs/alpamayo15_paper_ema_5295clips_b64_20260920_r1/ema_eval_128/benchmark_results.json`
 
 ### A6 completed EMA measurements (original host)
 
@@ -245,7 +261,7 @@ $$
 Run root:
 
 ```text
-/home/scratch.abose_sw/alpamayo-assets/runs/alpamayo15_paper_ema_5295clips_b64_20260920_r1
+/path/to/alpamayo-assets/runs/alpamayo15_paper_ema_5295clips_b64_20260920_r1
 ```
 
 Pipeline launch: 2026-09-20 23:45 UTC, detached OS session.
@@ -319,13 +335,13 @@ and a test that A7 never calls the teacher to construct training targets.
 Queue output root:
 
 ```text
-/home/abose_sw/alphamayo/results/alpamayo15_a6_resume_a7_empirical_20260923_r1
+/path/to/workspace/results/alpamayo15_a6_resume_a7_empirical_20260923_r1
 ```
 
 A7 checkpoints/training logs:
 
 ```text
-/home/scratch.abose_sw/alpamayo-assets/runs/alpamayo15_paper_empirical_ema_5295clips_b64_20260923_r1
+/path/to/alpamayo-assets/runs/alpamayo15_paper_empirical_ema_5295clips_b64_20260923_r1
 ```
 
 The queue executes serially, with no training/evaluation GPU contention:
@@ -371,6 +387,13 @@ Code/config entry points:
 
 ## Remaining ablations (not automatically launched)
 
+Separate evaluation requested September 29: R0 versus A6 on NVIDIA's public
+644-clip gold manifest at 10/5/4/2 steps. This does not retrain either checkpoint
+and must not be merged with the existing 128-clip result table. A6 has zero gold
+overlap; A8 has 147 gold clips in its training pool, 112 actually selected, so A8
+is excluded. See [the gold evaluation protocol](GOLD_644_EVALUATION_2026-09-29.md)
+and its linked live artifacts for completion status.
+
 1. Additional seeds for the A6/A7 target-supervision comparison after the
    queued A7 experiment completes; no additional seed is launched now.
 2. Teacher online versus EMA while evaluating student weights in both cases.
@@ -382,3 +405,17 @@ Code/config entry points:
 Old invalid EMA reload runs and failed launches are not evidence. Retain their
 logs for provenance, but exclude them from result tables. The valid A4 report
 above uses the corrected persistent EMA counter and restored EMA weights.
+
+## September 30: A7 control requeued behind gold644
+
+The September 23 queue stopped before A7 training. A new detached controller
+was launched at 07:18:52 UTC, PID 1560279, in `waiting_for_gold_evaluation` state.
+It waits for successful R0/A6 gold644 completion and free GPUs, then runs the
+two-update A7 smoke/reload, fresh 249-update A7 training, and matched A7/A6
+10/5/4/2-step evaluation on the existing 128-clip manifest. No new A7 results exist
+at queue launch. This does not rerun R0 or the 128-step solver count.
+
+Exact A6/A7 raw-plan/protocol matching and zero overlap against gold644 plus
+existing held-outs passed. Only smoke and final checkpoints are saved, without
+deleting any existing data. Full details and live paths:
+[A7 matched-control queue](A7_MATCHED_CONTROL_2026-09-30.md).

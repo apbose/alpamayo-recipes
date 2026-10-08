@@ -1,0 +1,1222 @@
+{
+  "candidate_seed_stability": {
+    "1": {
+      "ade": {
+        "max": 1.6762386299669743,
+        "mean": 1.6371660806859534,
+        "min": 1.6175400596112013,
+        "sample_std": 0.0338379392828644,
+        "values": [
+          1.6177195524796844,
+          1.6762386299669743,
+          1.6175400596112013
+        ]
+      },
+      "corner_distance": {
+        "max": 1.5170715255662799,
+        "mean": 1.5100661631052692,
+        "min": 1.4988183211535215,
+        "sample_std": 0.009838386148422872,
+        "values": [
+          1.4988183211535215,
+          1.5170715255662799,
+          1.5143086425960064
+        ]
+      },
+      "min_ade": {
+        "max": 1.45770778413862,
+        "mean": 1.4487822490433853,
+        "min": 1.4338680477812886,
+        "sample_std": 0.01299928264329815,
+        "values": [
+          1.4338680477812886,
+          1.454770915210247,
+          1.45770778413862
+        ]
+      }
+    },
+    "10": {
+      "ade": {
+        "max": 1.8735866034403443,
+        "mean": 1.6421703705564141,
+        "min": 1.3857286660932004,
+        "sample_std": 0.24488986795900028,
+        "values": [
+          1.3857286660932004,
+          1.8735866034403443,
+          1.6671958421356976
+        ]
+      },
+      "corner_distance": {
+        "max": 0.8603464302141219,
+        "mean": 0.8037938559912922,
+        "min": 0.7588693976867944,
+        "sample_std": 0.0517282016166781,
+        "values": [
+          0.7588693976867944,
+          0.79216574007296,
+          0.8603464302141219
+        ]
+      },
+      "min_ade": {
+        "max": 0.8438239684328437,
+        "mean": 0.7797563466398666,
+        "min": 0.7469329931773245,
+        "sample_std": 0.055489805362062425,
+        "values": [
+          0.7469329931773245,
+          0.7485120783094317,
+          0.8438239684328437
+        ]
+      }
+    },
+    "2": {
+      "ade": {
+        "max": 1.5885040992870927,
+        "mean": 1.519326171837747,
+        "min": 1.4247369645163417,
+        "sample_std": 0.08478925914470208,
+        "values": [
+          1.4247369645163417,
+          1.5885040992870927,
+          1.544737451709807
+        ]
+      },
+      "corner_distance": {
+        "max": 1.0915869392920285,
+        "mean": 1.0254669309748958,
+        "min": 0.9610246298834682,
+        "sample_std": 0.06529732142803066,
+        "values": [
+          0.9610246298834682,
+          1.0915869392920285,
+          1.0237892237491906
+        ]
+      },
+      "min_ade": {
+        "max": 1.046057494590059,
+        "mean": 0.9921550794970244,
+        "min": 0.9371839773375541,
+        "sample_std": 0.05444462561876371,
+        "values": [
+          0.9371839773375541,
+          1.046057494590059,
+          0.9932237665634602
+        ]
+      }
+    },
+    "4": {
+      "ade": {
+        "max": 1.664118186570704,
+        "mean": 1.523462547454983,
+        "min": 1.3330344459973276,
+        "sample_std": 0.17106163896005197,
+        "values": [
+          1.3330344459973276,
+          1.664118186570704,
+          1.5732350097969174
+        ]
+      },
+      "corner_distance": {
+        "max": 0.8936711414717138,
+        "mean": 0.849941272220652,
+        "min": 0.8087770382408053,
+        "sample_std": 0.04250516502854348,
+        "values": [
+          0.8087770382408053,
+          0.8473756369494367,
+          0.8936711414717138
+        ]
+      },
+      "min_ade": {
+        "max": 0.8535667518153787,
+        "mean": 0.8117869365135751,
+        "min": 0.7905816786078503,
+        "sample_std": 0.0361837556200684,
+        "values": [
+          0.7912123791174963,
+          0.7905816786078503,
+          0.8535667518153787
+        ]
+      }
+    },
+    "8": {
+      "ade": {
+        "max": 1.8026602803729475,
+        "mean": 1.5958259128965437,
+        "min": 1.3632313618436456,
+        "sample_std": 0.22084413939106234,
+        "values": [
+          1.3632313618436456,
+          1.8026602803729475,
+          1.6215860964730382
+        ]
+      },
+      "corner_distance": {
+        "max": 0.8298255449626595,
+        "mean": 0.7993586827069521,
+        "min": 0.7724220498930663,
+        "sample_std": 0.02886411615631302,
+        "values": [
+          0.7724220498930663,
+          0.7958284532651305,
+          0.8298255449626595
+        ]
+      },
+      "min_ade": {
+        "max": 0.8127975931856781,
+        "mean": 0.7743139473798996,
+        "min": 0.7530053096124902,
+        "sample_std": 0.033391839864893136,
+        "values": [
+          0.7571389393415302,
+          0.7530053096124902,
+          0.8127975931856781
+        ]
+      }
+    }
+  },
+  "candidate_step_reduction": {
+    "1": {
+      "action_expert_speedup_vs_candidate_10": 10.702539563568482,
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 37.74189384330384,
+          "end_to_end_mean": 10433.445236312991
+        },
+        "metrics": {
+          "ade": 1.6177195524796844,
+          "corner_distance": 1.4988183211535215,
+          "min_ade": 1.4338680477812886
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "end_to_end_speedup_vs_candidate_10": 1.0286034641562256,
+      "quality_change_vs_candidate_10_pct": {
+        "ade": 16.741436621971474,
+        "corner_distance": 97.50675488064992,
+        "min_ade": 91.9674269149446
+      }
+    },
+    "10": {
+      "action_expert_speedup_vs_candidate_10": 1.0,
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 403.93411206196106,
+          "end_to_end_mean": 10731.877913155813
+        },
+        "metrics": {
+          "ade": 1.3857286660932004,
+          "corner_distance": 0.7588693976867944,
+          "min_ade": 0.7469329931773245
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "end_to_end_speedup_vs_candidate_10": 1.0,
+      "quality_change_vs_candidate_10_pct": {
+        "ade": 0.0,
+        "corner_distance": 0.0,
+        "min_ade": 0.0
+      }
+    },
+    "2": {
+      "action_expert_speedup_vs_candidate_10": 5.141116527926246,
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 78.56933603193283,
+          "end_to_end_mean": 10498.0407070002
+        },
+        "metrics": {
+          "ade": 1.4247369645163417,
+          "corner_distance": 0.9610246298834682,
+          "min_ade": 0.9371839773375541
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "end_to_end_speedup_vs_candidate_10": 1.0222743664919958,
+      "quality_change_vs_candidate_10_pct": {
+        "ade": 2.8150026320172605,
+        "corner_distance": 26.639001758785973,
+        "min_ade": 25.47095735467979
+      }
+    },
+    "4": {
+      "action_expert_speedup_vs_candidate_10": 2.5290899152268618,
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 159.71520412540485,
+          "end_to_end_mean": 10468.104034561975
+        },
+        "metrics": {
+          "ade": 1.3330344459973276,
+          "corner_distance": 0.8087770382408053,
+          "min_ade": 0.7912123791174963
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "end_to_end_speedup_vs_candidate_10": 1.0251978656042156,
+      "quality_change_vs_candidate_10_pct": {
+        "ade": -3.802636214810673,
+        "corner_distance": 6.576578355398266,
+        "min_ade": 5.92816040322639
+      }
+    },
+    "8": {
+      "action_expert_speedup_vs_candidate_10": 1.252454291147727,
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 322.5140549375283,
+          "end_to_end_mean": 10664.597989125923
+        },
+        "metrics": {
+          "ade": 1.3632313618436456,
+          "corner_distance": 0.7724220498930663,
+          "min_ade": 0.7571389393415302
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "end_to_end_speedup_vs_candidate_10": 1.0063087163809168,
+      "quality_change_vs_candidate_10_pct": {
+        "ade": -1.6234999534924688,
+        "corner_distance": 1.7859004787363242,
+        "min_ade": 1.3663804193186468
+      }
+    }
+  },
+  "compact_publication_dir": "research/alpamayo1_5_shortcut/results/alpamayo15_hf300gb_reference_followups_20260913_r1",
+  "gates": {
+    "test": {
+      "decision": "do_not_pursue_one_step",
+      "efficiency": {
+        "action_expert_speedup_vs_trained_10_step": 5.151351083273768,
+        "minimum_required": 4.0,
+        "passed": true
+      },
+      "evidence_scope": "32-clip-open-loop-pilot",
+      "generated_at_utc": "2026-09-13T23:18:05.547433+00:00",
+      "inputs": {
+        "released_baseline": "/path/to/workspace/results/alpamayo15_hf300gb_reference_followups_20260913_r1/released_test_seed42/benchmark_results.json",
+        "trained_candidate": "/path/to/workspace/results/alpamayo15_hf300gb_reference_followups_20260913_r1/candidate_test_seed42/benchmark_results.json"
+      },
+      "overall_gate_passed": false,
+      "protocol": {
+        "checks": [
+          {
+            "baseline": "1b45ff0ec46f0fb82703473fde67013add160e5156db7ce11bcb019faa1faf82",
+            "candidate": "1b45ff0ec46f0fb82703473fde67013add160e5156db7ce11bcb019faa1faf82",
+            "name": "validation_manifest_sha256",
+            "passed": true
+          },
+          {
+            "baseline": 32,
+            "candidate": 32,
+            "name": "validation_samples",
+            "passed": true
+          },
+          {
+            "baseline": 32,
+            "candidate": 32,
+            "name": "validation_unique_clips",
+            "passed": true
+          },
+          {
+            "baseline": 6,
+            "candidate": 6,
+            "name": "num_traj_samples",
+            "passed": true
+          },
+          {
+            "baseline": 42,
+            "candidate": 42,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "baseline": "eager",
+            "candidate": "eager",
+            "name": "attention_backend",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "quality": {
+        "metrics": {
+          "ade": {
+            "candidate_two_step": 2.251400226727128,
+            "checks": [
+              {
+                "candidate": 2.251400226727128,
+                "maximum_allowed": 2.8817555016838017,
+                "passed": true,
+                "reference": "trained_10_step",
+                "reference_value": 2.619777728803456,
+                "relative_change": -0.1406140292079583
+              },
+              {
+                "candidate": 2.251400226727128,
+                "maximum_allowed": 3.537444098480046,
+                "passed": true,
+                "reference": "released_10_step",
+                "reference_value": 3.215858271345496,
+                "relative_change": -0.29990688744340854
+              }
+            ],
+            "passed": true
+          },
+          "corner_distance": {
+            "candidate_two_step": 1.7078464345540851,
+            "checks": [
+              {
+                "candidate": 1.7078464345540851,
+                "maximum_allowed": 1.478660030756146,
+                "passed": false,
+                "reference": "trained_10_step",
+                "reference_value": 1.344236391596496,
+                "relative_change": 0.27049561016998197
+              },
+              {
+                "candidate": 1.7078464345540851,
+                "maximum_allowed": 1.7783624570816756,
+                "passed": true,
+                "reference": "released_10_step",
+                "reference_value": 1.6166931428015232,
+                "relative_change": 0.05638255605798197
+              }
+            ],
+            "passed": false
+          },
+          "min_ade": {
+            "candidate_two_step": 1.6145067503675818,
+            "checks": [
+              {
+                "candidate": 1.6145067503675818,
+                "maximum_allowed": 1.3582426998298616,
+                "passed": false,
+                "reference": "trained_10_step",
+                "reference_value": 1.2347660907544196,
+                "relative_change": 0.30754056372016797
+              },
+              {
+                "candidate": 1.6145067503675818,
+                "maximum_allowed": 1.6856842922046782,
+                "passed": true,
+                "reference": "released_10_step",
+                "reference_value": 1.5324402656406164,
+                "relative_change": 0.053552811530085065
+              }
+            ],
+            "passed": false
+          }
+        },
+        "passed": false
+      },
+      "safety": {
+        "available": false,
+        "passed": false,
+        "reason": "NVIDIA's public Stage-2 recipe reports displacement distance only; it has no collision, off-road, or traffic-rule evaluator. Finite outputs are necessary but are not safety evidence.",
+        "required_next": "Evaluate the two-step checkpoint in a safety-capable closed-loop simulator or an annotated collision/off-road benchmark.",
+        "status": "not_evaluated"
+      },
+      "schema_version": 1,
+      "thresholds_predeclared": {
+        "maximum_relative_quality_regression": 0.1,
+        "minimum_action_expert_speedup_vs_10_step": 4.0
+      }
+    },
+    "validation": {
+      "decision": "do_not_pursue_one_step",
+      "efficiency": {
+        "action_expert_speedup_vs_trained_10_step": 5.141116527926246,
+        "minimum_required": 4.0,
+        "passed": true
+      },
+      "evidence_scope": "32-clip-open-loop-pilot",
+      "generated_at_utc": "2026-09-13T19:40:05.007871+00:00",
+      "inputs": {
+        "released_baseline": "/path/to/workspace/results/alpamayo15_hf300gb_reference_followups_20260913_r1/released_seed42/benchmark_results.json",
+        "trained_candidate": "/path/to/workspace/results/alpamayo15_hf300gb_reference_followups_20260913_r1/candidate_seed42/benchmark_results.json"
+      },
+      "overall_gate_passed": false,
+      "protocol": {
+        "checks": [
+          {
+            "baseline": "0d70d2422e7dcc10800f8d16ba642af49d8113d627882436a7a46b3f0fae0d31",
+            "candidate": "0d70d2422e7dcc10800f8d16ba642af49d8113d627882436a7a46b3f0fae0d31",
+            "name": "validation_manifest_sha256",
+            "passed": true
+          },
+          {
+            "baseline": 32,
+            "candidate": 32,
+            "name": "validation_samples",
+            "passed": true
+          },
+          {
+            "baseline": 32,
+            "candidate": 32,
+            "name": "validation_unique_clips",
+            "passed": true
+          },
+          {
+            "baseline": 6,
+            "candidate": 6,
+            "name": "num_traj_samples",
+            "passed": true
+          },
+          {
+            "baseline": 42,
+            "candidate": 42,
+            "name": "seed",
+            "passed": true
+          },
+          {
+            "baseline": "eager",
+            "candidate": "eager",
+            "name": "attention_backend",
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "quality": {
+        "metrics": {
+          "ade": {
+            "candidate_two_step": 1.4247369645163417,
+            "checks": [
+              {
+                "candidate": 1.4247369645163417,
+                "maximum_allowed": 1.5243015327025207,
+                "passed": true,
+                "reference": "trained_10_step",
+                "reference_value": 1.3857286660932004,
+                "relative_change": 0.028150026320172584
+              },
+              {
+                "candidate": 1.4247369645163417,
+                "maximum_allowed": 2.327501485263929,
+                "passed": true,
+                "reference": "released_10_step",
+                "reference_value": 2.115910441149026,
+                "relative_change": -0.32665535515640676
+              }
+            ],
+            "passed": true
+          },
+          "corner_distance": {
+            "candidate_two_step": 0.9610246298834682,
+            "checks": [
+              {
+                "candidate": 0.9610246298834682,
+                "maximum_allowed": 0.834756337455474,
+                "passed": false,
+                "reference": "trained_10_step",
+                "reference_value": 0.7588693976867944,
+                "relative_change": 0.26639001758785985
+              },
+              {
+                "candidate": 0.9610246298834682,
+                "maximum_allowed": 1.2723904985003174,
+                "passed": true,
+                "reference": "released_10_step",
+                "reference_value": 1.1567186350002885,
+                "relative_change": -0.16918029950885294
+              }
+            ],
+            "passed": false
+          },
+          "min_ade": {
+            "candidate_two_step": 0.9371839773375541,
+            "checks": [
+              {
+                "candidate": 0.9371839773375541,
+                "maximum_allowed": 0.821626292495057,
+                "passed": false,
+                "reference": "trained_10_step",
+                "reference_value": 0.7469329931773245,
+                "relative_change": 0.2547095735467978
+              },
+              {
+                "candidate": 0.9371839773375541,
+                "maximum_allowed": 1.2942552254069597,
+                "passed": true,
+                "reference": "released_10_step",
+                "reference_value": 1.1765956594608724,
+                "relative_change": -0.20347829791673638
+              }
+            ],
+            "passed": false
+          }
+        },
+        "passed": false
+      },
+      "safety": {
+        "available": false,
+        "passed": false,
+        "reason": "NVIDIA's public Stage-2 recipe reports displacement distance only; it has no collision, off-road, or traffic-rule evaluator. Finite outputs are necessary but are not safety evidence.",
+        "required_next": "Evaluate the two-step checkpoint in a safety-capable closed-loop simulator or an annotated collision/off-road benchmark.",
+        "status": "not_evaluated"
+      },
+      "schema_version": 1,
+      "thresholds_predeclared": {
+        "maximum_relative_quality_regression": 0.1,
+        "minimum_action_expert_speedup_vs_10_step": 4.0
+      }
+    }
+  },
+  "generated_at_utc": "2026-09-13T23:18:05.719120+00:00",
+  "independent_test_candidate_vs_released": {
+    "1": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 37.53844440711873,
+          "end_to_end_mean": 10538.77288231206
+        },
+        "metrics": {
+          "ade": 2.342849981971085,
+          "corner_distance": 2.124447865411639,
+          "min_ade": 2.03107814444229
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 1.1642721976183434,
+        "corner_distance": -0.1706179281264264,
+        "min_ade": -0.2072035171607478
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 37.576003468075214,
+          "end_to_end_mean": 10551.551066187358
+        },
+        "metrics": {
+          "ade": 2.370448454283178,
+          "corner_distance": 2.1208293503150344,
+          "min_ade": 2.0268783811479807
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    },
+    "10": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 402.6280879375008,
+          "end_to_end_mean": 10888.498789749974
+        },
+        "metrics": {
+          "ade": 2.619777728803456,
+          "corner_distance": 1.344236391596496,
+          "min_ade": 1.2347660907544196
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 18.53565960457093,
+        "corner_distance": 16.852718923078648,
+        "min_ade": 19.42484686421092
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 402.9310298135442,
+          "end_to_end_mean": 10908.624195594257
+        },
+        "metrics": {
+          "ade": 3.215858271345496,
+          "corner_distance": 1.6166931428015232,
+          "min_ade": 1.5324402656406164
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    },
+    "2": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 78.15970634283076,
+          "end_to_end_mean": 10571.78619559295
+        },
+        "metrics": {
+          "ade": 2.251400226727128,
+          "corner_distance": 1.7078464345540851,
+          "min_ade": 1.6145067503675818
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 5.440847183951803,
+        "corner_distance": 5.798348732800229,
+        "min_ade": 6.993764003366132
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 78.32957428149712,
+          "end_to_end_mean": 10596.912335468232
+        },
+        "metrics": {
+          "ade": 2.3809437369927764,
+          "corner_distance": 1.812968681100756,
+          "min_ade": 1.7359123644419014
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    },
+    "4": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 159.22734943751493,
+          "end_to_end_mean": 10642.86760396817
+        },
+        "metrics": {
+          "ade": 2.3357416382059455,
+          "corner_distance": 1.4757660212926567,
+          "min_ade": 1.3819025158882141
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 15.837024804848188,
+        "corner_distance": 12.896120250017196,
+        "min_ade": 15.020542841475926
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 159.28354587413196,
+          "end_to_end_mean": 10655.190244750202
+        },
+        "metrics": {
+          "ade": 2.775260300375521,
+          "corner_distance": 1.6942598028108478,
+          "min_ade": 1.6261606770567596
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    },
+    "8": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 321.60038565552895,
+          "end_to_end_mean": 10802.160327719093
+        },
+        "metrics": {
+          "ade": 2.531282125040889,
+          "corner_distance": 1.357833033427596,
+          "min_ade": 1.246342994272709
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 19.359639191644785,
+        "corner_distance": 16.87205837892457,
+        "min_ade": 19.76707676682533
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 321.68173943728107,
+          "end_to_end_mean": 10812.14487400075
+        },
+        "metrics": {
+          "ade": 3.1389766857028008,
+          "corner_distance": 1.6334255449473858,
+          "min_ade": 1.5534059386700392
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    }
+  },
+  "protocol": {
+    "attention_backend": "eager",
+    "execution": "sequential on one NVIDIA B300 to avoid contention",
+    "solver_steps": [
+      10,
+      8,
+      4,
+      2,
+      1
+    ],
+    "test_clips": 32,
+    "test_manifest_sha256": "1b45ff0ec46f0fb82703473fde67013add160e5156db7ce11bcb019faa1faf82",
+    "trajectory_candidates": 6,
+    "validation_clips": 32,
+    "validation_manifest_sha256": "0d70d2422e7dcc10800f8d16ba642af49d8113d627882436a7a46b3f0fae0d31",
+    "validation_seeds": [
+      42,
+      43,
+      44
+    ]
+  },
+  "reference_vs_v1": {
+    "steps": {
+      "1": {
+        "reference_partition": {
+          "latency_ms": {
+            "action_expert_mean": 37.74189384330384,
+            "end_to_end_mean": 10433.445236312991
+          },
+          "metrics": {
+            "ade": 1.6177195524796844,
+            "corner_distance": 1.4988183211535215,
+            "min_ade": 1.4338680477812886
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        },
+        "reference_quality_change_pct": {
+          "ade": -2.890064979698892,
+          "corner_distance": 4.789683654287136,
+          "min_ade": 2.689050585008168
+        },
+        "v1_per_sample_weighted": {
+          "latency_ms": {
+            "action_expert_mean": 37.6211130626416,
+            "end_to_end_mean": 10343.151429937507
+          },
+          "metrics": {
+            "ade": 1.6658641076646745,
+            "corner_distance": 1.430310951313004,
+            "min_ade": 1.3963202888844535
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        }
+      },
+      "10": {
+        "reference_partition": {
+          "latency_ms": {
+            "action_expert_mean": 403.93411206196106,
+            "end_to_end_mean": 10731.877913155813
+          },
+          "metrics": {
+            "ade": 1.3857286660932004,
+            "corner_distance": 0.7588693976867944,
+            "min_ade": 0.7469329931773245
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        },
+        "reference_quality_change_pct": {
+          "ade": -1.8424250118070584,
+          "corner_distance": -6.504042117573072,
+          "min_ade": -4.457746790722316
+        },
+        "v1_per_sample_weighted": {
+          "latency_ms": {
+            "action_expert_mean": 403.5315061869369,
+            "end_to_end_mean": 10710.679885468835
+          },
+          "metrics": {
+            "ade": 1.4117388966260478,
+            "corner_distance": 0.8116601133078802,
+            "min_ade": 0.7817828950937837
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        }
+      },
+      "2": {
+        "reference_partition": {
+          "latency_ms": {
+            "action_expert_mean": 78.56933603193283,
+            "end_to_end_mean": 10498.0407070002
+          },
+          "metrics": {
+            "ade": 1.4247369645163417,
+            "corner_distance": 0.9610246298834682,
+            "min_ade": 0.9371839773375541
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        },
+        "reference_quality_change_pct": {
+          "ade": 0.13257869997373994,
+          "corner_distance": 4.105682933547317,
+          "min_ade": 5.095974185260332
+        },
+        "v1_per_sample_weighted": {
+          "latency_ms": {
+            "action_expert_mean": 78.28768571835099,
+            "end_to_end_mean": 10378.968795656192
+          },
+          "metrics": {
+            "ade": 1.422850567731075,
+            "corner_distance": 0.923124081993592,
+            "min_ade": 0.8917410819994984
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        }
+      },
+      "4": {
+        "reference_partition": {
+          "latency_ms": {
+            "action_expert_mean": 159.71520412540485,
+            "end_to_end_mean": 10468.104034561975
+          },
+          "metrics": {
+            "ade": 1.3330344459973276,
+            "corner_distance": 0.8087770382408053,
+            "min_ade": 0.7912123791174963
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        },
+        "reference_quality_change_pct": {
+          "ade": -2.3757592475590616,
+          "corner_distance": -3.813735657799,
+          "min_ade": -2.650771484504011
+        },
+        "v1_per_sample_weighted": {
+          "latency_ms": {
+            "action_expert_mean": 159.67563353137848,
+            "end_to_end_mean": 10471.4120536878
+          },
+          "metrics": {
+            "ade": 1.3654748408007436,
+            "corner_distance": 0.840844629710773,
+            "min_ade": 0.8127567020128481
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        }
+      },
+      "8": {
+        "reference_partition": {
+          "latency_ms": {
+            "action_expert_mean": 322.5140549375283,
+            "end_to_end_mean": 10664.597989125923
+          },
+          "metrics": {
+            "ade": 1.3632313618436456,
+            "corner_distance": 0.7724220498930663,
+            "min_ade": 0.7571389393415302
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        },
+        "reference_quality_change_pct": {
+          "ade": -2.6809699973675216,
+          "corner_distance": -5.895868535358762,
+          "min_ade": -5.064461264587338
+        },
+        "v1_per_sample_weighted": {
+          "latency_ms": {
+            "action_expert_mean": 322.5214415001574,
+            "end_to_end_mean": 10633.894031124782
+          },
+          "metrics": {
+            "ade": 1.4007860146230087,
+            "corner_distance": 0.820816299848957,
+            "min_ade": 0.7975295125797857
+          },
+          "peak_gpu_memory_mib": 42306.4140625
+        }
+      }
+    },
+    "warning": "This is descriptive, not a causal loss ablation: the checkpoints used different training populations and update counts."
+  },
+  "schema_version": 1,
+  "step_size_adapter_ablation": {
+    "1": {
+      "trained_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 37.74189384330384,
+          "end_to_end_mean": 10433.445236312991
+        },
+        "metrics": {
+          "ade": 1.6177195524796844,
+          "corner_distance": 1.4988183211535215,
+          "min_ade": 1.4338680477812886
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 37.62582499962264,
+          "end_to_end_mean": 10340.38220203206
+        },
+        "metrics": {
+          "ade": 1.621601971797645,
+          "corner_distance": 1.5010017128661275,
+          "min_ade": 1.4357617357745767
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_quality_change_pct": {
+        "ade": 0.2399933481677774,
+        "corner_distance": 0.14567420759346028,
+        "min_ade": 0.13206849794988873
+      }
+    },
+    "10": {
+      "trained_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 403.93411206196106,
+          "end_to_end_mean": 10731.877913155813
+        },
+        "metrics": {
+          "ade": 1.3857286660932004,
+          "corner_distance": 0.7588693976867944,
+          "min_ade": 0.7469329931773245
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 403.8794857810899,
+          "end_to_end_mean": 10714.929044967903
+        },
+        "metrics": {
+          "ade": 1.3839385486207902,
+          "corner_distance": 0.7586502102203667,
+          "min_ade": 0.747484230203554
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_quality_change_pct": {
+        "ade": -0.12918239452006652,
+        "corner_distance": -0.028883424090608845,
+        "min_ade": 0.07380006389658966
+      }
+    },
+    "2": {
+      "trained_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 78.56933603193283,
+          "end_to_end_mean": 10498.0407070002
+        },
+        "metrics": {
+          "ade": 1.4247369645163417,
+          "corner_distance": 0.9610246298834682,
+          "min_ade": 0.9371839773375541
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 78.47517800087189,
+          "end_to_end_mean": 10408.166974124924
+        },
+        "metrics": {
+          "ade": 1.4148609293624759,
+          "corner_distance": 0.9637401169165969,
+          "min_ade": 0.9381039760774001
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_quality_change_pct": {
+        "ade": -0.6931830506144321,
+        "corner_distance": 0.2825616481294535,
+        "min_ade": 0.09816628987402432
+      }
+    },
+    "4": {
+      "trained_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 159.71520412540485,
+          "end_to_end_mean": 10468.104034561975
+        },
+        "metrics": {
+          "ade": 1.3330344459973276,
+          "corner_distance": 0.8087770382408053,
+          "min_ade": 0.7912123791174963
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 159.92208659326934,
+          "end_to_end_mean": 10498.285815063127
+        },
+        "metrics": {
+          "ade": 1.3321281620301306,
+          "corner_distance": 0.8081324649974704,
+          "min_ade": 0.7902820511953905
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_quality_change_pct": {
+        "ade": -0.0679865377761435,
+        "corner_distance": -0.07969727290192408,
+        "min_ade": -0.1175825791734253
+      }
+    },
+    "8": {
+      "trained_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 322.5140549375283,
+          "end_to_end_mean": 10664.597989125923
+        },
+        "metrics": {
+          "ade": 1.3632313618436456,
+          "corner_distance": 0.7724220498930663,
+          "min_ade": 0.7571389393415302
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_adapter": {
+        "latency_ms": {
+          "action_expert_mean": 322.72605021898926,
+          "end_to_end_mean": 10639.768470156696
+        },
+        "metrics": {
+          "ade": 1.3656472761649638,
+          "corner_distance": 0.7706831889227033,
+          "min_ade": 0.7560636294074357
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "zeroed_quality_change_pct": {
+        "ade": 0.1772196847093399,
+        "corner_distance": -0.22511798706468245,
+        "min_ade": -0.1420228016577374
+      }
+    }
+  },
+  "suite_dir": "/path/to/workspace/results/alpamayo15_hf300gb_reference_followups_20260913_r1",
+  "validation_candidate_vs_released": {
+    "1": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 37.74189384330384,
+          "end_to_end_mean": 10433.445236312991
+        },
+        "metrics": {
+          "ade": 1.6177195524796844,
+          "corner_distance": 1.4988183211535215,
+          "min_ade": 1.4338680477812886
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 23.58156365719767,
+        "corner_distance": 25.661058103539336,
+        "min_ade": 27.234773211619334
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 37.62208759371788,
+          "end_to_end_mean": 10341.874180468722
+        },
+        "metrics": {
+          "ade": 2.116923127323389,
+          "corner_distance": 2.0161953922361135,
+          "min_ade": 1.970540203154087
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    },
+    "10": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 403.93411206196106,
+          "end_to_end_mean": 10731.877913155813
+        },
+        "metrics": {
+          "ade": 1.3857286660932004,
+          "corner_distance": 0.7588693976867944,
+          "min_ade": 0.7469329931773245
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 34.50910590806041,
+        "corner_distance": 34.394642333517425,
+        "min_ade": 36.51744444479963
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 403.72736587573854,
+          "end_to_end_mean": 10718.986193344335
+        },
+        "metrics": {
+          "ade": 2.115910441149026,
+          "corner_distance": 1.1567186350002885,
+          "min_ade": 1.1765956594608724
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    },
+    "2": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 78.56933603193283,
+          "end_to_end_mean": 10498.0407070002
+        },
+        "metrics": {
+          "ade": 1.4247369645163417,
+          "corner_distance": 0.9610246298834682,
+          "min_ade": 0.9371839773375541
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 27.36011297051897,
+        "corner_distance": 37.130697934777324,
+        "min_ade": 37.65218651635245
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 78.3033191244158,
+          "end_to_end_mean": 10390.942543968777
+        },
+        "metrics": {
+          "ade": 1.961370016913861,
+          "corner_distance": 1.5286071235314012,
+          "min_ade": 1.503154521342367
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    },
+    "4": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 159.71520412540485,
+          "end_to_end_mean": 10468.104034561975
+        },
+        "metrics": {
+          "ade": 1.3330344459973276,
+          "corner_distance": 0.8087770382408053,
+          "min_ade": 0.7912123791174963
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 32.53150265887711,
+        "corner_distance": 35.94312977160414,
+        "min_ade": 37.596821499885436
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 160.58023790606057,
+          "end_to_end_mean": 10506.205868874986
+        },
+        "metrics": {
+          "ade": 1.9757879581302404,
+          "corner_distance": 1.2625921862199903,
+          "min_ade": 1.2679039724171162
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    },
+    "8": {
+      "candidate": {
+        "latency_ms": {
+          "action_expert_mean": 322.5140549375283,
+          "end_to_end_mean": 10664.597989125923
+        },
+        "metrics": {
+          "ade": 1.3632313618436456,
+          "corner_distance": 0.7724220498930663,
+          "min_ade": 0.7571389393415302
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      },
+      "candidate_quality_gain_pct": {
+        "ade": 34.46890821239214,
+        "corner_distance": 34.19359146047978,
+        "min_ade": 36.076572040383816
+      },
+      "released": {
+        "latency_ms": {
+          "action_expert_mean": 322.59376128172335,
+          "end_to_end_mean": 10653.313550282064
+        },
+        "metrics": {
+          "ade": 2.080281778704375,
+          "corner_distance": 1.173779373522848,
+          "min_ade": 1.1844467099290341
+        },
+        "peak_gpu_memory_mib": 42306.4140625
+      }
+    }
+  }
+}

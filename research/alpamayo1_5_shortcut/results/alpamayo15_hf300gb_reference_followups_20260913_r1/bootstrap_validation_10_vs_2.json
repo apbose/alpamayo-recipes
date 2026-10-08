@@ -1,0 +1,68 @@
+{
+  "benchmark": "/path/to/workspace/results/alpamayo15_hf300gb_reference_followups_20260913_r1/candidate_seed42/benchmark_results.json",
+  "benchmark_sha256": "1e28b5bd2b781c0d731143584eeb60786cbc4383d52f72102115ed749f9828cb",
+  "candidate_step": "2",
+  "generated_at_utc": "2026-09-14T05:17:21.905326+00:00",
+  "iterations": 100000,
+  "metrics": {
+    "ade": {
+      "candidate_mean": 1.4247369645163417,
+      "mean_delta_95_ci": [
+        -0.13747628256678582,
+        0.22428253288380795
+      ],
+      "observed_mean_delta": 0.03900829842314124,
+      "observed_relative_change": 0.028150026320172605,
+      "paired_clips": 32,
+      "probability_of_regression": 0.65956,
+      "probability_regression_exceeds_threshold": 0.17084,
+      "reference_mean": 1.3857286660932004,
+      "relative_change_95_ci": [
+        -0.08901749071613876,
+        0.19424970272746572
+      ],
+      "threshold": 0.1
+    },
+    "corner_distance": {
+      "candidate_mean": 0.9610246298834682,
+      "mean_delta_95_ci": [
+        0.07039181883446875,
+        0.36334989595925427
+      ],
+      "observed_mean_delta": 0.20215523219667375,
+      "observed_relative_change": 0.26639001758785974,
+      "paired_clips": 32,
+      "probability_of_regression": 0.99958,
+      "probability_regression_exceeds_threshold": 0.97244,
+      "reference_mean": 0.7588693976867944,
+      "relative_change_95_ci": [
+        0.0971463565219292,
+        0.48159960935623797
+      ],
+      "threshold": 0.1
+    },
+    "min_ade": {
+      "candidate_mean": 0.9371839773375541,
+      "mean_delta_95_ci": [
+        0.05453910083160736,
+        0.3554159759252796
+      ],
+      "observed_mean_delta": 0.19025098416022956,
+      "observed_relative_change": 0.2547095735467979,
+      "paired_clips": 32,
+      "probability_of_regression": 0.99863,
+      "probability_regression_exceeds_threshold": 0.95208,
+      "reference_mean": 0.7469329931773245,
+      "relative_change_95_ci": [
+        0.07667524887681527,
+        0.4798176813801421
+      ],
+      "threshold": 0.1
+    }
+  },
+  "paired_clips": 32,
+  "reference_step": "10",
+  "relative_threshold": 0.1,
+  "schema_version": 1,
+  "seed": 20260914
+}

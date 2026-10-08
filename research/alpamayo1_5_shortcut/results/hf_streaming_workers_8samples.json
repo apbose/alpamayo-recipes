@@ -1,0 +1,95 @@
+{
+  "generated_at_utc": "2026-09-13T07:57:56.889297+00:00",
+  "manifest": "research/alpamayo1_5_shortcut/manifests/hf_stream_300gb/train.json",
+  "repo_id": "nvidia/PhysicalAI-Autonomous-Vehicles",
+  "results": {
+    "0": {
+      "clip_ids": [
+        "2e6d5789-31eb-49b8-bc00-2ee726503d62",
+        "e631838d-a1bc-4e31-b5fa-e42398d0324b",
+        "09c372e3-d8f7-4652-b50f-5edeab951ae4",
+        "88d64029-d156-46ba-8bc3-08320e744a64",
+        "f31fca4c-66ab-43cc-8770-d88e716e9a79",
+        "2d2f32ba-aa28-4bc1-989a-0ebd335c7f5b",
+        "5899114c-a152-4277-8df4-9e4757c83b9b",
+        "9b02e431-0040-4a69-8860-4af5118d4e66"
+      ],
+      "per_sample_load_seconds": {
+        "max": 23.141142263999882,
+        "mean": 19.652637929374976,
+        "median": 19.495398483499912,
+        "p90": 22.48536957370011
+      },
+      "samples": 8,
+      "samples_per_second": 0.05085739401050546,
+      "wall_seconds": 157.30259396200017
+    },
+    "2": {
+      "clip_ids": [
+        "2e6d5789-31eb-49b8-bc00-2ee726503d62",
+        "e631838d-a1bc-4e31-b5fa-e42398d0324b",
+        "09c372e3-d8f7-4652-b50f-5edeab951ae4",
+        "88d64029-d156-46ba-8bc3-08320e744a64",
+        "f31fca4c-66ab-43cc-8770-d88e716e9a79",
+        "2d2f32ba-aa28-4bc1-989a-0ebd335c7f5b",
+        "5899114c-a152-4277-8df4-9e4757c83b9b",
+        "9b02e431-0040-4a69-8860-4af5118d4e66"
+      ],
+      "per_sample_load_seconds": {
+        "max": 18.649137617999713,
+        "mean": 14.658316390499976,
+        "median": 14.379531002000022,
+        "p90": 16.381764734000125
+      },
+      "samples": 8,
+      "samples_per_second": 0.131965391349847,
+      "wall_seconds": 60.621954878999986
+    },
+    "4": {
+      "clip_ids": [
+        "2e6d5789-31eb-49b8-bc00-2ee726503d62",
+        "e631838d-a1bc-4e31-b5fa-e42398d0324b",
+        "09c372e3-d8f7-4652-b50f-5edeab951ae4",
+        "88d64029-d156-46ba-8bc3-08320e744a64",
+        "f31fca4c-66ab-43cc-8770-d88e716e9a79",
+        "2d2f32ba-aa28-4bc1-989a-0ebd335c7f5b",
+        "5899114c-a152-4277-8df4-9e4757c83b9b",
+        "9b02e431-0040-4a69-8860-4af5118d4e66"
+      ],
+      "per_sample_load_seconds": {
+        "max": 18.07283762599991,
+        "mean": 15.856687850750006,
+        "median": 15.698047122999924,
+        "p90": 17.97152245820007
+      },
+      "samples": 8,
+      "samples_per_second": 0.2345492361896642,
+      "wall_seconds": 34.10797719900029
+    },
+    "8": {
+      "clip_ids": [
+        "2e6d5789-31eb-49b8-bc00-2ee726503d62",
+        "e631838d-a1bc-4e31-b5fa-e42398d0324b",
+        "09c372e3-d8f7-4652-b50f-5edeab951ae4",
+        "88d64029-d156-46ba-8bc3-08320e744a64",
+        "f31fca4c-66ab-43cc-8770-d88e716e9a79",
+        "2d2f32ba-aa28-4bc1-989a-0ebd335c7f5b",
+        "5899114c-a152-4277-8df4-9e4757c83b9b",
+        "9b02e431-0040-4a69-8860-4af5118d4e66"
+      ],
+      "per_sample_load_seconds": {
+        "max": 18.09033654699988,
+        "mean": 15.922590730500076,
+        "median": 16.17048169750001,
+        "p90": 17.01760707799999
+      },
+      "samples": 8,
+      "samples_per_second": 0.43307990289951515,
+      "wall_seconds": 18.472341816000153
+    }
+  },
+  "revision": "33f9bf447ed3bcb7d545ce13f4226f824214fafb",
+  "sample_count_per_worker_setting": 8,
+  "schema_version": 1,
+  "source_coverage_bytes": 301765103600
+}

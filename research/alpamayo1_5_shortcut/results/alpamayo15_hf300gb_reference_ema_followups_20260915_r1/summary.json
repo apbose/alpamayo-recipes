@@ -1,0 +1,524 @@
+{
+  "checkpoint_validation_passed": true,
+  "compact_results": {
+    "ema": {
+      "1": {
+        "action_expert_ms": 38.9854037105124,
+        "end_to_end_ms": 10468.149995413114,
+        "metrics": {
+          "ade": 2.063262435083743,
+          "corner_distance": 1.9638382111443207,
+          "min_ade": 1.9123473360086791
+        }
+      },
+      "10": {
+        "action_expert_ms": 416.78792108405105,
+        "end_to_end_ms": 10839.459928086171,
+        "metrics": {
+          "ade": 2.4351318103726953,
+          "corner_distance": 1.1936384543369059,
+          "min_ade": 1.2072399207427225
+        }
+      },
+      "2": {
+        "action_expert_ms": 81.12494049214547,
+        "end_to_end_ms": 10535.384948015235,
+        "metrics": {
+          "ade": 2.0395325599238276,
+          "corner_distance": 1.472156950047065,
+          "min_ade": 1.4411435473812162
+        }
+      },
+      "4": {
+        "action_expert_ms": 165.00548861654352,
+        "end_to_end_ms": 10612.73746864731,
+        "metrics": {
+          "ade": 2.156951691431459,
+          "corner_distance": 1.2627871085423976,
+          "min_ade": 1.2565917868341785
+        }
+      }
+    },
+    "flow": {
+      "1": null,
+      "10": {
+        "action_expert_ms": 399.35448991320754,
+        "end_to_end_ms": 10836.172903797205,
+        "metrics": {
+          "ade": 2.0905106247519143,
+          "corner_distance": 1.1067694297598791,
+          "min_ade": 1.0804018432681914
+        }
+      },
+      "2": {
+        "action_expert_ms": 77.49765610833492,
+        "end_to_end_ms": 10526.18975745247,
+        "metrics": {
+          "ade": 1.8974696913501248,
+          "corner_distance": 1.4439176458399743,
+          "min_ade": 1.4072371895890683
+        }
+      },
+      "4": {
+        "action_expert_ms": 158.02190575720942,
+        "end_to_end_ms": 10599.837658164006,
+        "metrics": {
+          "ade": 1.9611564363294747,
+          "corner_distance": 1.2095108890207484,
+          "min_ade": 1.184971004979161
+        }
+      }
+    },
+    "online": {
+      "1": null,
+      "10": {
+        "action_expert_ms": 399.22151775829207,
+        "end_to_end_ms": 10829.25620813296,
+        "metrics": {
+          "ade": 2.109925370736164,
+          "corner_distance": 1.1155090965839918,
+          "min_ade": 1.0957035135288606
+        }
+      },
+      "2": {
+        "action_expert_ms": 77.45476316335953,
+        "end_to_end_ms": 10506.501981094174,
+        "metrics": {
+          "ade": 1.9405078593990766,
+          "corner_distance": 1.4436123787490942,
+          "min_ade": 1.4214014708122704
+        }
+      },
+      "4": {
+        "action_expert_ms": 157.9237452107236,
+        "end_to_end_ms": 10580.850232203487,
+        "metrics": {
+          "ade": 1.9844304945436306,
+          "corner_distance": 1.2025181936041918,
+          "min_ade": 1.1795471503719455
+        }
+      }
+    },
+    "released": {
+      "1": null,
+      "10": {
+        "action_expert_ms": 399.4309898279198,
+        "end_to_end_ms": 10841.314536663958,
+        "metrics": {
+          "ade": 2.7169554328429513,
+          "corner_distance": 1.3058672193910752,
+          "min_ade": 1.3346096109926293
+        }
+      },
+      "2": {
+        "action_expert_ms": 77.44829032083089,
+        "end_to_end_ms": 10512.666873477086,
+        "metrics": {
+          "ade": 2.1706353981862776,
+          "corner_distance": 1.6076175971247721,
+          "min_ade": 1.5831791010859888
+        }
+      },
+      "4": {
+        "action_expert_ms": 157.98763443774533,
+        "end_to_end_ms": 10604.584431546868,
+        "metrics": {
+          "ade": 2.357141190499533,
+          "corner_distance": 1.3810155620449223,
+          "min_ade": 1.3976842810079688
+        }
+      }
+    },
+    "student": {
+      "1": null,
+      "10": {
+        "action_expert_ms": 399.7074926728601,
+        "end_to_end_ms": 10864.312432249562,
+        "metrics": {
+          "ade": 2.173190198795055,
+          "corner_distance": 1.11141240019424,
+          "min_ade": 1.0989996464559226
+        }
+      },
+      "2": {
+        "action_expert_ms": 77.54574792170388,
+        "end_to_end_ms": 10541.3710198427,
+        "metrics": {
+          "ade": 2.148257920052856,
+          "corner_distance": 1.4593566646799445,
+          "min_ade": 1.458591021335451
+        }
+      },
+      "4": null
+    }
+  },
+  "ema_runtime": {
+    "configured_dtype": "float32",
+    "decay": 0.999,
+    "inference_weights": "ema",
+    "parameter_dtypes": [
+      "torch.float32"
+    ],
+    "teacher_mode": "ema",
+    "updates": 662
+  },
+  "ema_updates": 662,
+  "gate": {
+    "decision": "do_not_pursue_one_step",
+    "efficiency": {
+      "action_expert_speedup_vs_trained_10_step": 5.137605261163853,
+      "minimum_required": 4.0,
+      "passed": true
+    },
+    "evidence_scope": "128-clip-open-loop-pilot",
+    "generated_at_utc": "2026-09-15T16:48:19.564270+00:00",
+    "inputs": {
+      "released_baseline": "/path/to/workspace/results/alpamayo15_hf300gb_flow_control_followups_20260914_r1/released_128/benchmark_results.json",
+      "trained_candidate": "/path/to/workspace/results/alpamayo15_hf300gb_reference_ema_followups_20260915_r1/ema_weights_128/benchmark_results.json"
+    },
+    "overall_gate_passed": false,
+    "protocol": {
+      "checks": [
+        {
+          "baseline": "d7dc21959b746dacdfee2f559550b329783d4664db88d3cacb5590323fec9e62",
+          "candidate": "d7dc21959b746dacdfee2f559550b329783d4664db88d3cacb5590323fec9e62",
+          "name": "validation_manifest_sha256",
+          "passed": true
+        },
+        {
+          "baseline": 128,
+          "candidate": 128,
+          "name": "validation_samples",
+          "passed": true
+        },
+        {
+          "baseline": 128,
+          "candidate": 128,
+          "name": "validation_unique_clips",
+          "passed": true
+        },
+        {
+          "baseline": 6,
+          "candidate": 6,
+          "name": "num_traj_samples",
+          "passed": true
+        },
+        {
+          "baseline": 42,
+          "candidate": 42,
+          "name": "seed",
+          "passed": true
+        },
+        {
+          "baseline": "eager",
+          "candidate": "eager",
+          "name": "attention_backend",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "quality": {
+      "metrics": {
+        "ade": {
+          "candidate_two_step": 2.0395325599238276,
+          "checks": [
+            {
+              "candidate": 2.0395325599238276,
+              "maximum_allowed": 2.678644991409965,
+              "passed": true,
+              "reference": "trained_10_step",
+              "reference_value": 2.4351318103726953,
+              "relative_change": -0.16245496394230974
+            },
+            {
+              "candidate": 2.0395325599238276,
+              "maximum_allowed": 2.988650976127247,
+              "passed": true,
+              "reference": "released_10_step",
+              "reference_value": 2.7169554328429513,
+              "relative_change": -0.24933161020248537
+            }
+          ],
+          "passed": true
+        },
+        "corner_distance": {
+          "candidate_two_step": 1.472156950047065,
+          "checks": [
+            {
+              "candidate": 1.472156950047065,
+              "maximum_allowed": 1.3130022997705966,
+              "passed": false,
+              "reference": "trained_10_step",
+              "reference_value": 1.1936384543369059,
+              "relative_change": 0.23333572632333024
+            },
+            {
+              "candidate": 1.472156950047065,
+              "maximum_allowed": 1.436453941330183,
+              "passed": false,
+              "reference": "released_10_step",
+              "reference_value": 1.3058672193910752,
+              "relative_change": 0.12734045865209068
+            }
+          ],
+          "passed": false
+        },
+        "min_ade": {
+          "candidate_two_step": 1.4411435473812162,
+          "checks": [
+            {
+              "candidate": 1.4411435473812162,
+              "maximum_allowed": 1.3279639128169949,
+              "passed": false,
+              "reference": "trained_10_step",
+              "reference_value": 1.2072399207427225,
+              "relative_change": 0.1937507388710197
+            },
+            {
+              "candidate": 1.4411435473812162,
+              "maximum_allowed": 1.4680705720918923,
+              "passed": true,
+              "reference": "released_10_step",
+              "reference_value": 1.3346096109926293,
+              "relative_change": 0.0798240440583604
+            }
+          ],
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    "safety": {
+      "available": false,
+      "passed": false,
+      "reason": "NVIDIA's public Stage-2 recipe reports displacement distance only; it has no collision, off-road, or traffic-rule evaluator. Finite outputs are necessary but are not safety evidence.",
+      "required_next": "Evaluate the two-step checkpoint in a safety-capable closed-loop simulator or an annotated collision/off-road benchmark.",
+      "status": "not_evaluated"
+    },
+    "schema_version": 1,
+    "thresholds_predeclared": {
+      "maximum_relative_quality_regression": 0.1,
+      "minimum_action_expert_speedup_vs_10_step": 4.0
+    }
+  },
+  "generated_at_utc": "2026-09-15T16:48:21.152057+00:00",
+  "inputs": {
+    "controls_dir": "/path/to/workspace/results/alpamayo15_hf300gb_flow_control_followups_20260914_r1",
+    "suite_dir": "/path/to/workspace/results/alpamayo15_hf300gb_reference_ema_followups_20260915_r1"
+  },
+  "paired_bootstrap_ema_10_vs_2": {
+    "benchmark": "/path/to/workspace/results/alpamayo15_hf300gb_reference_ema_followups_20260915_r1/ema_weights_128/benchmark_results.json",
+    "benchmark_sha256": "bc41ae3f01f7d723e9f6193084faac15abdb0557d9f562e541f8489de8fd9091",
+    "candidate_step": "2",
+    "generated_at_utc": "2026-09-15T16:48:20.446383+00:00",
+    "iterations": 100000,
+    "metrics": {
+      "ade": {
+        "candidate_mean": 2.0395325599238276,
+        "mean_delta_95_ci": [
+          -0.6457181075937115,
+          -0.19794547551136937
+        ],
+        "observed_mean_delta": -0.3955992504488677,
+        "observed_relative_change": -0.16245496394230974,
+        "paired_clips": 128,
+        "probability_of_regression": 0.0,
+        "probability_regression_exceeds_threshold": 0.0,
+        "reference_mean": 2.4351318103726953,
+        "relative_change_95_ci": [
+          -0.2410643949847696,
+          -0.08851950250853288
+        ],
+        "threshold": 0.1
+      },
+      "corner_distance": {
+        "candidate_mean": 1.472156950047065,
+        "mean_delta_95_ci": [
+          0.18932728662421142,
+          0.37232267225172105
+        ],
+        "observed_mean_delta": 0.2785184957101592,
+        "observed_relative_change": 0.23333572632333022,
+        "paired_clips": 128,
+        "probability_of_regression": 1.0,
+        "probability_regression_exceeds_threshold": 0.9998,
+        "reference_mean": 1.1936384543369059,
+        "relative_change_95_ci": [
+          0.15840222033002188,
+          0.32008906809552584
+        ],
+        "threshold": 0.1
+      },
+      "min_ade": {
+        "candidate_mean": 1.4411435473812162,
+        "mean_delta_95_ci": [
+          0.13929327013438525,
+          0.3329758278239751
+        ],
+        "observed_mean_delta": 0.23390362663849373,
+        "observed_relative_change": 0.1937507388710198,
+        "paired_clips": 128,
+        "probability_of_regression": 1.0,
+        "probability_regression_exceeds_threshold": 0.99109,
+        "reference_mean": 1.2072399207427225,
+        "relative_change_95_ci": [
+          0.11536979453485958,
+          0.28240200978502145
+        ],
+        "threshold": 0.1
+      }
+    },
+    "paired_clips": 128,
+    "reference_step": "10",
+    "relative_threshold": 0.1,
+    "schema_version": 1,
+    "seed": 20260914
+  },
+  "paired_bootstrap_student_10_vs_2": {
+    "benchmark": "/path/to/workspace/results/alpamayo15_hf300gb_reference_ema_followups_20260915_r1/student_weights_128/benchmark_results.json",
+    "benchmark_sha256": "36ea8eace027f77329b38db352e1bc046bd410d25a55ccc66c03e82f03802ecf",
+    "candidate_step": "2",
+    "generated_at_utc": "2026-09-15T16:48:21.030918+00:00",
+    "iterations": 100000,
+    "metrics": {
+      "ade": {
+        "candidate_mean": 2.148257920052856,
+        "mean_delta_95_ci": [
+          -0.19383856477797962,
+          0.14592646429555312
+        ],
+        "observed_mean_delta": -0.024932278742198832,
+        "observed_relative_change": -0.01147266297999261,
+        "paired_clips": 128,
+        "probability_of_regression": 0.38627,
+        "probability_regression_exceeds_threshold": 0.00511,
+        "reference_mean": 2.173190198795055,
+        "relative_change_95_ci": [
+          -0.08416572519168715,
+          0.07240916198862954
+        ],
+        "threshold": 0.1
+      },
+      "corner_distance": {
+        "candidate_mean": 1.4593566646799445,
+        "mean_delta_95_ci": [
+          0.24551565497986302,
+          0.45414556622317825
+        ],
+        "observed_mean_delta": 0.3479442644857045,
+        "observed_relative_change": 0.31306494729129786,
+        "paired_clips": 128,
+        "probability_of_regression": 1.0,
+        "probability_regression_exceeds_threshold": 0.99998,
+        "reference_mean": 1.11141240019424,
+        "relative_change_95_ci": [
+          0.21154546397742569,
+          0.4327290268556369
+        ],
+        "threshold": 0.1
+      },
+      "min_ade": {
+        "candidate_mean": 1.458591021335451,
+        "mean_delta_95_ci": [
+          0.2509081801652428,
+          0.47180233542021593
+        ],
+        "observed_mean_delta": 0.3595913748795283,
+        "observed_relative_change": 0.3271988085156772,
+        "paired_clips": 128,
+        "probability_of_regression": 1.0,
+        "probability_regression_exceeds_threshold": 1.0,
+        "reference_mean": 1.0989996464559226,
+        "relative_change_95_ci": [
+          0.21720155967950286,
+          0.45925205231401706
+        ],
+        "threshold": 0.1
+      }
+    },
+    "paired_clips": 128,
+    "reference_step": "10",
+    "relative_threshold": 0.1,
+    "schema_version": 1,
+    "seed": 20260914
+  },
+  "protocol": {
+    "attention_backend": "eager",
+    "candidates": 6,
+    "checks": {
+      "attention_backend": true,
+      "num_traj_samples": true,
+      "seed_reset_for_each_step_count": true,
+      "validation_manifest_sha256": true,
+      "validation_samples": true,
+      "validation_unique_clips": true
+    },
+    "manifest_sha256": "d7dc21959b746dacdfee2f559550b329783d4664db88d3cacb5590323fec9e62",
+    "passed": true,
+    "seed": 42,
+    "validation_clips": 128
+  },
+  "reference_validation_passed": true,
+  "results_by_step": {
+    "1": {
+      "ema_min_ade": 1.9123473360086791,
+      "flow_min_ade": null,
+      "online_min_ade": null,
+      "released_min_ade": null,
+      "student_min_ade": null
+    },
+    "10": {
+      "ema_min_ade": 1.2072399207427225,
+      "flow_min_ade": 1.0804018432681914,
+      "online_min_ade": 1.0957035135288606,
+      "released_min_ade": 1.3346096109926293,
+      "student_min_ade": 1.0989996464559226
+    },
+    "2": {
+      "ema_min_ade": 1.4411435473812162,
+      "flow_min_ade": 1.4072371895890683,
+      "online_min_ade": 1.4214014708122704,
+      "released_min_ade": 1.5831791010859888,
+      "student_min_ade": 1.458591021335451
+    },
+    "4": {
+      "ema_min_ade": 1.2565917868341785,
+      "flow_min_ade": 1.184971004979161,
+      "online_min_ade": 1.1795471503719455,
+      "released_min_ade": 1.3976842810079688,
+      "student_min_ade": null
+    }
+  },
+  "schema_version": 1,
+  "two_step": {
+    "action_expert_speedup": 5.137605261163853,
+    "comparisons": {
+      "EMA 2 vs flow-only 2": {
+        "ade": 0.07486963782415912,
+        "corner_distance": 0.019557420250697843,
+        "min_ade": 0.024094273547481393
+      },
+      "EMA 2 vs online-teacher 2": {
+        "ade": 0.05103030118899721,
+        "corner_distance": 0.019773016439984303,
+        "min_ade": 0.013889162896154827
+      },
+      "EMA 2 vs same EMA checkpoint 10": {
+        "ade": -0.16245496394230974,
+        "corner_distance": 0.23333572632333022,
+        "min_ade": 0.1937507388710198
+      },
+      "EMA weights 2 vs student weights 2": {
+        "ade": -0.05061094345987727,
+        "corner_distance": 0.008771183684509243,
+        "min_ade": -0.011961868473768789
+      },
+      "EMA-trained student 2 vs online-teacher 2": {
+        "ade": 0.10705963371780114,
+        "corner_distance": 0.010906172711329098,
+        "min_ade": 0.02616400171721245
+      }
+    }
+  }
+}

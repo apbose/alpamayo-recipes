@@ -1,0 +1,8 @@
+status=complete
+finished_utc=2026-09-15T16:48:21Z
+phase=complete
+completed_evaluations=2
+total_evaluations=2
+checkpoint=/path/to/alpamayo-assets/runs/alpamayo15_hf300gb_reference_ema_5295clips_1epoch_20260915_r1/trainer_output/checkpoint-662
+report=/path/to/workspace/results/alpamayo15_hf300gb_reference_ema_followups_20260915_r1/REPORT.md
+summary=/path/to/workspace/results/alpamayo15_hf300gb_reference_ema_followups_20260915_r1/summary.json

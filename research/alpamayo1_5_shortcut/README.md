@@ -1,5 +1,111 @@
 # Alpamayo 1.5 Stage-2 Shortcut Experiments
 
+## Current results: corrected native gold evaluation (2026-10-08)
+
+Use [native_eval/](native_eval/) for current released-checkpoint/native inference
+comparisons. The older Stage-2/eager benchmark remains a historical matched
+research protocol; it is **not** NVIDIA's native inference reproduction.
+
+Completed: R0 (released 10B), A6 and A8 at 10/5 steps, all 644 gold clips,
+six candidates per clip, zero skipped clips. A6/A8 use EMA weights at update 249.
+
+| Checkpoint | 10-step minADE m | 5-step minADE m | 10-to-5 degradation |
+|---|---:|---:|---:|
+| Released 10B R0 | 0.8282 | 0.8732 | +5.43% |
+| A6 | 0.8386 | 0.8805 | +5.00% |
+| A8 (full-set diagnostic) | 0.8374 | 0.8792 | +4.99% |
+
+A8's available training pool contains 147 gold clips; 112 were actually used.
+The shared **497-clip** cohort excludes both A6/A8 fine-tuning pools. Its
+10-to-5 degradation is 3.99% for R0, 3.84% for A6 and 3.68% for A8.
+Released-model pretraining overlap is unknown. Five steps roughly halves
+Action Expert time, not full-model time; the released models get that benefit
+too. A6/A8 have slightly worse absolute minADE than R0 at both solver counts.
+Small mean differences alone do not establish significance.
+
+- [Aggregate scores and caveats](results/native_gold644_20261008/summary.json)
+- [Quality and measured latency for both cohorts](results/native_gold644_20261008/comparison.csv)
+- [Exact public clip-selection manifest](manifests/gold644_native/gold644.json)
+- [Fine-tuning overlap audit and shared cohort IDs](manifests/gold644_native/overlap_audit.json)
+
+### What changed in evaluation
+
+The corrected input labels every camera/frame, starts the assistant at
+`<|cot_start|>`, and lets the VLM generate reasoning before
+`<|traj_future_start|>`. The Action Expert can then attend to scene **and**
+generated-reasoning K/V. Ground-truth future poses are reserved for scoring.
+
+The old 10B gold run used a trajectory-only prefix, disabled camera/frame
+labels, and used different precision/attention/seed settings. The corrected
+released 10B 10-step minADE is **0.8282 m**, versus **1.4646 m** under that old
+protocol. This combined correction is not an isolated camera-label or
+reasoning ablation. A6/A8 were trained with trajectory-only conditioning, so
+native reasoning-conditioned evaluation also introduces a conditioning shift.
+
+Native settings: FP16, VLM FlashAttention 2, expert SDPA, seed 42 per clip,
+four cameras x four frames, 16 history poses, 64 future poses, six stochastic
+reasoning/trajectory candidates. Full-model and expert timers exclude data
+loading/decoding; one warm-up is excluded. Saved analytical adapter buffers
+remain FP32. 10/5-step adapter inputs (d=0.1/0.2) were not explicit points of
+the dyadic training hierarchy. No collision/off-road safety pass is claimed.
+
+### Portable native-evaluation commands
+
+1. Use the Stage-2 Python environment (Torch 2.8 / Transformers 4.57.1 in the
+   recorded run), with FlashAttention and the official `physical_ai_av`
+   package available. Authenticate to Hugging Face locally; never place a
+   token in the plan or Git.
+2. Obtain NVIDIA's public [Alpamayo 1.5 source](https://github.com/NVlabs/alpamayo1.5)
+   at commit `7a8f1c781a826f09be53e1e211f26e947ec18019`. The runner requires a
+   clean checkout. This does not switch the experiment to Alpamayo 2.
+3. Copy `native_eval/plan.example.json` to `native_eval/plan.local.json`
+   (ignored by Git), and replace asset paths. Use the original native released
+   10B checkpoint as `checkpoint`, not its A1-format wrapper; point
+   `action_checkpoint` at A6/A8's completed checkpoint-249. Keep its
+   `COMPLETE.json`, config, and parent `protocol.json`.
+
+Run from the recipes repository root:
+
+```bash
+python research/alpamayo1_5_shortcut/native_eval/run_native_gold_suite.py \
+  --plan research/alpamayo1_5_shortcut/native_eval/plan.local.json \
+  --native-source /path/to/alpamayo1.5 \
+  --output /scratch/native-gold-evaluation \
+  --gpu 0 --validate-only
+```
+
+Then replace `--validate-only` with `--smoke-only` for real-sample checks.
+For the full evaluation, omit both flags. Use the same plan/output/source to
+resume; the runner refuses changed provenance. The plan's cohort audit is
+verified against each trained checkpoint's manifest hash, so it must not be
+reused for an unrelated training population.
+
+The runner snapshots our evaluation/helper code, checks an idle GPU, runs
+tests, then executes trained checkpoints before released references. It saves
+each clip durably; a bounded stage failure preserves progress and does not
+block other checkpoints. Use `tmux` or `nohup` for unattended execution.
+Monitor `status.json`, each stage's `status.json`, and `summary.json`.
+Do not interpret `incomplete` as a completed benchmark.
+
+A prior HF CDN 404 surfaced as `BadZipFile` because Python's ZIP parser
+wrapped the HTTP error. A fresh read and CRC checks succeeded. The retry
+helper now inspects exception causes/contexts, refreshes file access and
+retries the **same** pinned sample. Actual corruption/auth errors are not
+silently treated as success; no clips are replaced or skipped.
+
+## Historical experiments and original implementation
+
+The sections below describe earlier protocols and should not be read as
+current native-inference baseline reproductions.
+
+
+New prepared experiment: [A8, fresh streaming data per A6 phase](docs/A8_FRESH_DATA_A6_2026-09-25.md)
+keeps A6's 249-update budget and checks zero overlap with all existing heldouts.
+Its 249-update training completed September 25. Matched final-EMA evaluation
+completed at 10/5/4 steps (minADE 1.2355/1.2475/1.2789 m). The interrupted
+two-step evaluation was resumed separately September 28; see the A8 document
+for the live report and source-preserving resume artifacts.
+
 This directory is the handoff for an **unofficial research experiment** that
 adds solver-step conditioning and Shortcut Models self-consistency to NVIDIA's
 Alpamayo 1.5 Stage-2 Action Expert. The VLM is frozen during training.
@@ -10,6 +116,8 @@ not an official NVIDIA benchmark and it is not evidence of safe autonomous
 driving.
 
 ## Start here: HF streaming and paper-style EMA
+
+- [New R0/A6 public gold-644 evaluation protocol and leakage audit](docs/GOLD_644_EVALUATION_2026-09-29.md)
 
 The same branch now includes the HF on-demand dataset backend, partitioned
 flow/shortcut training, FP32 EMA teachers, the targeted 10-to-5 experiment, and

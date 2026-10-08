@@ -33,3 +33,6 @@ trainer_state.json
 *.key
 *credentials*
 *stored_tokens*
+
+# Machine-local native evaluation asset paths.
+research/alpamayo1_5_shortcut/native_eval/plan.local*.json
