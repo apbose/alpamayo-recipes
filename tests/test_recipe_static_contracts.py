@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+from functools import lru_cache
 import json
 import sys
 import tomllib
@@ -39,6 +40,25 @@ def _defaults_include_override(config: dict, key: str, value: str) -> bool:
     return any(isinstance(item, dict) and item.get(key) == value for item in config["defaults"])
 
 
+@lru_cache(maxsize=None)
+def _in_virtual_environment(directory: Path) -> bool:
+    if (directory / "pyvenv.cfg").is_file():
+        return True
+    if directory == RECIPES_DIR or directory == directory.parent:
+        return False
+    return _in_virtual_environment(directory.parent)
+
+
+def test_local_virtual_environments_are_not_recipe_configs(tmp_path: Path) -> None:
+    environment = tmp_path / "custom-env"
+    environment.mkdir()
+    (environment / "pyvenv.cfg").write_text("home = /example/python\\n")
+    nested = environment / "lib" / "site-packages"
+    nested.mkdir(parents=True)
+    assert _in_virtual_environment(nested)
+    assert not _in_virtual_environment(tmp_path)
+
+
 def test_recipe_structured_files_parse() -> None:
     """Every recipe config file should be syntactically parseable."""
     structured_files = [
@@ -48,7 +68,8 @@ def test_recipe_structured_files_parse() -> None:
         *RECIPES_DIR.glob("*/*/**/*.yaml"),
         *RECIPES_DIR.glob("*/*/**/*.json"),
     ]
-    structured_files = [path for path in structured_files if "outputs" not in path.parts]
+    structured_files = [path for path in structured_files
+                        if "outputs" not in path.parts and not _in_virtual_environment(path.parent)]
     assert structured_files
 
     for path in structured_files:
