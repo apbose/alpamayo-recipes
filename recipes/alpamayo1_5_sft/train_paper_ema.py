@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 from contextlib import nullcontext
 from datetime import datetime, timezone, timedelta
-import hashlib
+from functools import partial
 import json
 import os
 from pathlib import Path
@@ -21,6 +21,10 @@ from torch.utils.data import Dataset, DataLoader
 from alpamayo.common.misc import seed_everything
 from alpamayo_r1.common.logging import setup_logging
 from alpamayo1_5_sft.models.paper_shortcut_targets import paper_target_layout, require_full_hierarchy, raw_batch_plan
+from alpamayo1_5_sft.models.paper_data_plan import (
+    BASE_MANIFEST_SHA, HF_REVISION, file_sha256, fresh_batch_plan,
+    heldout_clip_ids, heldout_manifest_paths, load_fresh_schedule,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 PROJECT = ROOT / "research/alpamayo1_5_shortcut"
@@ -35,6 +39,20 @@ def write_json(path, value):
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
     temporary.replace(path)
+
+
+def configure_training_stream_retries(worker_id=None, *, max_attempts=1):
+    """Opt-in transport-only policy, applied in each spawned data-loader worker."""
+    if max_attempts > 1:
+        # Research scripts are not an installed package. Resolve the shared
+        # helper from this source tree, independent of the worker's cwd.
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "alpamayo_training_stream_retry", PROJECT / "scripts/hf_stream_retry.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.configure_hf_stream_retries(max_attempts)
+    return None
 
 
 class PlannedTargets(Dataset):
@@ -52,7 +70,7 @@ class PlannedTargets(Dataset):
         # pairs and their weights are identical to the contiguous paper batch.
         slot = micro * self.world_size + self.rank
         source_index = self.plan[update][int(self.layout.source_indices[slot])]
-        sample = self.source[source_index]
+        sample = dict(self.source[source_index])
         sample["paper_slot"] = slot
         sample["paper_seed"] = self.seed + 100003 * update
         return sample
@@ -86,36 +104,63 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--checkpoint", type=Path, default=ASSETS / "checkpoints/Alpamayo-1.5-10B-A1-format")
-    parser.add_argument("--manifest", type=Path, default=PROJECT / "manifests/hf_stream_300gb/train.json")
+    data_group = parser.add_mutually_exclusive_group()
+    data_group.add_argument("--manifest", type=Path, help="Original A6 pinned manifest")
+    data_group.add_argument("--fresh-data-schedule", type=Path,
+                           help="Audited 3 x 5,295-clip fresh-data bundle (A8)")
+    parser.add_argument("--extra-heldout-manifests", nargs="*", type=Path, default=[])
+    parser.add_argument("--plan-only", action="store_true", help="Validate/write the data plan without CUDA/model/network")
     parser.add_argument("--hf-cache", type=Path, default=ASSETS / "hf_on_demand_smoke/cache")
     parser.add_argument("--updates", type=int, default=249)
     parser.add_argument("--bootstrap-every", type=int, choices=(4, 8), default=4)
     parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--hf-stream-max-attempts", type=int, default=1)
     parser.add_argument("--seed", type=int, default=10)
     parser.add_argument("--save-every", type=int, default=83)
     parser.add_argument("--no-save", action="store_true", help="Smoke only; do not save weights")
     parser.add_argument("--supervision", choices=("ema_bootstrap", "empirical_velocity"), default="ema_bootstrap")
     args = parser.parse_args()
-    rank, local_rank, world = (int(os.environ[k]) for k in ("RANK", "LOCAL_RANK", "WORLD_SIZE"))
-    if args.updates < 1 or 64 % world or args.workers < 0:
+    rank, local_rank, world = ((0, 0, 1) if args.plan_only else
+                             (int(os.environ[k]) for k in ("RANK", "LOCAL_RANK", "WORLD_SIZE")))
+    if args.updates < 1 or world < 1 or 64 % world or args.workers < 0 or args.save_every < 1 or args.hf_stream_max_attempts < 1:
         raise ValueError("Invalid updates/workers/world size")
-    torch.cuda.set_device(local_rank)
-    device = torch.device("cuda", local_rank)
-    dist.init_process_group("nccl", timeout=timedelta(minutes=30))
-    setup_logging()
-    seed_everything(args.seed)
     layout = paper_target_layout(64, 128, args.bootstrap_every)
     require_full_hierarchy(layout)
-    manifest = json.loads(args.manifest.read_text())
-    val_path = PROJECT / "manifests/route_less_19chunks_128eval/val.json"
-    val = json.loads(val_path.read_text())
-    train_ids = {row["clip_id"] for row in manifest}
-    if len(manifest) != 5295 or len(train_ids) != 5295 or train_ids & {row["clip_id"] for row in val}:
-        raise ValueError("Expected the unchanged 5,295-clip train manifest, disjoint from validation")
-    sha = hashlib.sha256(args.manifest.read_bytes()).hexdigest()
-    if sha != "21e94e04f441bceebb8c31159b660ff012669b7e2cbf2fdbb45243da00d1da5e":
-        raise ValueError("Training manifest hash changed")
-    plan = raw_batch_plan(len(manifest), 64, args.updates, args.seed)
+    heldout_paths = sorted(set(heldout_manifest_paths(PROJECT / "manifests") + args.extra_heldout_manifests))
+    if args.fresh_data_schedule:
+        args.manifest, manifest, data_audit, phase_sizes = load_fresh_schedule(args.fresh_data_schedule, heldout_paths)
+        plan, update_phases = fresh_batch_plan(phase_sizes, 64, args.seed)
+        if args.updates > len(plan):
+            raise ValueError("Fresh-data updates exceed the finite three-phase budget")
+        plan, update_phases = plan[:args.updates], update_phases[:args.updates]
+        data_mode = "fresh_disjoint_phases"
+    else:
+        args.manifest = args.manifest or PROJECT / "manifests/hf_stream_300gb/train.json"
+        manifest = json.loads(args.manifest.read_text())
+        heldout, evidence = heldout_clip_ids(heldout_paths)
+        train_ids = {row["clip_id"] for row in manifest}
+        if len(manifest) != 5295 or len(train_ids) != 5295 or train_ids & heldout:
+            raise ValueError("Expected unchanged 5,295-clip train manifest, disjoint from all heldouts")
+        if file_sha256(args.manifest) != BASE_MANIFEST_SHA:
+            raise ValueError("Training manifest hash changed")
+        plan = raw_batch_plan(len(manifest), 64, args.updates, args.seed)
+        update_phases, phase_sizes, data_mode = [1] * args.updates, [len(manifest)], "original_repeating_manifest"
+        data_audit = dict(train_heldout_overlap=0, heldout_unique_clips=len(heldout), live_heldout_manifests=evidence)
+    sha = file_sha256(args.manifest)
+    phase_accounting = []
+    for phase in sorted(set(update_phases)):
+        selected = [batch for batch, index in zip(plan, update_phases) if index == phase]
+        raw = [i for batch in selected for i in batch]
+        target = [batch[int(i)] for batch in selected for i in layout.source_indices]
+        phase_accounting.append(dict(phase=phase, available_clips=phase_sizes[phase - 1],
+                                     updates=len(selected), raw_rows=len(raw), raw_unique_clips=len(set(raw)),
+                                     target_pairs=len(target), trained_unique_clips=len(set(target))))
+    if not args.plan_only:
+        torch.cuda.set_device(local_rank)
+        device = torch.device("cuda", local_rank)
+        dist.init_process_group("nccl", timeout=timedelta(minutes=30))
+        setup_logging()
+        seed_everything(args.seed)
     state = dict(status="initializing", started_utc=utc(), updates=0, target_updates=args.updates)
 
     def status(**updates):
@@ -139,7 +184,10 @@ def main():
             empirical_target_pairs=int((~layout.bootstrap_mask).sum()) if args.supervision == "ema_bootstrap" else 64,
             dt_base=layout.dt_base.tolist(), source_indices=layout.source_indices.tolist(),
             train_manifest=str(args.manifest), train_manifest_sha256=sha,
-            manifest_clips=5295, selected_unique_training_clips=len(set(used)),
+            manifest_clips=len(manifest), selected_unique_training_clips=len(set(used)),
+            data_mode=data_mode, data_audit=data_audit, phase_accounting=phase_accounting,
+            fresh_data_schedule=str(args.fresh_data_schedule) if args.fresh_data_schedule else None,
+            update_phases=update_phases, plan_only=args.plan_only,
             target_pairs=len(used), raw_rows_drawn=64 * args.updates,
             optimizer_updates=args.updates, seed=args.seed, base_checkpoint=str(args.checkpoint),
             learning_rate=1e-4, adam_betas=[0.9, 0.999], adam_epsilon=1e-8,
@@ -147,20 +195,28 @@ def main():
             schedule="constant", warmup=0, gradient_clipping=False,
             student_parameter_dtype="float32", ema_dtype="float32", autocast="bfloat16",
             ema_decay=0.999, ema_update="after each optimizer update",
-            attention="eager", access_mode="hf_stream", hf_revision="33f9bf447ed3bcb7d545ce13f4226f824214fafb",
+            attention="eager", access_mode="hf_stream", hf_revision=HF_REVISION,
             architecture="Alpamayo 1.5 frozen VLM + Action Expert; not DiT",
             initialization="released checkpoint; new residual adapter starts at zero",
             not_a_bitwise_jax_reproduction=True,
+            hf_stream_max_attempts=args.hf_stream_max_attempts,
         )
         write_json(args.output_dir / "protocol.json", protocol)
         write_json(args.output_dir / "raw_batch_plan.json", plan)
+        # Snapshot the exact rows used, independent of later manifest changes.
+        write_json(args.output_dir / "train_manifest.json", manifest)
+    if args.plan_only:
+        status(status="plan_validated", finished_utc=utc())
+        print(json.dumps(dict(status="plan_validated", data_mode=data_mode,
+                              data_audit=data_audit, phases=phase_accounting), indent=2))
+        return
     dist.barrier()
     with initialize_config_module(version_base=None, config_module="alpamayo1_5_sft.configs"):
         cfg = compose(config_name="sft_stage2_trajectory_shortcut_hf_reference_ema", overrides=[
             f"model.pretrained_model_name_or_path={args.checkpoint}",
             "+model.attn_implementation=eager",
             f"data.train_dataset.hf_cache_dir={args.hf_cache}",
-            f"data.train_dataset.annotations_path={args.manifest}",
+            f"data.train_dataset.annotations_path={args.output_dir / 'train_manifest.json'}",
         ])
         paper = compose(config_name="sft_stage2_trajectory_shortcut_paper_ema")
     cfg.model = paper.model
@@ -182,12 +238,15 @@ def main():
     model.train()
     model.vlm.eval()
     model._freeze_shortcut_ema_teacher()
+    configure_training_stream_retries(max_attempts=args.hf_stream_max_attempts)
     source = hyu.instantiate(cfg.data.train_dataset, _convert_="partial", model_config=model.config)
     collate = hyu.instantiate(cfg.data.collate_fn, _convert_="partial", model_config=model.config)
     planned = PlannedTargets(source, plan, layout, rank, world, args.seed)
     loader_kwargs = dict(batch_size=1, shuffle=False, num_workers=args.workers, collate_fn=PaperCollator(collate))
     if args.workers:
         loader_kwargs.update(persistent_workers=True, prefetch_factor=2, multiprocessing_context="spawn")
+        if args.hf_stream_max_attempts > 1:
+            loader_kwargs["worker_init_fn"] = partial(configure_training_stream_retries, max_attempts=args.hf_stream_max_attempts)
     loader = iter(DataLoader(planned, **loader_kwargs))
     ddp = DistributedDataParallel(model, device_ids=[local_rank], broadcast_buffers=False, find_unused_parameters=False)
     parameters = [p for p in model.parameters() if p.requires_grad]
@@ -232,7 +291,7 @@ def main():
                       flow_loss=float(sums[1] / sums[3]) if sums[3] else None,
                       shortcut_loss=float(sums[2] / sums[4]) if sums[4] else None,
                       flow_pairs=int(sums[3]), shortcut_pairs=int(sums[4]),
-                      supervision=args.supervision,
+                      supervision=args.supervision, data_phase=update_phases[step],
                       grad_norm=float(grad_norm), ema_updates=int(model.shortcut_ema_updates),
                       elapsed_seconds=time.monotonic() - start)
         if rank == 0:
@@ -246,7 +305,7 @@ def main():
                 checkpoint = args.output_dir / f"checkpoint-{step + 1}"
                 model.save_pretrained(checkpoint, safe_serialization=True, max_shard_size="5GB")
                 torch.save(optimizer.state_dict(), checkpoint / "optimizer.pt")
-                write_json(checkpoint / "trainer_state.json", {"global_step": step + 1, "ema_updates": step + 1, "raw_manifest_passes": (step + 1) * 64 / len(manifest)})
+                write_json(checkpoint / "trainer_state.json", {"global_step": step + 1, "ema_updates": step + 1, "raw_manifest_passes": (step + 1) * 64 / len(manifest), "data_mode": data_mode, "data_phase": update_phases[step]})
                 write_json(checkpoint / "COMPLETE.json", {"completed_utc": utc(), "global_step": step + 1})
             dist.barrier()
             status(status="training", checkpoint=str(args.output_dir / f"checkpoint-{step + 1}"))

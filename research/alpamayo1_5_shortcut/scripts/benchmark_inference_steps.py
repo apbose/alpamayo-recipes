@@ -86,6 +86,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-traj-samples", type=int, default=6)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--warmup-samples", type=int, default=1)
+    parser.add_argument("--access-mode", choices=("local", "hf_stream"), default="local")
+    parser.add_argument("--hf-revision", help="Pinned PhysicalAI-AV commit for on-demand reads.")
+    parser.add_argument("--hf-cache-dir", type=Path)
+    parser.add_argument("--hf-stream-max-attempts", type=int, default=1,
+                        help="Opt-in bounded retries for HF range reads, including HTTP 499; 1 keeps the original policy.")
     parser.add_argument(
         "--zero-step-size-adapter",
         action="store_true",
@@ -328,6 +333,17 @@ def build_config(args: argparse.Namespace, split_summary: dict[str, Any]):
         overrides.append(
             f"model.shortcut_inference_weights={args.shortcut_inference_weights}"
         )
+    if getattr(args, "access_mode", "local") == "hf_stream":
+        if not args.config_name.startswith("sft_stage2_trajectory"):
+            raise ValueError("HF evaluation requires an explicit route-less manifest")
+        if not args.hf_revision or not args.hf_cache_dir:
+            raise ValueError("HF evaluation requires --hf-revision and --hf-cache-dir")
+        for split in ("train", "val"):
+            overrides.extend([
+                f"++data.{split}_dataset.access_mode=hf_stream",
+                f"++data.{split}_dataset.hf_revision={args.hf_revision}",
+                f"++data.{split}_dataset.hf_cache_dir={args.hf_cache_dir}",
+            ])
     with initialize_config_module(
         version_base=None, config_module="alpamayo1_5_sft.configs"
     ):
@@ -355,6 +371,15 @@ def sample_model(
 
 def benchmark() -> None:
     args = parse_args()
+    if args.hf_stream_max_attempts < 1:
+        raise ValueError("hf-stream-max-attempts must be positive")
+    stream_retry_policy = None
+    if args.hf_stream_max_attempts > 1:
+        if args.access_mode != "hf_stream":
+            raise ValueError("HF stream retries require access-mode=hf_stream")
+        from hf_stream_retry import configure_hf_stream_retries
+        stream_retry_policy = configure_hf_stream_retries(args.hf_stream_max_attempts)
+        print(f"HF streaming retry policy: {stream_retry_policy}", flush=True)
     if not math.isfinite(args.step_size_adapter_scale):
         raise ValueError("step-size adapter scale must be finite")
     if args.step_size_adapter_scale < 0.0:
@@ -433,6 +458,13 @@ def benchmark() -> None:
     eval_dataset = hyu.instantiate(
         cfg.data.val_dataset, _convert_="partial", model_config=model.config
     )
+    if len(eval_dataset) != len(eval_manifest):
+        raise ValueError("Dataset filtering changed the evaluation population")
+    if hasattr(eval_dataset, "_samples"):
+        actual = [(row["clip_id"], row["t0_relative"]) for row in eval_dataset._samples]
+        expected = [(row["clip_id"], row["t0_relative"]) for row in eval_manifest]
+        if actual != expected:
+            raise ValueError("Dataset order/timestamps differ from the manifest")
     collate_fn = hyu.instantiate(
         cfg.data.collate_fn, _convert_="partial", model_config=model.config
     )
@@ -501,12 +533,23 @@ def benchmark() -> None:
         },
         "results": {},
     }
+    if args.access_mode == "hf_stream":
+        results["configuration"].update(
+            access_mode=args.access_mode, hf_revision=args.hf_revision,
+            hf_cache_dir=str(args.hf_cache_dir),
+        )
+        if stream_retry_policy is not None:
+            results["configuration"]["hf_stream_retry"] = stream_retry_policy
     write_json(args.output_dir / "benchmark_results.json", results)
 
     distance_metric = DistanceMetrics()
 
     for inference_steps in args.steps:
         print(f"\n=== Benchmarking {inference_steps} diffusion steps ===", flush=True)
+        write_json(args.output_dir / "progress.json", dict(
+            steps=inference_steps, completed_samples=0, total_samples=len(eval_manifest),
+            completed_step_counts=list(results["results"]), phase="warmup",
+        ))
 
         if args.warmup_samples:
             seed_everything(args.seed)
@@ -559,6 +602,8 @@ def benchmark() -> None:
             serialized_metrics: dict[str, list[float]] = {}
             for key, value in sample_metrics.items():
                 value = value.detach().float()
+                if not torch.isfinite(value).all():
+                    raise RuntimeError(f"Non-finite metric {key} at sample {sample_index}")
                 metric_sums[key] += value.sum().item()
                 metric_counts[key] += value.numel()
                 serialized_metrics[key] = value.cpu().tolist()
@@ -567,12 +612,23 @@ def benchmark() -> None:
             per_sample.append(
                 {
                     "sample_index": sample_index,
+                    "clip_id": eval_manifest[sample_index]["clip_id"],
+                    "t0_relative": eval_manifest[sample_index]["t0_relative"],
                     "end_to_end_model_ms": end_to_end_ms,
                     "action_expert_diffusion_ms": diffusion_timings_ms[-1],
                     "metrics": serialized_metrics,
                 }
             )
+            with (args.output_dir / f"per_sample_steps_{inference_steps}.jsonl").open("a") as handle:
+                handle.write(json.dumps(per_sample[-1]) + "\n")
+            write_json(args.output_dir / "progress.json", dict(
+                steps=inference_steps, completed_samples=len(per_sample),
+                total_samples=len(eval_manifest), completed_step_counts=list(results["results"]),
+                phase="evaluating",
+            ))
 
+        if len(per_sample) != len(eval_manifest):
+            raise ValueError("Incomplete evaluation: refusing to average a subset")
         averaged_metrics = {
             key: metric_sums[key] / metric_counts[key] for key in sorted(metric_sums)
         }

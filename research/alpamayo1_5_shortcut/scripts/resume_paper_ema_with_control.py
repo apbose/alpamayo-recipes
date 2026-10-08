@@ -10,6 +10,7 @@ from pathlib import Path
 import shutil
 import socket
 import subprocess
+import time
 
 SCRIPT = Path(__file__).resolve().parent
 PROJECT = SCRIPT.parent
@@ -56,7 +57,47 @@ def validate_result(result, steps, count=128):
                 raise ValueError("Invalid per-clip metric")
 
 
-def preflight(source, manifest):
+def dependency_ready(directory):
+    """Fail closed: a dead/failed gold evaluation never releases the training queue."""
+    state = read(directory / "status.json")
+    if state.get("host") != socket.gethostname():
+        raise ValueError("Evaluation dependency belongs to a different host")
+    if state["status"] in ("failed", "cancelled", "blocked"):
+        raise RuntimeError(f"Evaluation dependency did not succeed: {state['status']}")
+    if state["status"] != "complete":
+        os.kill(int(state["pid"]), 0)
+        return False
+    from evaluate_gold_r0_a6 import validate_result as validate_gold
+    for model in ("R0", "A6"):
+        result = read(directory / f"{model}_merged_benchmark_results.json")
+        if set(result.get("results", {})) != {"10", "5", "4", "2"}:
+            raise ValueError("Evaluation dependency has incomplete solver counts")
+        validate_gold(result, model, directory / "manifest/val.json", (10, 5, 4, 2))
+    return True
+
+
+def checkpoint_storage_budget(checkpoint):
+    """One smoke save plus one final save, including optimizer; no deletion required."""
+    size = sum(path.stat().st_size for path in checkpoint.iterdir() if path.is_file())
+    return 2 * size + 20 * 1024**3
+
+
+def validate_control_plan(reference_dir, candidate_dir):
+    if read(reference_dir / "raw_batch_plan.json") != read(candidate_dir / "raw_batch_plan.json"):
+        raise ValueError("A7 and A6 raw batch plans differ")
+    original, control = (read(path / "protocol.json") for path in (reference_dir, candidate_dir))
+    keys = ("train_manifest_sha256", "seed", "dt_base", "source_indices", "optimizer_updates",
+            "base_checkpoint", "learning_rate", "adam_betas", "adam_epsilon", "weight_decay",
+            "weight_decay_all_trainable_parameters", "schedule", "warmup", "gradient_clipping",
+            "student_parameter_dtype", "ema_dtype", "autocast", "ema_decay", "attention", "hf_revision")
+    for key in keys:
+        if original[key] != control[key]:
+            raise ValueError(f"A6/A7 training protocol mismatch: {key}")
+    if control["supervision"] != "empirical_velocity" or control["teacher_target_pairs"] != 0 or control["empirical_target_pairs"] != 64:
+        raise ValueError("A7 must use exactly 64 empirical targets and no teacher targets")
+
+
+def preflight(source, manifest, storage_parent=ASSETS, minimum_free=200 * 1024**3):
     checkpoint = source / "training/checkpoint-249"
     state = read(source / "training/status.json")
     if state["status"] != "complete" or state["updates"] != 249:
@@ -81,8 +122,8 @@ def preflight(source, manifest):
         raise ValueError("Train/validation overlap")
     if not (ASSETS / "physical_ai_av/clip_index.parquet").is_file():
         raise ValueError("Local validation dataset is missing")
-    if shutil.disk_usage(ASSETS).free < 200 * 1024**3:
-        raise ValueError("Need 200 GiB free for smoke and two control checkpoints")
+    if shutil.disk_usage(storage_parent).free < minimum_free:
+        raise ValueError(f"Need {minimum_free / 1024**3:.1f} GiB free for this checkpoint-save schedule")
     return checkpoint, old
 
 
@@ -91,7 +132,16 @@ def main():
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--control-run", type=Path, required=True)
     parser.add_argument("--source-run", type=Path, default=ASSETS / "runs/alpamayo15_paper_ema_5295clips_b64_20260920_r1")
+    parser.add_argument("--control-only", action="store_true",
+                        help="Train the missing A7 first; then matched A6/A7 10/5/4/2 evaluation, without repeating R0/128-step work")
+    parser.add_argument("--after-evaluation", type=Path,
+                        help="Wait for successful gold evaluation and all GPUs to be free before smoke/training")
+    parser.add_argument("--hf-stream-max-attempts", type=int, default=1)
     args = parser.parse_args()
+    if args.after_evaluation and not args.control_only:
+        parser.error("--after-evaluation requires --control-only")
+    if args.hf_stream_max_attempts < 1:
+        parser.error("--hf-stream-max-attempts must be positive")
     if args.control_run.exists():
         raise ValueError("Refusing to reuse an existing control run")
     args.output_dir.mkdir(parents=True, exist_ok=False)
@@ -99,7 +149,8 @@ def main():
     logs.mkdir()
     manifest = PROJECT / "manifests/route_less_19chunks_128eval"
     state = dict(status="running", phase="preflight", started_utc=utc(), pid=os.getpid(),
-                 host=socket.gethostname(), source_run=str(args.source_run), control_run=str(args.control_run))
+                 host=socket.gethostname(), source_run=str(args.source_run), control_run=str(args.control_run),
+                 control_only=args.control_only, after_evaluation=str(args.after_evaluation) if args.after_evaluation else None)
 
     def status(**values):
         state.update(values, updated_utc=utc())
@@ -142,16 +193,26 @@ def main():
                 raise ValueError("Checkpoint supervision disagrees with evaluation recipe")
             command += ["--shortcut-inference-weights", "ema", "--expected-ema-updates", str(expected),
                         "--verify-checkpoint-shortcut-config"]
-        run(phase, command)
+        run(phase, command, timeout=None if args.control_only else 8*3600)
         result = read(args.output_dir / phase / "benchmark_results.json")
         validate_result(result, steps, count)
+        rows = read(manifests / "val.json")
+        if result["configuration"]["validation_manifest_sha256"] != digest(manifests / "val.json"):
+            raise ValueError("Evaluation manifest changed")
+        for value in result["results"].values():
+            for item in value["per_sample"]:
+                expected_row = rows[item["sample_index"]]
+                if any(item[key] != expected_row[key] for key in ("clip_id", "t0_relative")):
+                    raise ValueError("Evaluation clip/timestamp pairing changed")
         return result
 
     def control_train(phase, updates):
+        extra = ["--extra-heldout-manifests", args.after_evaluation / "manifest/val.json"] if args.after_evaluation else []
         run(phase, [TORCHRUN, "--standalone", "--nproc_per_node=8", "-m", "alpamayo1_5_sft.train_paper_ema",
                     "--output-dir", args.control_run / phase, "--updates", updates,
-                    "--save-every", updates if phase == "smoke" else 125, "--supervision", "empirical_velocity"],
-            training=True, timeout=48*3600)
+                    "--save-every", updates if phase == "smoke" or args.control_only else 125,
+                    "--supervision", "empirical_velocity", "--hf-stream-max-attempts", args.hf_stream_max_attempts, *extra],
+            training=True, timeout=None if args.control_only else 48*3600)
         metrics = [json.loads(row) for row in (args.control_run / phase / "metrics.jsonl").read_text().splitlines()]
         if len(metrics) != updates or any(row["flow_pairs"] != 64 or row["shortcut_pairs"] != 0 or row["ema_updates"] != i+1
                                          or not math.isfinite(row["loss"]) or not math.isfinite(row["grad_norm"])
@@ -170,19 +231,31 @@ def main():
     def report(filename, datasets, extra):
         rows = ["# Alpamayo paper-target EMA: resumed experiment results", "",
                 "128 fixed validation clips; six candidates; seed 42; eager attention. Lower error is better.", "",
-                "| Model | Steps | minADE m | ADE m | Corner m | Expert ms | Model ms |",
-                "|---|---:|---:|---:|---:|---:|---:|"]
+                "| Model | Steps | minADE m | minADE vs own 10 | ADE m | Corner m | Expert ms | Model ms |",
+                "|---|---:|---:|---:|---:|---:|---:|---:|"]
         for name, data in datasets.items():
             for step in sorted(data["results"], key=int, reverse=True):
                 value = data["results"][step]
                 m, lat = value["metrics"], value["latency_ms"]
-                rows.append(f"| {name} | {step} | {m['min_ade']:.4f} | {m['ade']:.4f} | {m['corner_distance']:.4f} | {lat['action_expert_diffusion']['mean']:.2f} | {lat['end_to_end_model']['mean']:.2f} |")
+                change = 100 * (m['min_ade'] / data['results']['10']['metrics']['min_ade'] - 1)
+                rows.append(f"| {name} | {step} | {m['min_ade']:.4f} | {change:+.2f}% | {m['ade']:.4f} | {m['corner_distance']:.4f} | {lat['action_expert_diffusion']['mean']:.2f} | {lat['end_to_end_model']['mean']:.2f} |")
         rows += ["", *extra, "", "This is an open-loop pilot, not a collision/off-road safety validation. MinADE is best-of-six. Model timings exclude data decoding.", ""]
         (args.output_dir / filename).write_text("\n".join(rows))
 
     try:
         status()
-        checkpoint, historical = preflight(args.source_run, manifest)
+        if args.after_evaluation:
+            status(status="waiting", phase="waiting_for_gold_evaluation")
+            while not dependency_ready(args.after_evaluation):
+                status(dependency=read(args.after_evaluation / "status.json")["status"])
+                time.sleep(30)
+            status(phase="waiting_for_free_gpus", dependency="complete")
+            while subprocess.check_output(["nvidia-smi", "--query-compute-apps=pid", "--format=csv,noheader,nounits"], text=True).strip():
+                time.sleep(30)
+                status(phase="waiting_for_free_gpus")
+        budget = checkpoint_storage_budget(args.source_run / "training/checkpoint-249") if args.control_only else 200 * 1024**3
+        status(status="running", phase="preflight", required_free_bytes=budget)
+        checkpoint, historical = preflight(args.source_run, manifest, args.control_run.parent, budget)
         args.control_run.mkdir(parents=True, exist_ok=False)
         old_hashes = read(args.source_run / "source_hashes.json")
         write(args.output_dir / "provenance.json", dict(
@@ -194,6 +267,52 @@ def main():
         run("tests", [PYTHON, "-m", "pytest", "-q", RECIPE / "tests/test_paper_empirical_ablation.py",
                        RECIPE / "tests/test_paper_shortcut.py", RECIPE / "tests/test_shortcut_model_config.py",
                        RECIPE / "tests/test_shortcut_modules.py"], timeout=1200)
+        if args.control_only:
+            # CPU-only preflight; no model allocation, data download, or optimizer update.
+            extra = ["--extra-heldout-manifests", args.after_evaluation / "manifest/val.json"] if args.after_evaluation else []
+            run("plan", [PYTHON, "-m", "alpamayo1_5_sft.train_paper_ema", "--plan-only",
+                         "--output-dir", args.output_dir / "plan", "--updates", "249",
+                         "--supervision", "empirical_velocity", *extra], timeout=1200)
+            validate_control_plan(args.source_run / "training", args.output_dir / "plan")
+            smoke = control_train("smoke", 2)
+            smoke_manifest = args.output_dir / "smoke_manifest"
+            smoke_manifest.mkdir()
+            summary = read(manifest / "summary.json")
+            summary["annotation_rows"]["val"] = 1
+            write(smoke_manifest / "val.json", read(manifest / "val.json")[:1])
+            write(smoke_manifest / "summary.json", summary)
+            benchmark("control_smoke_reload", smoke, [10, 2], model="empirical", expected=2,
+                      manifests=smoke_manifest, count=1)
+            write(args.output_dir / "CONTROL_SMOKE_PASSED.json", dict(passed=True, completed_utc=utc()))
+            # Full training starts fresh from R0, never from the two-update smoke.
+            control_checkpoint = control_train("training", 249)
+            validate_control_plan(args.source_run / "training", args.control_run / "training")
+            steps = (10, 5, 4, 2)
+            control = benchmark("a7_empirical_ema_eval", control_checkpoint, steps, model="empirical")
+            matched = benchmark("a6_matched_ema_eval", checkpoint, steps)
+            for key in MATCH_KEYS:
+                if matched["configuration"][key] != control["configuration"][key]:
+                    raise ValueError(f"A6/A7 protocol mismatch: {key}")
+            comparison = {"configuration": matched["configuration"], "results": {}}
+            for label, data in (("a6_matched_ema_eval", matched), ("a7_empirical_ema_eval", control)):
+                for candidate in (5, 4, 2):
+                    bootstrap(f"{label}_10_vs_{candidate}", args.output_dir / label / "benchmark_results.json", 10, candidate)
+            for count in steps:
+                comparison["results"][f"A6_{count}"] = matched["results"][str(count)]
+                comparison["results"][f"A7_{count}"] = control["results"][str(count)]
+            write(args.output_dir / "cross_model_pairs.json", comparison)
+            for count in steps:
+                bootstrap(f"A7_vs_A6_{count}", args.output_dir / "cross_model_pairs.json", f"A6_{count}", f"A7_{count}")
+            report("REPORT.md", {"A6 EMA": matched, "A7 empirical-target EMA": control}, [
+                "A7 uses the same A6 input/source/noise/time/d assignments, 249 optimizer updates, seed 10, and EMA policy; only the 16 bootstrap-layout targets change to empirical velocity.",
+                "Both start from R0. A7 is a target-only control, NOT adapter-free ordinary flow matching.",
+                "This is the existing 128-clip held-out population, NOT the gold644 population. Original gold results are preserved.",
+                "Within-checkpoint 10-to-5/4/2 degradation and matched A7-vs-A6 paired bootstrap intervals are saved separately.",
+                "Single-seed, short-budget experiment; no causal conclusion from absolute fine-tuning gains alone and no safety pass.",
+            ])
+            write(args.output_dir / "summary.json", dict(a6=matched, a7=control, safety_evaluated=False))
+            status(status="complete", phase="complete", finished_utc=utc(), report=str(args.output_dir / "REPORT.md"))
+            return
         # Finish original statistical work now; it does not require another GPU run.
         for count in [10, 8, 5, 4]:
             bootstrap(f"historical_bootstrap_128_vs_{count}", args.source_run / "ema_eval_128/benchmark_results.json", 128, count)

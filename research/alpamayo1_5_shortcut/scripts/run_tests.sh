@@ -20,6 +20,11 @@ cd "$RECIPE_DIR"
   tests/test_shortcut_model_config.py \
   tests/test_pai_trajectory.py \
   tests/test_paper_shortcut.py \
-  tests/test_paper_empirical_ablation.py
+  tests/test_paper_empirical_ablation.py \
+  tests/test_paper_fresh_data.py \
+  tests/test_training_stream_retry.py
 
 "$PYTHON_BIN" "$SCRIPT_DIR/test_fill_missing_evaluations.py"
+"$PYTHON_BIN" "$SCRIPT_DIR/test_evaluate_fresh_data_a8.py"
+"$PYTHON_BIN" "$SCRIPT_DIR/test_evaluate_gold_r0_a6.py"
+"$PYTHON_BIN" "$SCRIPT_DIR/test_resume_paper_ema_with_control.py"

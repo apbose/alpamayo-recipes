@@ -1,0 +1,2972 @@
+[
+  {
+    "bytes": 7949929456,
+    "chunk": 24,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 2245620724,
+      "camera_cross_right_120fov": 2368503732,
+      "camera_front_tele_30fov": 1536083354,
+      "camera_front_wide_120fov": 1759143340,
+      "egomotion": 40578306
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0024.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0024.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0024.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0024.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0024.zip"
+    }
+  },
+  {
+    "bytes": 8567372478,
+    "chunk": 29,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 2362673142,
+      "camera_cross_right_120fov": 2492255851,
+      "camera_front_tele_30fov": 1628666998,
+      "camera_front_wide_120fov": 2045260923,
+      "egomotion": 38515564
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0029.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0029.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0029.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0029.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0029.zip"
+    }
+  },
+  {
+    "bytes": 8713906544,
+    "chunk": 42,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 2384141903,
+      "camera_cross_right_120fov": 2537271224,
+      "camera_front_tele_30fov": 1663078171,
+      "camera_front_wide_120fov": 2090286282,
+      "egomotion": 39128964
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0042.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0042.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0042.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0042.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0042.zip"
+    }
+  },
+  {
+    "bytes": 8228397548,
+    "chunk": 44,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 2194661006,
+      "camera_cross_right_120fov": 2520449379,
+      "camera_front_tele_30fov": 1574094845,
+      "camera_front_wide_120fov": 1900729809,
+      "egomotion": 38462509
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0044.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0044.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0044.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0044.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0044.zip"
+    }
+  },
+  {
+    "bytes": 7777156262,
+    "chunk": 65,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 2171004598,
+      "camera_cross_right_120fov": 2302436958,
+      "camera_front_tele_30fov": 1454620039,
+      "camera_front_wide_120fov": 1809945353,
+      "egomotion": 39149314
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0065.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0065.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0065.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0065.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0065.zip"
+    }
+  },
+  {
+    "bytes": 5869376080,
+    "chunk": 91,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1522003761,
+      "camera_cross_right_120fov": 1728731058,
+      "camera_front_tele_30fov": 1162375577,
+      "camera_front_wide_120fov": 1418204495,
+      "egomotion": 38061189
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0091.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0091.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0091.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0091.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0091.zip"
+    }
+  },
+  {
+    "bytes": 5763214528,
+    "chunk": 96,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1490237828,
+      "camera_cross_right_120fov": 1651801307,
+      "camera_front_tele_30fov": 1229046828,
+      "camera_front_wide_120fov": 1354383024,
+      "egomotion": 37745541
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0096.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0096.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0096.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0096.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0096.zip"
+    }
+  },
+  {
+    "bytes": 5908494928,
+    "chunk": 99,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1489773175,
+      "camera_cross_right_120fov": 1642364539,
+      "camera_front_tele_30fov": 1312987264,
+      "camera_front_wide_120fov": 1423753978,
+      "egomotion": 39615972
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0099.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0099.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0099.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0099.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0099.zip"
+    }
+  },
+  {
+    "bytes": 6827330288,
+    "chunk": 102,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1786257646,
+      "camera_cross_right_120fov": 1900157189,
+      "camera_front_tele_30fov": 1473531923,
+      "camera_front_wide_120fov": 1627440723,
+      "egomotion": 39942807
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0102.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0102.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0102.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0102.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0102.zip"
+    }
+  },
+  {
+    "bytes": 5744868684,
+    "chunk": 114,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1708757633,
+      "camera_cross_right_120fov": 1576668193,
+      "camera_front_tele_30fov": 1047257456,
+      "camera_front_wide_120fov": 1378312235,
+      "egomotion": 33873167
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0114.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0114.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0114.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0114.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0114.zip"
+    }
+  },
+  {
+    "bytes": 5982091613,
+    "chunk": 132,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1502238850,
+      "camera_cross_right_120fov": 1759222241,
+      "camera_front_tele_30fov": 1165523697,
+      "camera_front_wide_120fov": 1518077846,
+      "egomotion": 37028979
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0132.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0132.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0132.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0132.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0132.zip"
+    }
+  },
+  {
+    "bytes": 5406029428,
+    "chunk": 141,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1491294898,
+      "camera_cross_right_120fov": 1427627252,
+      "camera_front_tele_30fov": 1133017833,
+      "camera_front_wide_120fov": 1319635795,
+      "egomotion": 34453650
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0141.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0141.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0141.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0141.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0141.zip"
+    }
+  },
+  {
+    "bytes": 5539272201,
+    "chunk": 149,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1699383943,
+      "camera_cross_right_120fov": 1612411986,
+      "camera_front_tele_30fov": 1028658819,
+      "camera_front_wide_120fov": 1167394069,
+      "egomotion": 31423384
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0149.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0149.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0149.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0149.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0149.zip"
+    }
+  },
+  {
+    "bytes": 5370037424,
+    "chunk": 391,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1411707672,
+      "camera_cross_right_120fov": 1664223489,
+      "camera_front_tele_30fov": 994488811,
+      "camera_front_wide_120fov": 1258907527,
+      "egomotion": 40709925
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0391.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0391.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0391.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0391.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0391.zip"
+    }
+  },
+  {
+    "bytes": 5398212453,
+    "chunk": 392,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1425410026,
+      "camera_cross_right_120fov": 1594229833,
+      "camera_front_tele_30fov": 1139578752,
+      "camera_front_wide_120fov": 1198491830,
+      "egomotion": 40502012
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0392.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0392.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0392.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0392.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0392.zip"
+    }
+  },
+  {
+    "bytes": 5526713878,
+    "chunk": 415,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1493180317,
+      "camera_cross_right_120fov": 1586125729,
+      "camera_front_tele_30fov": 1100922146,
+      "camera_front_wide_120fov": 1304619522,
+      "egomotion": 41866164
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0415.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0415.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0415.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0415.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0415.zip"
+    }
+  },
+  {
+    "bytes": 5300780156,
+    "chunk": 434,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1374067534,
+      "camera_cross_right_120fov": 1553312751,
+      "camera_front_tele_30fov": 1103483075,
+      "camera_front_wide_120fov": 1227409090,
+      "egomotion": 42507706
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0434.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0434.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0434.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0434.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0434.zip"
+    }
+  },
+  {
+    "bytes": 5219807819,
+    "chunk": 501,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1369103353,
+      "camera_cross_right_120fov": 1534047610,
+      "camera_front_tele_30fov": 1057897138,
+      "camera_front_wide_120fov": 1217221117,
+      "egomotion": 41538601
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0501.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0501.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0501.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0501.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0501.zip"
+    }
+  },
+  {
+    "bytes": 5736249541,
+    "chunk": 518,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1477404709,
+      "camera_cross_right_120fov": 1736959513,
+      "camera_front_tele_30fov": 1091432517,
+      "camera_front_wide_120fov": 1387708810,
+      "egomotion": 42743992
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0518.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0518.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0518.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0518.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0518.zip"
+    }
+  },
+  {
+    "bytes": 6390201370,
+    "chunk": 528,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1603251768,
+      "camera_cross_right_120fov": 1890965379,
+      "camera_front_tele_30fov": 1384653785,
+      "camera_front_wide_120fov": 1466508491,
+      "egomotion": 44821947
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0528.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0528.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0528.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0528.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0528.zip"
+    }
+  },
+  {
+    "bytes": 5452753472,
+    "chunk": 533,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1412431453,
+      "camera_cross_right_120fov": 1526737397,
+      "camera_front_tele_30fov": 1215841652,
+      "camera_front_wide_120fov": 1255353849,
+      "egomotion": 42389121
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0533.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0533.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0533.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0533.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0533.zip"
+    }
+  },
+  {
+    "bytes": 5037638540,
+    "chunk": 543,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1254229941,
+      "camera_cross_right_120fov": 1496303508,
+      "camera_front_tele_30fov": 1137205728,
+      "camera_front_wide_120fov": 1103444683,
+      "egomotion": 46454680
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0543.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0543.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0543.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0543.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0543.zip"
+    }
+  },
+  {
+    "bytes": 5684601909,
+    "chunk": 550,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1423852472,
+      "camera_cross_right_120fov": 1681707583,
+      "camera_front_tele_30fov": 1242100814,
+      "camera_front_wide_120fov": 1292919655,
+      "egomotion": 44021385
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0550.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0550.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0550.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0550.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0550.zip"
+    }
+  },
+  {
+    "bytes": 5421170579,
+    "chunk": 554,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1444765502,
+      "camera_cross_right_120fov": 1562783153,
+      "camera_front_tele_30fov": 1148520140,
+      "camera_front_wide_120fov": 1222347101,
+      "egomotion": 42754683
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0554.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0554.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0554.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0554.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0554.zip"
+    }
+  },
+  {
+    "bytes": 5099059978,
+    "chunk": 558,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1329045952,
+      "camera_cross_right_120fov": 1384256432,
+      "camera_front_tele_30fov": 1148556459,
+      "camera_front_wide_120fov": 1201863481,
+      "egomotion": 35337654
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0558.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0558.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0558.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0558.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0558.zip"
+    }
+  },
+  {
+    "bytes": 5447363860,
+    "chunk": 568,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1399653835,
+      "camera_cross_right_120fov": 1513342411,
+      "camera_front_tele_30fov": 1241389879,
+      "camera_front_wide_120fov": 1256976041,
+      "egomotion": 36001694
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0568.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0568.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0568.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0568.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0568.zip"
+    }
+  },
+  {
+    "bytes": 5243794414,
+    "chunk": 599,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1311480503,
+      "camera_cross_right_120fov": 1527025830,
+      "camera_front_tele_30fov": 1158608849,
+      "camera_front_wide_120fov": 1204076919,
+      "egomotion": 42602313
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0599.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0599.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0599.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0599.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0599.zip"
+    }
+  },
+  {
+    "bytes": 5689224622,
+    "chunk": 606,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1502308439,
+      "camera_cross_right_120fov": 1614383044,
+      "camera_front_tele_30fov": 1215467593,
+      "camera_front_wide_120fov": 1314024211,
+      "egomotion": 43041335
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0606.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0606.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0606.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0606.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0606.zip"
+    }
+  },
+  {
+    "bytes": 4633636393,
+    "chunk": 639,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1118970949,
+      "camera_cross_right_120fov": 1261219690,
+      "camera_front_tele_30fov": 1035559799,
+      "camera_front_wide_120fov": 1172447046,
+      "egomotion": 45438909
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0639.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0639.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0639.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0639.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0639.zip"
+    }
+  },
+  {
+    "bytes": 4830987045,
+    "chunk": 645,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1120647696,
+      "camera_cross_right_120fov": 1343478779,
+      "camera_front_tele_30fov": 1093177420,
+      "camera_front_wide_120fov": 1230456565,
+      "egomotion": 43226585
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0645.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0645.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0645.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0645.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0645.zip"
+    }
+  },
+  {
+    "bytes": 5039387187,
+    "chunk": 646,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1202460529,
+      "camera_cross_right_120fov": 1310152870,
+      "camera_front_tele_30fov": 1170920363,
+      "camera_front_wide_120fov": 1309278522,
+      "egomotion": 46574903
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0646.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0646.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0646.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0646.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0646.zip"
+    }
+  },
+  {
+    "bytes": 4851776951,
+    "chunk": 647,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1210931457,
+      "camera_cross_right_120fov": 1218684694,
+      "camera_front_tele_30fov": 1131607787,
+      "camera_front_wide_120fov": 1247004838,
+      "egomotion": 43548175
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0647.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0647.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0647.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0647.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0647.zip"
+    }
+  },
+  {
+    "bytes": 5316871931,
+    "chunk": 663,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1298928795,
+      "camera_cross_right_120fov": 1375425478,
+      "camera_front_tele_30fov": 1227156015,
+      "camera_front_wide_120fov": 1376540666,
+      "egomotion": 38820977
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0663.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0663.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0663.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0663.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0663.zip"
+    }
+  },
+  {
+    "bytes": 4535089567,
+    "chunk": 674,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1217010742,
+      "camera_cross_right_120fov": 1102561836,
+      "camera_front_tele_30fov": 1047314457,
+      "camera_front_wide_120fov": 1125212531,
+      "egomotion": 42990001
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0674.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0674.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0674.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0674.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0674.zip"
+    }
+  },
+  {
+    "bytes": 4788098536,
+    "chunk": 680,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1105829136,
+      "camera_cross_right_120fov": 1270723804,
+      "camera_front_tele_30fov": 1131482205,
+      "camera_front_wide_120fov": 1235901328,
+      "egomotion": 44162063
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0680.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0680.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0680.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0680.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0680.zip"
+    }
+  },
+  {
+    "bytes": 4285040480,
+    "chunk": 681,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1062651267,
+      "camera_cross_right_120fov": 1167795404,
+      "camera_front_tele_30fov": 952127207,
+      "camera_front_wide_120fov": 1059959549,
+      "egomotion": 42507053
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0681.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0681.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0681.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0681.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0681.zip"
+    }
+  },
+  {
+    "bytes": 4913124618,
+    "chunk": 685,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1266039860,
+      "camera_cross_right_120fov": 1461306367,
+      "camera_front_tele_30fov": 957870305,
+      "camera_front_wide_120fov": 1190132194,
+      "egomotion": 37775892
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0685.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0685.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0685.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0685.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0685.zip"
+    }
+  },
+  {
+    "bytes": 5626509804,
+    "chunk": 686,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1409750132,
+      "camera_cross_right_120fov": 1577831884,
+      "camera_front_tele_30fov": 1122616984,
+      "camera_front_wide_120fov": 1474564065,
+      "egomotion": 41746739
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0686.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0686.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0686.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0686.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0686.zip"
+    }
+  },
+  {
+    "bytes": 5348904977,
+    "chunk": 692,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1308531791,
+      "camera_cross_right_120fov": 1561849909,
+      "camera_front_tele_30fov": 1071876998,
+      "camera_front_wide_120fov": 1367344023,
+      "egomotion": 39302256
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0692.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0692.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0692.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0692.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0692.zip"
+    }
+  },
+  {
+    "bytes": 5048117475,
+    "chunk": 697,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1202230761,
+      "camera_cross_right_120fov": 1333853048,
+      "camera_front_tele_30fov": 1231814666,
+      "camera_front_wide_120fov": 1237997815,
+      "egomotion": 42221185
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0697.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0697.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0697.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0697.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0697.zip"
+    }
+  },
+  {
+    "bytes": 5135635328,
+    "chunk": 706,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1288646821,
+      "camera_cross_right_120fov": 1316118924,
+      "camera_front_tele_30fov": 1235985132,
+      "camera_front_wide_120fov": 1250504115,
+      "egomotion": 44380336
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0706.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0706.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0706.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0706.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0706.zip"
+    }
+  },
+  {
+    "bytes": 5164178258,
+    "chunk": 709,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1267856813,
+      "camera_cross_right_120fov": 1315990219,
+      "camera_front_tele_30fov": 1212350247,
+      "camera_front_wide_120fov": 1318805557,
+      "egomotion": 49175422
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0709.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0709.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0709.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0709.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0709.zip"
+    }
+  },
+  {
+    "bytes": 4722775892,
+    "chunk": 711,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1074670583,
+      "camera_cross_right_120fov": 1199862244,
+      "camera_front_tele_30fov": 1131803341,
+      "camera_front_wide_120fov": 1281212148,
+      "egomotion": 35227576
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0711.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0711.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0711.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0711.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0711.zip"
+    }
+  },
+  {
+    "bytes": 4231365817,
+    "chunk": 715,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 916737825,
+      "camera_cross_right_120fov": 1047347187,
+      "camera_front_tele_30fov": 1070663289,
+      "camera_front_wide_120fov": 1160355471,
+      "egomotion": 36262045
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0715.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0715.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0715.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0715.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0715.zip"
+    }
+  },
+  {
+    "bytes": 4627612982,
+    "chunk": 719,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1039072021,
+      "camera_cross_right_120fov": 1161593843,
+      "camera_front_tele_30fov": 1089288147,
+      "camera_front_wide_120fov": 1301164542,
+      "egomotion": 36494429
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0719.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0719.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0719.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0719.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0719.zip"
+    }
+  },
+  {
+    "bytes": 4942188410,
+    "chunk": 731,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1286141543,
+      "camera_cross_right_120fov": 1388585562,
+      "camera_front_tele_30fov": 1140757573,
+      "camera_front_wide_120fov": 1083182161,
+      "egomotion": 43521571
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0731.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0731.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0731.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0731.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0731.zip"
+    }
+  },
+  {
+    "bytes": 4992417830,
+    "chunk": 748,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1312858209,
+      "camera_cross_right_120fov": 1423778937,
+      "camera_front_tele_30fov": 1079608109,
+      "camera_front_wide_120fov": 1136188602,
+      "egomotion": 39983973
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0748.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0748.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0748.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0748.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0748.zip"
+    }
+  },
+  {
+    "bytes": 3736091609,
+    "chunk": 749,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 814365606,
+      "camera_cross_right_120fov": 907726718,
+      "camera_front_tele_30fov": 903833453,
+      "camera_front_wide_120fov": 1069715110,
+      "egomotion": 40450722
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0749.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0749.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0749.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0749.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0749.zip"
+    }
+  },
+  {
+    "bytes": 3467710218,
+    "chunk": 754,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 761239046,
+      "camera_cross_right_120fov": 828510264,
+      "camera_front_tele_30fov": 849315390,
+      "camera_front_wide_120fov": 983739503,
+      "egomotion": 44906015
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0754.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0754.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0754.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0754.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0754.zip"
+    }
+  },
+  {
+    "bytes": 3502911656,
+    "chunk": 760,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 771240406,
+      "camera_cross_right_120fov": 865378521,
+      "camera_front_tele_30fov": 860511083,
+      "camera_front_wide_120fov": 962143908,
+      "egomotion": 43637738
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0760.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0760.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0760.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0760.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0760.zip"
+    }
+  },
+  {
+    "bytes": 5141771885,
+    "chunk": 765,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1392899596,
+      "camera_cross_right_120fov": 1427003327,
+      "camera_front_tele_30fov": 1084276207,
+      "camera_front_wide_120fov": 1195294921,
+      "egomotion": 42297834
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0765.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0765.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0765.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0765.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0765.zip"
+    }
+  },
+  {
+    "bytes": 4311600298,
+    "chunk": 779,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1059028154,
+      "camera_cross_right_120fov": 1077088136,
+      "camera_front_tele_30fov": 984431202,
+      "camera_front_wide_120fov": 1147369326,
+      "egomotion": 43683480
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0779.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0779.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0779.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0779.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0779.zip"
+    }
+  },
+  {
+    "bytes": 5331381406,
+    "chunk": 797,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1378414313,
+      "camera_cross_right_120fov": 1520966052,
+      "camera_front_tele_30fov": 1225196871,
+      "camera_front_wide_120fov": 1160622539,
+      "egomotion": 46181631
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0797.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0797.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0797.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0797.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0797.zip"
+    }
+  },
+  {
+    "bytes": 6634794462,
+    "chunk": 800,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1776523163,
+      "camera_cross_right_120fov": 1899086391,
+      "camera_front_tele_30fov": 1370652268,
+      "camera_front_wide_120fov": 1545446900,
+      "egomotion": 43085740
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0800.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0800.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0800.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0800.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0800.zip"
+    }
+  },
+  {
+    "bytes": 5333757802,
+    "chunk": 810,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1409556621,
+      "camera_cross_right_120fov": 1408929555,
+      "camera_front_tele_30fov": 1118689953,
+      "camera_front_wide_120fov": 1352914604,
+      "egomotion": 43667069
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0810.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0810.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0810.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0810.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0810.zip"
+    }
+  },
+  {
+    "bytes": 5183996363,
+    "chunk": 820,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1391362698,
+      "camera_cross_right_120fov": 1425845303,
+      "camera_front_tele_30fov": 1015585323,
+      "camera_front_wide_120fov": 1309363622,
+      "egomotion": 41839417
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0820.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0820.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0820.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0820.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0820.zip"
+    }
+  },
+  {
+    "bytes": 5348711430,
+    "chunk": 823,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1432711034,
+      "camera_cross_right_120fov": 1493845736,
+      "camera_front_tele_30fov": 1028707047,
+      "camera_front_wide_120fov": 1350838892,
+      "egomotion": 42608721
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0823.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0823.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0823.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0823.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0823.zip"
+    }
+  },
+  {
+    "bytes": 5118743079,
+    "chunk": 825,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1325111346,
+      "camera_cross_right_120fov": 1385682596,
+      "camera_front_tele_30fov": 1240288635,
+      "camera_front_wide_120fov": 1122792753,
+      "egomotion": 44867749
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0825.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0825.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0825.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0825.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0825.zip"
+    }
+  },
+  {
+    "bytes": 3785801548,
+    "chunk": 839,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1017513378,
+      "camera_cross_right_120fov": 900943603,
+      "camera_front_tele_30fov": 884791478,
+      "camera_front_wide_120fov": 937218362,
+      "egomotion": 45334727
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0839.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0839.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0839.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0839.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0839.zip"
+    }
+  },
+  {
+    "bytes": 6248268272,
+    "chunk": 855,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1530575366,
+      "camera_cross_right_120fov": 1806944699,
+      "camera_front_tele_30fov": 1509038942,
+      "camera_front_wide_120fov": 1357978593,
+      "egomotion": 43730672
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0855.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0855.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0855.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0855.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0855.zip"
+    }
+  },
+  {
+    "bytes": 6121674921,
+    "chunk": 856,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1542896254,
+      "camera_cross_right_120fov": 1786820231,
+      "camera_front_tele_30fov": 1428708544,
+      "camera_front_wide_120fov": 1318247194,
+      "egomotion": 45002698
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0856.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0856.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0856.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0856.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0856.zip"
+    }
+  },
+  {
+    "bytes": 4667564269,
+    "chunk": 882,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1231116742,
+      "camera_cross_right_120fov": 1349990602,
+      "camera_front_tele_30fov": 1039513920,
+      "camera_front_wide_120fov": 1000222971,
+      "egomotion": 46720034
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0882.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0882.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0882.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0882.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0882.zip"
+    }
+  },
+  {
+    "bytes": 5413740715,
+    "chunk": 888,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1370738483,
+      "camera_cross_right_120fov": 1605236282,
+      "camera_front_tele_30fov": 1122871910,
+      "camera_front_wide_120fov": 1275864098,
+      "egomotion": 39029942
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0888.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0888.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0888.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0888.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0888.zip"
+    }
+  },
+  {
+    "bytes": 4625397077,
+    "chunk": 892,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1211775677,
+      "camera_cross_right_120fov": 1296093084,
+      "camera_front_tele_30fov": 941115390,
+      "camera_front_wide_120fov": 1133299912,
+      "egomotion": 43113014
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0892.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0892.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0892.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0892.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0892.zip"
+    }
+  },
+  {
+    "bytes": 5368704437,
+    "chunk": 895,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1323092402,
+      "camera_cross_right_120fov": 1547255250,
+      "camera_front_tele_30fov": 1255105793,
+      "camera_front_wide_120fov": 1198383682,
+      "egomotion": 44867310
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0895.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0895.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0895.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0895.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0895.zip"
+    }
+  },
+  {
+    "bytes": 5815034870,
+    "chunk": 901,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1514737921,
+      "camera_cross_right_120fov": 1624112298,
+      "camera_front_tele_30fov": 1322687535,
+      "camera_front_wide_120fov": 1307950268,
+      "egomotion": 45546848
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0901.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0901.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0901.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0901.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0901.zip"
+    }
+  },
+  {
+    "bytes": 5309918426,
+    "chunk": 919,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1369500488,
+      "camera_cross_right_120fov": 1515749026,
+      "camera_front_tele_30fov": 1154223360,
+      "camera_front_wide_120fov": 1223347019,
+      "egomotion": 47098533
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0919.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0919.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0919.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0919.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0919.zip"
+    }
+  },
+  {
+    "bytes": 5661277191,
+    "chunk": 924,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1454446534,
+      "camera_cross_right_120fov": 1594966347,
+      "camera_front_tele_30fov": 1331695526,
+      "camera_front_wide_120fov": 1233335470,
+      "egomotion": 46833314
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0924.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0924.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0924.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0924.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0924.zip"
+    }
+  },
+  {
+    "bytes": 5548194192,
+    "chunk": 928,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1402850900,
+      "camera_cross_right_120fov": 1543222417,
+      "camera_front_tele_30fov": 1348457309,
+      "camera_front_wide_120fov": 1206529502,
+      "egomotion": 47134064
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_0928.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_0928.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_0928.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_0928.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_0928.zip"
+    }
+  },
+  {
+    "bytes": 5277734889,
+    "chunk": 1481,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1337173347,
+      "camera_cross_right_120fov": 1602892946,
+      "camera_front_tele_30fov": 1066512210,
+      "camera_front_wide_120fov": 1230625866,
+      "egomotion": 40530520
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1481.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1481.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1481.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1481.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1481.zip"
+    }
+  },
+  {
+    "bytes": 5469253602,
+    "chunk": 1485,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1421734541,
+      "camera_cross_right_120fov": 1581981825,
+      "camera_front_tele_30fov": 1165157207,
+      "camera_front_wide_120fov": 1262114188,
+      "egomotion": 38265841
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1485.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1485.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1485.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1485.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1485.zip"
+    }
+  },
+  {
+    "bytes": 5160241635,
+    "chunk": 1506,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1352797742,
+      "camera_cross_right_120fov": 1474615088,
+      "camera_front_tele_30fov": 1088260938,
+      "camera_front_wide_120fov": 1206102512,
+      "egomotion": 38465355
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1506.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1506.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1506.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1506.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1506.zip"
+    }
+  },
+  {
+    "bytes": 5050044180,
+    "chunk": 1514,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1275685123,
+      "camera_cross_right_120fov": 1517844099,
+      "camera_front_tele_30fov": 1048299016,
+      "camera_front_wide_120fov": 1166695118,
+      "egomotion": 41520824
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1514.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1514.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1514.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1514.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1514.zip"
+    }
+  },
+  {
+    "bytes": 5348009702,
+    "chunk": 1516,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1443006368,
+      "camera_cross_right_120fov": 1527900816,
+      "camera_front_tele_30fov": 1131309716,
+      "camera_front_wide_120fov": 1206436384,
+      "egomotion": 39356418
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1516.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1516.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1516.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1516.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1516.zip"
+    }
+  },
+  {
+    "bytes": 6695968549,
+    "chunk": 1518,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1847612208,
+      "camera_cross_right_120fov": 2106971828,
+      "camera_front_tele_30fov": 1261748849,
+      "camera_front_wide_120fov": 1437689169,
+      "egomotion": 41946495
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1518.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1518.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1518.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1518.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1518.zip"
+    }
+  },
+  {
+    "bytes": 5859403672,
+    "chunk": 1528,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1643822065,
+      "camera_cross_right_120fov": 1839755557,
+      "camera_front_tele_30fov": 1013369741,
+      "camera_front_wide_120fov": 1321464722,
+      "egomotion": 40991587
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1528.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1528.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1528.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1528.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1528.zip"
+    }
+  },
+  {
+    "bytes": 6136469080,
+    "chunk": 1529,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1791232797,
+      "camera_cross_right_120fov": 1925045685,
+      "camera_front_tele_30fov": 1104153085,
+      "camera_front_wide_120fov": 1275430060,
+      "egomotion": 40607453
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1529.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1529.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1529.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1529.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1529.zip"
+    }
+  },
+  {
+    "bytes": 6473510100,
+    "chunk": 1533,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1750223670,
+      "camera_cross_right_120fov": 2057942528,
+      "camera_front_tele_30fov": 1168906447,
+      "camera_front_wide_120fov": 1454560562,
+      "egomotion": 41876893
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1533.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1533.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1533.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1533.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1533.zip"
+    }
+  },
+  {
+    "bytes": 6580525049,
+    "chunk": 1539,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1736321379,
+      "camera_cross_right_120fov": 2117228338,
+      "camera_front_tele_30fov": 1190293024,
+      "camera_front_wide_120fov": 1497390206,
+      "egomotion": 39292102
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1539.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1539.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1539.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1539.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1539.zip"
+    }
+  },
+  {
+    "bytes": 6656756798,
+    "chunk": 1542,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1892851670,
+      "camera_cross_right_120fov": 2050498031,
+      "camera_front_tele_30fov": 1204808230,
+      "camera_front_wide_120fov": 1468663861,
+      "egomotion": 39935006
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1542.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1542.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1542.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1542.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1542.zip"
+    }
+  },
+  {
+    "bytes": 6719836357,
+    "chunk": 1543,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1845113455,
+      "camera_cross_right_120fov": 2107602542,
+      "camera_front_tele_30fov": 1198939924,
+      "camera_front_wide_120fov": 1525445977,
+      "egomotion": 42734459
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1543.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1543.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1543.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1543.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1543.zip"
+    }
+  },
+  {
+    "bytes": 7025114864,
+    "chunk": 1554,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1968858085,
+      "camera_cross_right_120fov": 2147307134,
+      "camera_front_tele_30fov": 1281468346,
+      "camera_front_wide_120fov": 1585229045,
+      "egomotion": 42252254
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1554.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1554.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1554.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1554.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1554.zip"
+    }
+  },
+  {
+    "bytes": 6422144377,
+    "chunk": 1555,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1863740183,
+      "camera_cross_right_120fov": 2003425239,
+      "camera_front_tele_30fov": 1162401543,
+      "camera_front_wide_120fov": 1352256058,
+      "egomotion": 40321354
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1555.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1555.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1555.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1555.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1555.zip"
+    }
+  },
+  {
+    "bytes": 6909755975,
+    "chunk": 1567,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1886959196,
+      "camera_cross_right_120fov": 2214648118,
+      "camera_front_tele_30fov": 1278825688,
+      "camera_front_wide_120fov": 1486397559,
+      "egomotion": 42925414
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1567.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1567.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1567.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1567.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1567.zip"
+    }
+  },
+  {
+    "bytes": 5991169652,
+    "chunk": 1611,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1670721654,
+      "camera_cross_right_120fov": 1845899464,
+      "camera_front_tele_30fov": 1142353688,
+      "camera_front_wide_120fov": 1291040134,
+      "egomotion": 41154712
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1611.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1611.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1611.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1611.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1611.zip"
+    }
+  },
+  {
+    "bytes": 5711504321,
+    "chunk": 1612,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1565035868,
+      "camera_cross_right_120fov": 1773566811,
+      "camera_front_tele_30fov": 1070223622,
+      "camera_front_wide_120fov": 1259538414,
+      "egomotion": 43139606
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1612.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1612.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1612.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1612.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1612.zip"
+    }
+  },
+  {
+    "bytes": 6362598686,
+    "chunk": 1615,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1758779981,
+      "camera_cross_right_120fov": 2024614423,
+      "camera_front_tele_30fov": 1159581643,
+      "camera_front_wide_120fov": 1377410359,
+      "egomotion": 42212280
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1615.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1615.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1615.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1615.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1615.zip"
+    }
+  },
+  {
+    "bytes": 6757145802,
+    "chunk": 1620,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1927469700,
+      "camera_cross_right_120fov": 2157002392,
+      "camera_front_tele_30fov": 1177615056,
+      "camera_front_wide_120fov": 1452817058,
+      "egomotion": 42241596
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1620.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1620.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1620.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1620.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1620.zip"
+    }
+  },
+  {
+    "bytes": 6154183713,
+    "chunk": 1621,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1687329122,
+      "camera_cross_right_120fov": 1967679278,
+      "camera_front_tele_30fov": 1100914426,
+      "camera_front_wide_120fov": 1359484008,
+      "egomotion": 38776879
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1621.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1621.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1621.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1621.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1621.zip"
+    }
+  },
+  {
+    "bytes": 6832411405,
+    "chunk": 1632,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1869778693,
+      "camera_cross_right_120fov": 2151991358,
+      "camera_front_tele_30fov": 1268635738,
+      "camera_front_wide_120fov": 1502660246,
+      "egomotion": 39345370
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1632.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1632.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1632.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1632.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1632.zip"
+    }
+  },
+  {
+    "bytes": 6495108333,
+    "chunk": 1673,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1790908108,
+      "camera_cross_right_120fov": 1983835241,
+      "camera_front_tele_30fov": 1215017392,
+      "camera_front_wide_120fov": 1463681548,
+      "egomotion": 41666044
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1673.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1673.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1673.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1673.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1673.zip"
+    }
+  },
+  {
+    "bytes": 6652013329,
+    "chunk": 1683,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1863589169,
+      "camera_cross_right_120fov": 2071305304,
+      "camera_front_tele_30fov": 1271639940,
+      "camera_front_wide_120fov": 1402509375,
+      "egomotion": 42969541
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1683.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1683.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1683.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1683.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1683.zip"
+    }
+  },
+  {
+    "bytes": 6395176610,
+    "chunk": 1684,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1747074690,
+      "camera_cross_right_120fov": 1933480174,
+      "camera_front_tele_30fov": 1242410769,
+      "camera_front_wide_120fov": 1432958539,
+      "egomotion": 39252438
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1684.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1684.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1684.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1684.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1684.zip"
+    }
+  },
+  {
+    "bytes": 6439355373,
+    "chunk": 1721,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1777774487,
+      "camera_cross_right_120fov": 1971462400,
+      "camera_front_tele_30fov": 1214844362,
+      "camera_front_wide_120fov": 1433631697,
+      "egomotion": 41642427
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1721.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1721.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1721.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1721.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1721.zip"
+    }
+  },
+  {
+    "bytes": 6741463489,
+    "chunk": 1728,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1934792471,
+      "camera_cross_right_120fov": 2010940521,
+      "camera_front_tele_30fov": 1285049099,
+      "camera_front_wide_120fov": 1470296056,
+      "egomotion": 40385342
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1728.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1728.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1728.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1728.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1728.zip"
+    }
+  },
+  {
+    "bytes": 6705160845,
+    "chunk": 1733,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1795812326,
+      "camera_cross_right_120fov": 2148839565,
+      "camera_front_tele_30fov": 1265535934,
+      "camera_front_wide_120fov": 1453589919,
+      "egomotion": 41383101
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1733.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1733.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1733.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1733.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1733.zip"
+    }
+  },
+  {
+    "bytes": 6445186294,
+    "chunk": 1742,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1819530741,
+      "camera_cross_right_120fov": 2020243728,
+      "camera_front_tele_30fov": 1187620603,
+      "camera_front_wide_120fov": 1376638992,
+      "egomotion": 41152230
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1742.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1742.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1742.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1742.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1742.zip"
+    }
+  },
+  {
+    "bytes": 6585564210,
+    "chunk": 1743,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1873705181,
+      "camera_cross_right_120fov": 1955886884,
+      "camera_front_tele_30fov": 1236085317,
+      "camera_front_wide_120fov": 1478956034,
+      "egomotion": 40930794
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1743.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1743.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1743.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1743.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1743.zip"
+    }
+  },
+  {
+    "bytes": 6147536991,
+    "chunk": 1750,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1662866390,
+      "camera_cross_right_120fov": 1888652000,
+      "camera_front_tele_30fov": 1158770767,
+      "camera_front_wide_120fov": 1398995089,
+      "egomotion": 38252745
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1750.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1750.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1750.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1750.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1750.zip"
+    }
+  },
+  {
+    "bytes": 5531862651,
+    "chunk": 1767,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1408974016,
+      "camera_cross_right_120fov": 1621512067,
+      "camera_front_tele_30fov": 1202785649,
+      "camera_front_wide_120fov": 1258116260,
+      "egomotion": 40474659
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1767.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1767.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1767.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1767.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1767.zip"
+    }
+  },
+  {
+    "bytes": 5564446572,
+    "chunk": 1772,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1378616052,
+      "camera_cross_right_120fov": 1624016980,
+      "camera_front_tele_30fov": 1220493224,
+      "camera_front_wide_120fov": 1302933298,
+      "egomotion": 38387018
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1772.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1772.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1772.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1772.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1772.zip"
+    }
+  },
+  {
+    "bytes": 5131136660,
+    "chunk": 1773,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1262019967,
+      "camera_cross_right_120fov": 1458530096,
+      "camera_front_tele_30fov": 1192386273,
+      "camera_front_wide_120fov": 1179297387,
+      "egomotion": 38902937
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1773.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1773.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1773.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1773.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1773.zip"
+    }
+  },
+  {
+    "bytes": 4822746180,
+    "chunk": 1775,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1207935775,
+      "camera_cross_right_120fov": 1269980979,
+      "camera_front_tele_30fov": 1180011547,
+      "camera_front_wide_120fov": 1125031408,
+      "egomotion": 39786471
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1775.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1775.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1775.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1775.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1775.zip"
+    }
+  },
+  {
+    "bytes": 5056649414,
+    "chunk": 1779,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1227366670,
+      "camera_cross_right_120fov": 1452545453,
+      "camera_front_tele_30fov": 1189385269,
+      "camera_front_wide_120fov": 1147335849,
+      "egomotion": 40016173
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1779.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1779.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1779.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1779.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1779.zip"
+    }
+  },
+  {
+    "bytes": 5077818265,
+    "chunk": 1781,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1236016517,
+      "camera_cross_right_120fov": 1404657350,
+      "camera_front_tele_30fov": 1242976307,
+      "camera_front_wide_120fov": 1155689450,
+      "egomotion": 38478641
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1781.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1781.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1781.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1781.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1781.zip"
+    }
+  },
+  {
+    "bytes": 4874763746,
+    "chunk": 1784,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1186054882,
+      "camera_cross_right_120fov": 1326482515,
+      "camera_front_tele_30fov": 1154464344,
+      "camera_front_wide_120fov": 1165294088,
+      "egomotion": 42467917
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1784.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1784.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1784.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1784.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1784.zip"
+    }
+  },
+  {
+    "bytes": 5584026249,
+    "chunk": 1787,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1468105051,
+      "camera_cross_right_120fov": 1640067962,
+      "camera_front_tele_30fov": 1117204822,
+      "camera_front_wide_120fov": 1323080254,
+      "egomotion": 35568160
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1787.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1787.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1787.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1787.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1787.zip"
+    }
+  },
+  {
+    "bytes": 5780747496,
+    "chunk": 1796,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1457728261,
+      "camera_cross_right_120fov": 1682956872,
+      "camera_front_tele_30fov": 1217260406,
+      "camera_front_wide_120fov": 1385836334,
+      "egomotion": 36965623
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1796.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1796.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1796.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1796.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1796.zip"
+    }
+  },
+  {
+    "bytes": 5394025720,
+    "chunk": 1797,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1348536924,
+      "camera_cross_right_120fov": 1521411755,
+      "camera_front_tele_30fov": 1210777238,
+      "camera_front_wide_120fov": 1270462798,
+      "egomotion": 42837005
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1797.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1797.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1797.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1797.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1797.zip"
+    }
+  },
+  {
+    "bytes": 5239156478,
+    "chunk": 1801,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1428165919,
+      "camera_cross_right_120fov": 1477793603,
+      "camera_front_tele_30fov": 966336208,
+      "camera_front_wide_120fov": 1334179908,
+      "egomotion": 32680840
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1801.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1801.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1801.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1801.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1801.zip"
+    }
+  },
+  {
+    "bytes": 5083790802,
+    "chunk": 1807,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1404280189,
+      "camera_cross_right_120fov": 1413865811,
+      "camera_front_tele_30fov": 938724253,
+      "camera_front_wide_120fov": 1295795112,
+      "egomotion": 31125437
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1807.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1807.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1807.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1807.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1807.zip"
+    }
+  },
+  {
+    "bytes": 6025895106,
+    "chunk": 1809,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1691643242,
+      "camera_cross_right_120fov": 1656082894,
+      "camera_front_tele_30fov": 1123067574,
+      "camera_front_wide_120fov": 1518708047,
+      "egomotion": 36393349
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1809.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1809.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1809.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1809.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1809.zip"
+    }
+  },
+  {
+    "bytes": 6432440562,
+    "chunk": 1810,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1783055599,
+      "camera_cross_right_120fov": 1759745096,
+      "camera_front_tele_30fov": 1160147170,
+      "camera_front_wide_120fov": 1692782581,
+      "egomotion": 36710116
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1810.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1810.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1810.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1810.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1810.zip"
+    }
+  },
+  {
+    "bytes": 5220914561,
+    "chunk": 1823,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1383910698,
+      "camera_cross_right_120fov": 1426110675,
+      "camera_front_tele_30fov": 947469179,
+      "camera_front_wide_120fov": 1428203725,
+      "egomotion": 35220284
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1823.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1823.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1823.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1823.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1823.zip"
+    }
+  },
+  {
+    "bytes": 5306112877,
+    "chunk": 1826,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1313437726,
+      "camera_cross_right_120fov": 1463258177,
+      "camera_front_tele_30fov": 1130161275,
+      "camera_front_wide_120fov": 1357630625,
+      "egomotion": 41625074
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1826.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1826.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1826.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1826.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1826.zip"
+    }
+  },
+  {
+    "bytes": 4967067901,
+    "chunk": 1832,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1200827550,
+      "camera_cross_right_120fov": 1435524583,
+      "camera_front_tele_30fov": 1097393679,
+      "camera_front_wide_120fov": 1201757310,
+      "egomotion": 31564779
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1832.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1832.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1832.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1832.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1832.zip"
+    }
+  },
+  {
+    "bytes": 5015690538,
+    "chunk": 1834,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1179059805,
+      "camera_cross_right_120fov": 1454287999,
+      "camera_front_tele_30fov": 1112703404,
+      "camera_front_wide_120fov": 1235498641,
+      "egomotion": 34140689
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1834.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1834.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1834.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1834.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1834.zip"
+    }
+  },
+  {
+    "bytes": 4643704387,
+    "chunk": 1837,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1338035150,
+      "camera_cross_right_120fov": 1098239883,
+      "camera_front_tele_30fov": 966953653,
+      "camera_front_wide_120fov": 1209279769,
+      "egomotion": 31195932
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1837.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1837.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1837.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1837.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1837.zip"
+    }
+  },
+  {
+    "bytes": 5489904804,
+    "chunk": 1846,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1465262747,
+      "camera_cross_right_120fov": 1474803583,
+      "camera_front_tele_30fov": 1068296117,
+      "camera_front_wide_120fov": 1450093621,
+      "egomotion": 31448736
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1846.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1846.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1846.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1846.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1846.zip"
+    }
+  },
+  {
+    "bytes": 5130335012,
+    "chunk": 1847,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1313949772,
+      "camera_cross_right_120fov": 1344105372,
+      "camera_front_tele_30fov": 1041348887,
+      "camera_front_wide_120fov": 1401101375,
+      "egomotion": 29829606
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1847.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1847.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1847.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1847.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1847.zip"
+    }
+  },
+  {
+    "bytes": 5222945751,
+    "chunk": 1851,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1599496630,
+      "camera_cross_right_120fov": 1594604465,
+      "camera_front_tele_30fov": 905861574,
+      "camera_front_wide_120fov": 1092097132,
+      "egomotion": 30885950
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1851.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1851.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1851.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1851.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1851.zip"
+    }
+  },
+  {
+    "bytes": 3767705468,
+    "chunk": 1861,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 988663670,
+      "camera_cross_right_120fov": 1022594705,
+      "camera_front_tele_30fov": 766291315,
+      "camera_front_wide_120fov": 952112258,
+      "egomotion": 38043520
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1861.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1861.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1861.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1861.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1861.zip"
+    }
+  },
+  {
+    "bytes": 6195486343,
+    "chunk": 1863,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1764250242,
+      "camera_cross_right_120fov": 1834750878,
+      "camera_front_tele_30fov": 1253858858,
+      "camera_front_wide_120fov": 1298347022,
+      "egomotion": 44279343
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1863.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1863.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1863.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1863.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1863.zip"
+    }
+  },
+  {
+    "bytes": 4692229839,
+    "chunk": 1869,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1339089777,
+      "camera_cross_right_120fov": 1330911392,
+      "camera_front_tele_30fov": 895026948,
+      "camera_front_wide_120fov": 1094808923,
+      "egomotion": 32392799
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1869.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1869.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1869.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1869.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1869.zip"
+    }
+  },
+  {
+    "bytes": 6722579272,
+    "chunk": 1879,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1939974357,
+      "camera_cross_right_120fov": 1900707351,
+      "camera_front_tele_30fov": 1363658933,
+      "camera_front_wide_120fov": 1482803759,
+      "egomotion": 35434872
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1879.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1879.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1879.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1879.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1879.zip"
+    }
+  },
+  {
+    "bytes": 4375534222,
+    "chunk": 1883,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1208699399,
+      "camera_cross_right_120fov": 1278026908,
+      "camera_front_tele_30fov": 930105476,
+      "camera_front_wide_120fov": 918754968,
+      "egomotion": 39947471
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1883.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1883.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1883.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1883.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1883.zip"
+    }
+  },
+  {
+    "bytes": 4896335770,
+    "chunk": 1890,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1513074653,
+      "camera_cross_right_120fov": 1545712628,
+      "camera_front_tele_30fov": 859209254,
+      "camera_front_wide_120fov": 934317542,
+      "egomotion": 44021693
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1890.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1890.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1890.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1890.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1890.zip"
+    }
+  },
+  {
+    "bytes": 5281453861,
+    "chunk": 1897,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1636382299,
+      "camera_cross_right_120fov": 1499716716,
+      "camera_front_tele_30fov": 971071793,
+      "camera_front_wide_120fov": 1136353159,
+      "egomotion": 37929894
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1897.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1897.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1897.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1897.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1897.zip"
+    }
+  },
+  {
+    "bytes": 5032284869,
+    "chunk": 1903,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1282268249,
+      "camera_cross_right_120fov": 1385180524,
+      "camera_front_tele_30fov": 1155207522,
+      "camera_front_wide_120fov": 1172677763,
+      "egomotion": 36950811
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_1903.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_1903.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_1903.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_1903.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_1903.zip"
+    }
+  },
+  {
+    "bytes": 4996699724,
+    "chunk": 2361,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1303112386,
+      "camera_cross_right_120fov": 1441080969,
+      "camera_front_tele_30fov": 1018585393,
+      "camera_front_wide_120fov": 1192332606,
+      "egomotion": 41588370
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2361.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2361.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2361.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2361.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2361.zip"
+    }
+  },
+  {
+    "bytes": 5262020508,
+    "chunk": 2363,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1434026141,
+      "camera_cross_right_120fov": 1525123293,
+      "camera_front_tele_30fov": 1036037146,
+      "camera_front_wide_120fov": 1222937097,
+      "egomotion": 43896831
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2363.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2363.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2363.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2363.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2363.zip"
+    }
+  },
+  {
+    "bytes": 5032874093,
+    "chunk": 2382,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1246857054,
+      "camera_cross_right_120fov": 1473738297,
+      "camera_front_tele_30fov": 1119195454,
+      "camera_front_wide_120fov": 1148171527,
+      "egomotion": 44911761
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2382.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2382.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2382.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2382.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2382.zip"
+    }
+  },
+  {
+    "bytes": 5254959068,
+    "chunk": 2403,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1427940526,
+      "camera_cross_right_120fov": 1464930471,
+      "camera_front_tele_30fov": 1135392412,
+      "camera_front_wide_120fov": 1185637628,
+      "egomotion": 41058031
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2403.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2403.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2403.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2403.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2403.zip"
+    }
+  },
+  {
+    "bytes": 4750548201,
+    "chunk": 2416,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1157689010,
+      "camera_cross_right_120fov": 1259018559,
+      "camera_front_tele_30fov": 1075164058,
+      "camera_front_wide_120fov": 1212849280,
+      "egomotion": 45827294
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2416.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2416.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2416.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2416.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2416.zip"
+    }
+  },
+  {
+    "bytes": 4505497166,
+    "chunk": 2422,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1085618949,
+      "camera_cross_right_120fov": 1166735600,
+      "camera_front_tele_30fov": 1073042447,
+      "camera_front_wide_120fov": 1131363643,
+      "egomotion": 48736527
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2422.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2422.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2422.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2422.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2422.zip"
+    }
+  },
+  {
+    "bytes": 4727921502,
+    "chunk": 2442,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1177303261,
+      "camera_cross_right_120fov": 1203406856,
+      "camera_front_tele_30fov": 1091374402,
+      "camera_front_wide_120fov": 1207497419,
+      "egomotion": 48339564
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2442.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2442.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2442.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2442.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2442.zip"
+    }
+  },
+  {
+    "bytes": 4638646150,
+    "chunk": 2453,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1226899972,
+      "camera_cross_right_120fov": 1323272447,
+      "camera_front_tele_30fov": 1044508389,
+      "camera_front_wide_120fov": 1002193571,
+      "egomotion": 41771771
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2453.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2453.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2453.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2453.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2453.zip"
+    }
+  },
+  {
+    "bytes": 4871283066,
+    "chunk": 2465,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1191462582,
+      "camera_cross_right_120fov": 1342381321,
+      "camera_front_tele_30fov": 1077710328,
+      "camera_front_wide_120fov": 1215798443,
+      "egomotion": 43930392
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2465.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2465.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2465.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2465.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2465.zip"
+    }
+  },
+  {
+    "bytes": 6435725510,
+    "chunk": 2473,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1784324501,
+      "camera_cross_right_120fov": 1867025201,
+      "camera_front_tele_30fov": 1322052230,
+      "camera_front_wide_120fov": 1418401029,
+      "egomotion": 43922549
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2473.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2473.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2473.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2473.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2473.zip"
+    }
+  },
+  {
+    "bytes": 4925048882,
+    "chunk": 2495,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1099501711,
+      "camera_cross_right_120fov": 1305271196,
+      "camera_front_tele_30fov": 1246026080,
+      "camera_front_wide_120fov": 1229206159,
+      "egomotion": 45043736
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2495.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2495.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2495.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2495.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2495.zip"
+    }
+  },
+  {
+    "bytes": 5191061537,
+    "chunk": 2513,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1320498118,
+      "camera_cross_right_120fov": 1495928554,
+      "camera_front_tele_30fov": 1182429289,
+      "camera_front_wide_120fov": 1146246742,
+      "egomotion": 45958834
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2513.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2513.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2513.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2513.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2513.zip"
+    }
+  },
+  {
+    "bytes": 5468725518,
+    "chunk": 2709,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1425662501,
+      "camera_cross_right_120fov": 1579236967,
+      "camera_front_tele_30fov": 1122487929,
+      "camera_front_wide_120fov": 1298295169,
+      "egomotion": 43042952
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2709.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2709.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2709.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2709.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2709.zip"
+    }
+  },
+  {
+    "bytes": 5761253126,
+    "chunk": 2712,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1548206354,
+      "camera_cross_right_120fov": 1750354717,
+      "camera_front_tele_30fov": 1086931428,
+      "camera_front_wide_120fov": 1331550810,
+      "egomotion": 44209817
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2712.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2712.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2712.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2712.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2712.zip"
+    }
+  },
+  {
+    "bytes": 5479531910,
+    "chunk": 2713,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1397668637,
+      "camera_cross_right_120fov": 1683656246,
+      "camera_front_tele_30fov": 1096157037,
+      "camera_front_wide_120fov": 1261564621,
+      "egomotion": 40485369
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2713.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2713.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2713.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2713.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2713.zip"
+    }
+  },
+  {
+    "bytes": 5525939544,
+    "chunk": 2725,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1427819715,
+      "camera_cross_right_120fov": 1633760230,
+      "camera_front_tele_30fov": 1126951941,
+      "camera_front_wide_120fov": 1295547038,
+      "egomotion": 41860620
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2725.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2725.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2725.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2725.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2725.zip"
+    }
+  },
+  {
+    "bytes": 5192176320,
+    "chunk": 2728,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1273918375,
+      "camera_cross_right_120fov": 1551404372,
+      "camera_front_tele_30fov": 1112490097,
+      "camera_front_wide_120fov": 1210722961,
+      "egomotion": 43640515
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2728.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2728.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2728.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2728.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2728.zip"
+    }
+  },
+  {
+    "bytes": 5166265815,
+    "chunk": 2745,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1279754640,
+      "camera_cross_right_120fov": 1544912443,
+      "camera_front_tele_30fov": 1067083398,
+      "camera_front_wide_120fov": 1232661334,
+      "egomotion": 41854000
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2745.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2745.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2745.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2745.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2745.zip"
+    }
+  },
+  {
+    "bytes": 5570483298,
+    "chunk": 2749,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1422673608,
+      "camera_cross_right_120fov": 1694568453,
+      "camera_front_tele_30fov": 1108809281,
+      "camera_front_wide_120fov": 1302639329,
+      "egomotion": 41792627
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2749.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2749.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2749.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2749.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2749.zip"
+    }
+  },
+  {
+    "bytes": 5440864694,
+    "chunk": 2751,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1345118165,
+      "camera_cross_right_120fov": 1651276764,
+      "camera_front_tele_30fov": 1165071417,
+      "camera_front_wide_120fov": 1235563820,
+      "egomotion": 43834528
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2751.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2751.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2751.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2751.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2751.zip"
+    }
+  },
+  {
+    "bytes": 5729606759,
+    "chunk": 2769,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1387998689,
+      "camera_cross_right_120fov": 1688063248,
+      "camera_front_tele_30fov": 1288685623,
+      "camera_front_wide_120fov": 1329140988,
+      "egomotion": 35718211
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2769.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2769.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2769.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2769.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2769.zip"
+    }
+  },
+  {
+    "bytes": 3906513133,
+    "chunk": 2770,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1018614554,
+      "camera_cross_right_120fov": 1136947290,
+      "camera_front_tele_30fov": 809816767,
+      "camera_front_wide_120fov": 912155716,
+      "egomotion": 28978806
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2770.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2770.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2770.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2770.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2770.zip"
+    }
+  },
+  {
+    "bytes": 5066714602,
+    "chunk": 2782,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1252354583,
+      "camera_cross_right_120fov": 1528355772,
+      "camera_front_tele_30fov": 1083031045,
+      "camera_front_wide_120fov": 1161122430,
+      "egomotion": 41850772
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2782.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2782.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2782.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2782.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2782.zip"
+    }
+  },
+  {
+    "bytes": 5274909057,
+    "chunk": 2784,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1314177143,
+      "camera_cross_right_120fov": 1479302725,
+      "camera_front_tele_30fov": 1180211531,
+      "camera_front_wide_120fov": 1258362853,
+      "egomotion": 42854805
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2784.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2784.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2784.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2784.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2784.zip"
+    }
+  },
+  {
+    "bytes": 4594965594,
+    "chunk": 2802,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1101224677,
+      "camera_cross_right_120fov": 1273971199,
+      "camera_front_tele_30fov": 996041049,
+      "camera_front_wide_120fov": 1184575125,
+      "egomotion": 39153544
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2802.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2802.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2802.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2802.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2802.zip"
+    }
+  },
+  {
+    "bytes": 4903459219,
+    "chunk": 2810,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1250031611,
+      "camera_cross_right_120fov": 1250214673,
+      "camera_front_tele_30fov": 1096686533,
+      "camera_front_wide_120fov": 1260773718,
+      "egomotion": 45752684
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2810.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2810.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2810.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2810.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2810.zip"
+    }
+  },
+  {
+    "bytes": 4900837314,
+    "chunk": 2818,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1352079731,
+      "camera_cross_right_120fov": 1371320690,
+      "camera_front_tele_30fov": 1103645360,
+      "camera_front_wide_120fov": 1028973319,
+      "egomotion": 44818214
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2818.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2818.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2818.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2818.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2818.zip"
+    }
+  },
+  {
+    "bytes": 5918159817,
+    "chunk": 2821,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1624811519,
+      "camera_cross_right_120fov": 1721207561,
+      "camera_front_tele_30fov": 1233377795,
+      "camera_front_wide_120fov": 1296283988,
+      "egomotion": 42478954
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2821.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2821.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2821.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2821.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2821.zip"
+    }
+  },
+  {
+    "bytes": 5334155776,
+    "chunk": 2827,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1432205964,
+      "camera_cross_right_120fov": 1534718154,
+      "camera_front_tele_30fov": 1099019073,
+      "camera_front_wide_120fov": 1226804056,
+      "egomotion": 41408529
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2827.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2827.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2827.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2827.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2827.zip"
+    }
+  },
+  {
+    "bytes": 4987454925,
+    "chunk": 2863,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1118755076,
+      "camera_cross_right_120fov": 1420053664,
+      "camera_front_tele_30fov": 1177815236,
+      "camera_front_wide_120fov": 1229514469,
+      "egomotion": 41316480
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2863.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2863.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2863.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2863.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2863.zip"
+    }
+  },
+  {
+    "bytes": 4824444444,
+    "chunk": 2866,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1289160303,
+      "camera_cross_right_120fov": 1384940244,
+      "camera_front_tele_30fov": 1026602421,
+      "camera_front_wide_120fov": 1078187482,
+      "egomotion": 45553994
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_2866.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_2866.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_2866.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_2866.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_2866.zip"
+    }
+  },
+  {
+    "bytes": 4925298805,
+    "chunk": 3065,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1268964519,
+      "camera_cross_right_120fov": 1658177446,
+      "camera_front_tele_30fov": 1015989354,
+      "camera_front_wide_120fov": 939884435,
+      "egomotion": 42283051
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_3065.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_3065.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_3065.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_3065.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_3065.zip"
+    }
+  },
+  {
+    "bytes": 7577928043,
+    "chunk": 3067,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 2195548339,
+      "camera_cross_right_120fov": 2619329118,
+      "camera_front_tele_30fov": 1363875406,
+      "camera_front_wide_120fov": 1356730186,
+      "egomotion": 42444994
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_3067.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_3067.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_3067.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_3067.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_3067.zip"
+    }
+  },
+  {
+    "bytes": 6425642411,
+    "chunk": 3073,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1914007644,
+      "camera_cross_right_120fov": 2235537828,
+      "camera_front_tele_30fov": 1100887274,
+      "camera_front_wide_120fov": 1130281941,
+      "egomotion": 44927724
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_3073.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_3073.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_3073.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_3073.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_3073.zip"
+    }
+  },
+  {
+    "bytes": 5143467000,
+    "chunk": 3117,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1372458037,
+      "camera_cross_right_120fov": 1565720821,
+      "camera_front_tele_30fov": 1034901683,
+      "camera_front_wide_120fov": 1138422242,
+      "egomotion": 31964217
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_3117.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_3117.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_3117.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_3117.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_3117.zip"
+    }
+  },
+  {
+    "bytes": 6640101809,
+    "chunk": 3118,
+    "feature_bytes": {
+      "camera_cross_left_120fov": 1726455972,
+      "camera_cross_right_120fov": 2081915498,
+      "camera_front_tele_30fov": 1309317662,
+      "camera_front_wide_120fov": 1481986160,
+      "egomotion": 40426517
+    },
+    "feature_paths": {
+      "camera_cross_left_120fov": "camera/camera_cross_left_120fov/camera_cross_left_120fov.chunk_3118.zip",
+      "camera_cross_right_120fov": "camera/camera_cross_right_120fov/camera_cross_right_120fov.chunk_3118.zip",
+      "camera_front_tele_30fov": "camera/camera_front_tele_30fov/camera_front_tele_30fov.chunk_3118.zip",
+      "camera_front_wide_120fov": "camera/camera_front_wide_120fov/camera_front_wide_120fov.chunk_3118.zip",
+      "egomotion": "labels/egomotion/egomotion.chunk_3118.zip"
+    }
+  }
+]
